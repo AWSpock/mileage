@@ -17,16 +17,16 @@
 
 function IncludeCSS($file)
 {
-    if (file_exists("/var/www/utility-bills" . $file)) {
-        $v = filemtime("/var/www/utility-bills" . $file);
-        echo "<link rel='stylesheet' type='text/css' href='//utility-bills.spockfamily.net" . $file . "?v=" . $v . "' />\n";
+    if (file_exists("/var/www/mileage" . $file)) {
+        $v = filemtime("/var/www/mileage" . $file);
+        echo "<link rel='stylesheet' type='text/css' href='//mileage.spockfamily.net" . $file . "?v=" . $v . "' />\n";
     }
 }
 function IncludeJS($file)
 {
-    if (file_exists("/var/www/utility-bills" . $file)) {
-        $v = filemtime("/var/www/utility-bills" . $file);
-        echo "<script src='//utility-bills.spockfamily.net" . $file . "?v=" . $v . "'></script>\n";
+    if (file_exists("/var/www/mileage" . $file)) {
+        $v = filemtime("/var/www/mileage" . $file);
+        echo "<script src='//mileage.spockfamily.net" . $file . "?v=" . $v . "'></script>\n";
     }
 }
 

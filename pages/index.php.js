@@ -6,7 +6,7 @@ async function loadData() {
     loader.show(true);
 
     var response = await fetch(
-      "/api/address",
+      "/api/vehicle",
       {
         method: "GET",
       }
@@ -37,15 +37,15 @@ async function loadData() {
       row.setAttribute(
         "href",
         edit_link
-          .replace("ADDRESS_ID", i.id)
+          .replace("VEHICLE_ID", i.id)
       );
 
+    //   clone.querySelector(
+    //     '[data-id="favorite"] .data-table-cell-content'
+    //   ).textContent = i.favorite;
       clone.querySelector(
-        '[data-id="favorite"] .data-table-cell-content'
-      ).textContent = i.favorite;
-      clone.querySelector(
-        '[data-id="street"] .data-table-cell-content'
-      ).textContent = i.street;
+        '[data-id="name"] .data-table-cell-content'
+      ).textContent = i.name;
       clone.querySelector(
         '[data-id="created"] .data-table-cell-content'
       ).textContent = i.created;

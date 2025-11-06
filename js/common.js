@@ -48,9 +48,9 @@ function moneyFormat(amount) {
 //
 
 var currentUrl = window.location.pathname;
-var address_id = -1;
-var bill_type_id = -1;
-var bill_id = -1;
-if (currentUrl.split("/")[2]) address_id = currentUrl.split("/")[2];
-if (currentUrl.split("/")[4]) bill_type_id = currentUrl.split("/")[4];
-if (currentUrl.split("/")[6]) bill_id = currentUrl.split("/")[6];
+var vehicle_id = -1;
+// var bill_type_id = -1;
+// var bill_id = -1;
+if (currentUrl.split("/")[2]) vehicle_id = currentUrl.split("/")[2];
+// if (currentUrl.split("/")[4]) bill_type_id = currentUrl.split("/")[4];
+// if (currentUrl.split("/")[6]) bill_id = currentUrl.split("/")[6];

@@ -37,61 +37,61 @@ class RouteParser
             $this->resourcePath = "/index";
             return;
         }
-        if (preg_match("~/address/create$~", $this->request)) {
-            $this->resourcePath = "/address/create";
+        if (preg_match("~/vehicle/create$~", $this->request)) {
+            $this->resourcePath = "/vehicle/create";
             return;
         }
 
 
-        if (preg_match("~^/address/(\d+)/summary$~", $this->request)) {
-            $this->resourcePath = "/address/summary";
+        if (preg_match("~^/vehicle/(\d+)/summary$~", $this->request)) {
+            $this->resourcePath = "/vehicle/summary";
             return;
         }
-        if (preg_match("~^/address/(\d+)/edit$~", $this->request)) {
-            $this->resourcePath = "/address/edit";
+        if (preg_match("~^/vehicle/(\d+)/edit$~", $this->request)) {
+            $this->resourcePath = "/vehicle/edit";
             return;
         }
-        if (preg_match("~^/address/(\d+)/delete$~", $this->request)) {
-            $this->resourcePath = "/address/delete";
+        if (preg_match("~^/vehicle/(\d+)/delete$~", $this->request)) {
+            $this->resourcePath = "/vehicle/delete";
             return;
         }
 
         /* index */
-        if (preg_match("~^/address/(\d+)/bill-type$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type$~", $this->request)) {
             $this->resourcePath = "/bill-type/index";
             return;
         }
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
             $this->resourcePath = "/bill/index";
             return;
         }
 
         /* create */
-        if (preg_match("~^/address/(\d+)/bill-type/create$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/create$~", $this->request)) {
             $this->resourcePath = "/bill-type/create";
             return;
         }
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/bill/create$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/create$~", $this->request)) {
             $this->resourcePath = "/bill/create";
             return;
         }
 
         /* edit */
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/edit$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/edit$~", $this->request)) {
             $this->resourcePath = "/bill-type/edit";
             return;
         }
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/bill/(\d+)/edit$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)/edit$~", $this->request)) {
             $this->resourcePath = "/bill/edit";
             return;
         }
 
         /* delete */
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/delete$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/bill-type/delete";
             return;
         }
-        if (preg_match("~^/address/(\d+)/bill-type/(\d+)/bill/(\d+)/delete$~", $this->request)) {
+        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/bill/delete";
             return;
         }
@@ -110,29 +110,29 @@ class RouteParser
 
     protected function ValidateAPIRoute()
     {
-        if (preg_match("~^/api/address$~", $this->request)) {
-            $this->resourcePath = "/address";
+        if (preg_match("~^/api/vehicle$~", $this->request)) {
+            $this->resourcePath = "/vehicle";
             return;
         }
-        if (preg_match("~^/api/address/(\d+)$~", $this->request)) {
-            $this->resourcePath = "/address";
-            return;
-        }
-
-        if (preg_match("~^/api/address/(\d+)/bill-type$~", $this->request)) {
-            $this->resourcePath = "/bill-type";
-            return;
-        }
-        if (preg_match("~^/api/address/(\d+)/bill-type/(\d+)$~", $this->request)) {
-            $this->resourcePath = "/bill-type";
+        if (preg_match("~^/api/vehicle/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/vehicle";
             return;
         }
 
-        if (preg_match("~^/api/address/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
+        if (preg_match("~^/api/vehicle/(\d+)/bill-type$~", $this->request)) {
+            $this->resourcePath = "/bill-type";
+            return;
+        }
+        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/bill-type";
+            return;
+        }
+
+        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
             $this->resourcePath = "/bill";
             return;
         }
-        if (preg_match("~^/api/address/(\d+)/bill-type/(\d+)/bill/(\d+)$~", $this->request)) {
+        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)$~", $this->request)) {
             $this->resourcePath = "/bill";
             return;
         }

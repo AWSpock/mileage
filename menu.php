@@ -2,14 +2,15 @@
 
 if ($userAuth->checkToken()) {
     $favorite = null;
-    foreach ($data->addresses($userAuth->user()->id())->getRecords() as $address) {
+    foreach ($data->vehicles($userAuth->user()->id())->getRecords() as $vehicle) {
         if (is_null($favorite)) {
             $favorite = true;
 ?>
             <div class="menu-title">Favorites</div>
         <?php
         }
-        if ($address->favorite() === "No" && $favorite) {
+        //if ($vehicle->favorite() === "No" && $favorite) {
+        if ($favorite) {
             $favorite = false;
         ?>
             <div class="menu-title">Others</div>
@@ -17,23 +18,16 @@ if ($userAuth->checkToken()) {
         }
         ?>
         <li>
-            <a href="/address/<?php echo $address->id(); ?>/summary"><i class="fa-solid fa-location-dot"></i><?php echo htmlentities($address->street()); ?></a>
+            <a href="/vehicle/<?php echo $vehicle->id(); ?>/summary"><i class="fa-solid fa-car-side"></i><?php echo htmlentities($vehicle->name()); ?></a>
             <?php
-            if (isset($address_id) && $address->id() == $address_id) {
-                $bill_types = $data->bill_types($address->id())->getRecords();
-                if (count($bill_types) > 0) {
+            if (isset($vehicle_id) && $vehicle->id() == $vehicle_id) {
             ?>
-                    <ul>
-                        <?php
-                        foreach ($bill_types as $bill_type) {
-                        ?>
-                            <li><a href="/address/<?php echo $address->id(); ?>/bill-type/<?php echo $bill_type->id(); ?>/bill"><i></i><?php echo htmlentities($bill_type->name()); ?></a></li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
+                <ul>
+                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/fillup"><i></i>Fillups</a></li>
+                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/maintenance"><i></i>Maintenance</a></li>
+                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/trip"><i></i>Trips</a></li>
+                </ul>
             <?php
-                }
             }
             ?>
         </li>

@@ -26,11 +26,11 @@ switch ($routeParser->ResourcePath()) {
 
         $uriparts = explode("/", $_SERVER['REQUEST_URI']);
         if (array_key_exists(2, $uriparts))
-            $address_id = explode("/", $_SERVER['REQUEST_URI'])[2];
-        if (array_key_exists(4, $uriparts))
-            $billtype_id = explode("/", $_SERVER['REQUEST_URI'])[4];
-        if (array_key_exists(6, $uriparts))
-            $bill_id = explode("/", $_SERVER['REQUEST_URI'])[6];
+            $vehicle_id = explode("/", $_SERVER['REQUEST_URI'])[2];
+        // if (array_key_exists(4, $uriparts))
+        //     $billtype_id = explode("/", $_SERVER['REQUEST_URI'])[4];
+        // if (array_key_exists(6, $uriparts))
+        //     $bill_id = explode("/", $_SERVER['REQUEST_URI'])[6];
         break;
 }
 
@@ -46,7 +46,7 @@ switch ($routeParser->ResourcePath()) {
     <link rel='stylesheet' type='text/css' href='//cdn.spockfamily.net/v2/css/filter.css' />
     <link rel='stylesheet' type='text/css' href='//cdn.spockfamily.net/v2/css/loading.css' />
 
-    <title>Utility Bills | Spockfamily</title>
+    <title>Mileage | Spockfamily</title>
 
     <link rel="icon" href="//cdn.spockfamily.net/img/icon.ico" type="image/x-icon">
 

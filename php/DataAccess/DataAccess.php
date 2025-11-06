@@ -1,13 +1,13 @@
 <?php
 require_once("/var/www/mileage/php/DataAccess/Database.php");
-require_once("/var/www/mileage/php/DataAccess/Repositories/AddressRepository.php");
+require_once("/var/www/mileage/php/DataAccess/Repositories/VehicleRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/BillTypeRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/BillRepository.php");
 
 class DataAccess
 {
     private $db;
-    private $addressRepository = [];
+    private $vehicleRepository = [];
     private $billTypeRepository = [];
     private $billRepository = [];
 
@@ -16,29 +16,29 @@ class DataAccess
         $this->db = $db ?? new DatabaseV2();
     }
 
-    public function addresses($userid)
+    public function vehicles($userid)
     {
-        if (!array_key_exists($userid, $this->addressRepository)) {
-            $this->addressRepository[$userid] = new AddressRepository($this->db, $userid);
+        if (!array_key_exists($userid, $this->vehicleRepository)) {
+            $this->vehicleRepository[$userid] = new VehicleRepository($this->db, $userid);
         }
-        return $this->addressRepository[$userid];
+        return $this->vehicleRepository[$userid];
     }
 
-    public function bill_types($address_id)
-    {
-        if (!array_key_exists($address_id, $this->billTypeRepository)) {
-            $this->billTypeRepository[$address_id] = new BillTypeRepository($this->db, $address_id);
-        }
-        return $this->billTypeRepository[$address_id];
-    }
+    // public function bill_types($address_id)
+    // {
+    //     if (!array_key_exists($address_id, $this->billTypeRepository)) {
+    //         $this->billTypeRepository[$address_id] = new BillTypeRepository($this->db, $address_id);
+    //     }
+    //     return $this->billTypeRepository[$address_id];
+    // }
 
-    public function bills($address_id, $bill_type_id)
-    {
-        if (!array_key_exists($address_id . "-" . $bill_type_id, $this->billRepository)) {
-            $this->billRepository[$bill_type_id] = new BillRepository($this->db, $address_id, $bill_type_id);
-        }
-        return $this->billRepository[$bill_type_id];
-    }
+    // public function bills($address_id, $bill_type_id)
+    // {
+    //     if (!array_key_exists($address_id . "-" . $bill_type_id, $this->billRepository)) {
+    //         $this->billRepository[$bill_type_id] = new BillRepository($this->db, $address_id, $bill_type_id);
+    //     }
+    //     return $this->billRepository[$bill_type_id];
+    // }
 
     //
 

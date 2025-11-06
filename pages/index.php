@@ -1,16 +1,16 @@
 <div class="header">
-	<h1>Addresses</h1>
+	<h1>Vechiles</h1>
 </div>
 
 <nav class="breadcrumbs">
 	<ul>
-		<li>Addresses</li>
+		<li>Vechiles</li>
 	</ul>
 </nav>
 
 <div class="content">
 	<div class="row">
-		<a href="/address/create" class="button primary"><i class="fa-solid fa-plus"></i>Add Address</a>
+		<a href="/vehicle/create" class="button primary"><i class="fa-solid fa-plus"></i>Add Vehicle</a>
 	</div>
 	<div class="row">
 		<p>Record Count: <span id="data-table-count">?</span></p>
@@ -19,13 +19,13 @@
 				<div class="data-table-cell header-cell" data-id="favorite">
 					<div class="data-table-cell-label">Favorite</div>
 				</div>
-				<div class="data-table-cell header-cell" data-id="Street">
-					<div class="data-table-cell-label">Street</div>
+				<div class="data-table-cell header-cell" data-id="name">
+					<div class="data-table-cell-label">Name</div>
 				</div>
-				<div class="data-table-cell header-cell" data-id="Created">
+				<div class="data-table-cell header-cell" data-id="created">
 					<div class="data-table-cell-label">Created</div>
 				</div>
-				<div class="data-table-cell header-cell" data-id="Updated">
+				<div class="data-table-cell header-cell" data-id="updated">
 					<div class="data-table-cell-label">Updated</div>
 				</div>
 			</div>
@@ -34,13 +34,13 @@
 </div>
 
 <template id="template">
-	<a href="/address/ADDRESS_ID/summary" class="data-table-row">
+	<a href="/vehicle/VEHICLE_ID/summary" class="data-table-row">
 		<div class="data-table-cell" data-id="favorite">
 			<div class="data-table-cell-label">Favorite</div>
 			<div class="data-table-cell-content"></div>
 		</div>
-		<div class="data-table-cell" data-id="street">
-			<div class="data-table-cell-label">Street</div>
+		<div class="data-table-cell" data-id="name">
+			<div class="data-table-cell-label">Name</div>
 			<div class="data-table-cell-content"></div>
 		</div>
 		<div class="data-table-cell" data-id="created">

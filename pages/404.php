@@ -4,7 +4,7 @@
 
 <nav class="breadcrumbs">
 	<ul>
-		<li><a href="/">Addresses</a></li>
+		<li><a href="/">Vehicles</a></li>
 		<li>404</li>
 	</ul>
 </nav>

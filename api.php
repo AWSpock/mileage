@@ -23,11 +23,11 @@ switch ($routeParser->ResourcePath()) {
 
         $uriparts = explode("/", $_SERVER['REQUEST_URI']);
         if (array_key_exists(3, $uriparts))
-            $address_id = explode("/", $_SERVER['REQUEST_URI'])[3];
-        if (array_key_exists(5, $uriparts))
-            $billtype_id = explode("/", $_SERVER['REQUEST_URI'])[5];
-        if (array_key_exists(7, $uriparts))
-            $bill_id = explode("/", $_SERVER['REQUEST_URI'])[7];
+            $vehicle_id = explode("/", $_SERVER['REQUEST_URI'])[3];
+        // if (array_key_exists(5, $uriparts))
+        //     $billtype_id = explode("/", $_SERVER['REQUEST_URI'])[5];
+        // if (array_key_exists(7, $uriparts))
+        //     $bill_id = explode("/", $_SERVER['REQUEST_URI'])[7];
         break;
 }
 

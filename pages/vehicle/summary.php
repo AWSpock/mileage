@@ -1,11 +1,11 @@
 <div class="header">
-    <h1>Address Summary</h1>
+    <h1>Vehicle Summary</h1>
 </div>
 
 <nav class="breadcrumbs">
     <ul>
-        <li><a href="/">Addresses</a></li>
-        <li>Address: <?php echo htmlentities($recAddress->street()); ?></li>
+        <li><a href="/">Vehicles</a></li>
+        <li><?php echo htmlentities($recVehicle->name()); ?></li>
     </ul>
 </nav>
 
@@ -14,24 +14,24 @@
         <div class="options">
             <form method="post" action="" id="frm" class="inline">
                 <?php
-                if ($recAddress->favorite() == "No") {
+                /*if ($recVehicle->favorite() == "No") {
                 ?>
-                    <button type="submit" name="address.favorite" value="Yes" class="link secondary" title="Add Favorite"><i class="fa-regular fa-star"></i></button>
+                    <button type="submit" name="vehicle.favorite" value="Yes" class="link secondary" title="Add Favorite"><i class="fa-regular fa-star"></i></button>
                 <?php
                 } else {
                 ?>
-                    <button type="submit" name="address.favorite" value="No" class="link secondary" title="Remove Favorite"><i class="fa-solid fa-star"></i></button>
+                    <button type="submit" name="vehicle.favorite" value="No" class="link secondary" title="Remove Favorite"><i class="fa-solid fa-star"></i></button>
                 <?php
-                }
+                }*/
                 ?>
             </form>
             <?php
-            if ($recAddress->isOwner()) {
+            //if ($recVehicle->isOwner()) {
             ?>
-                <a href="/address/<?php echo htmlentities($address_id); ?>/edit" class="button secondary"><i class="fa-solid fa-pencil"></i>Edit Address</a>
-                <a href="/address/<?php echo htmlentities($address_id); ?>/bill-type" class="button secondary"><i class="fa-solid fa-gear"></i>Bill Types</a>
+                <a href="/vehicle/<?php echo htmlentities($vehicle_id); ?>/edit" class="button secondary"><i class="fa-solid fa-pencil"></i>Edit Vehicle</a>
+                <!--<a href="/vehicle/<?php //echo htmlentities($vehicle_id); ?>/bill-type" class="button secondary"><i class="fa-solid fa-gear"></i>Bill Types</a>-->
             <?php
-            }
+            //}
             ?>
         </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="row">
         <div class="bill-types">
             <?php
-            foreach ($recAddress->bill_types() as $recBillType) {
+            /*foreach ($recAddress->bill_types() as $recBillType) {
                 $totalUnit = 0;
                 $totalPrice = 0;
                 $lastUnit = null;
@@ -70,22 +70,13 @@
                 <div class="bill-type">
                     <h2><?php echo $recBillType->name(); ?></h2>
                     <div class="options">
-                        <a href="/address/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill">View Bills</a>
-                        <a href="/address/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill/create">Add Bill</a>
+                        <a href="/vehicle/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill">View Bills</a>
+                        <a href="/vehicle/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill/create">Add Bill</a>
                     </div>
                     <div class="info">
                         <div>Record Count: <?php echo count($recBillType->bills()); ?></div>
                         <?php
                         if (count($recBillType->bills()) > 0) {
-                            /*
-                    ?>
-                        <div>Last <?php echo htmlentities($recBillType->unit()); ?>: <?php echo $recBillType->formatPrecision($lastUnit); ?></div>
-                        <div>Last Price: <?php echo FormatMoney($lastPrice); ?></div>
-                        <div>Average <?php echo htmlentities($recBillType->unit()); ?>: <?php echo $recBillType->formatPrecision($avgUnit); ?></div>
-                        <div>Average Price: <?php echo FormatMoney($avgPrice); ?></div>
-                    <?php
-                    */
-
                         ?>
                             <h3>Last Bill</h3>
                             <div class="gauges">
@@ -159,7 +150,7 @@
                     </div>
                 </div>
             <?php
-            }
+            }*/
             ?>
         </div>
     </div>
