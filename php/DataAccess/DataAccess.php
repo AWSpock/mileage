@@ -2,12 +2,14 @@
 require_once("/var/www/mileage/php/DataAccess/Database.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/VehicleRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/FillupRepository.php");
+require_once("/var/www/mileage/php/DataAccess/Repositories/MaintenanceRepository.php");
 
 class DataAccess
 {
     private $db;
     private $vehicleRepository = [];
     private $fillupRepository = [];
+    private $maintenanceRepository = [];
 
     public function __construct(mysqli $db = null)
     {
@@ -28,6 +30,14 @@ class DataAccess
             $this->fillupRepository[$vehicle_id] = new FillupRepository($this->db, $vehicle_id);
         }
         return $this->fillupRepository[$vehicle_id];
+    }
+
+    public function maintenances($vehicle_id)
+    {
+        if (!array_key_exists($vehicle_id, $this->maintenanceRepository)) {
+            $this->maintenanceRepository[$vehicle_id] = new MaintenanceRepository($this->db, $vehicle_id);
+        }
+        return $this->maintenanceRepository[$vehicle_id];
     }
 
     //

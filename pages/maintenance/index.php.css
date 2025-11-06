@@ -2,44 +2,41 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "date date odometer odometer"
-    "gallon gallon ppg price"
-    "station station partial missed"
+    "price garage garage garage"
+    "description description description description"
     "created created updated updated";
 }
 
 .data-table-cell[data-id="date"] {
   grid-area: date;
 }
+
 .data-table-cell[data-id="odometer"] {
   grid-area: odometer;
 }
-.data-table-cell[data-id="gallon"] {
-  grid-area: gallon;
-}
-.data-table-cell[data-id="ppg"] {
-  grid-area: ppg;
-}
+
 .data-table-cell[data-id="price"] {
   grid-area: price;
 }
-.data-table-cell[data-id="station"] {
-  grid-area: station;
+
+.data-table-cell[data-id="description"] {
+  grid-area: description;
 }
-.data-table-cell[data-id="partial"] {
-  grid-area: partial;
+
+.data-table-cell[data-id="garage"] {
+  grid-area: garage;
 }
-.data-table-cell[data-id="missed"] {
-  grid-area: missed;
-}
+
 .data-table-cell[data-id="created"] {
   grid-area: created;
 }
+
 .data-table-cell[data-id="updated"] {
   grid-area: updated;
 }
 
-@media only screen and (min-width: 768px) {
-}
+@media only screen and (min-width: 768px) {}
+
 @media only screen and (min-width: 1024px) {
   .data-table-row.header-row {
     display: none;
@@ -50,12 +47,13 @@
   }
 
   .data-table-row {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
-    "date odometer gallon ppg price station"
-    "partial missed created created updated updated";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "date odometer price garage"
+      "description description created updated";
   }
 }
+
 @media only screen and (min-width: 1280px) {
   .data-table-row.header-row {
     display: grid;
@@ -66,9 +64,9 @@
   }
 
   .data-table-row {
-    grid-template-columns: 2fr 2fr 1fr 1fr 1fr 2fr 1fr 1fr 2fr 2fr;
-    grid-template-areas: "date odometer gallon ppg price station partial missed created updated";
+    grid-template-columns: 1fr 1fr 1fr 2fr 3fr 2fr 2fr;
+    grid-template-areas: "date odometer price garage description created updated";
   }
 }
-@media only screen and (min-width: 1580px) {
-}
+
+@media only screen and (min-width: 1580px) {}

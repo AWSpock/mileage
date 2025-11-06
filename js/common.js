@@ -81,17 +81,75 @@ function convertMoney3Fields() {
   });
 }
 
-function numberFormat(amount) {
-  var number = Number(amount);
-  return number.toLocaleString('en-US');
+function number0Format(amount) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
+  return formatter.format(amount);
 }
 
-function convertNumberFields() {
+function convertNumber0Fields() {
   var toConvert = document.querySelectorAll("[data-numberformatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = numberFormat(el.textContent);
+    el.textContent = number0Format(el.textContent);
     el.removeAttribute("data-numberformatter");
+  });
+}
+
+function number1Format(amount) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+
+  return formatter.format(amount);
+}
+
+function convertNumber1Fields() {
+  var toConvert = document.querySelectorAll("[data-number1formatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = number1Format(el.textContent);
+    el.removeAttribute("data-number1formatter");
+  });
+}
+
+function number2Format(amount) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return formatter.format(amount);
+}
+
+function convertNumber2Fields() {
+  var toConvert = document.querySelectorAll("[data-number2formatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = number2Format(el.textContent);
+    el.removeAttribute("data-number2formatter");
+  });
+}
+
+function number3Format(amount) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  });
+
+  return formatter.format(amount);
+}
+
+function convertNumber3Fields() {
+  var toConvert = document.querySelectorAll("[data-number3formatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = number3Format(el.textContent);
+    el.removeAttribute("data-number3formatter");
   });
 }
 
@@ -100,7 +158,10 @@ function convertAllFields() {
   convertDateOnlyFields();
   convertMoneyFields();
   convertMoney3Fields();
-  convertNumberFields();
+  convertNumber0Fields();
+  convertNumber1Fields();
+  convertNumber2Fields();
+  convertNumber3Fields();
 }
 ready(convertAllFields);
 

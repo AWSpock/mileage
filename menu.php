@@ -24,7 +24,7 @@ if ($userAuth->checkToken()) {
                 <ul>
                     <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/fillup"><i></i>Fillups</a></li>
                     <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/maintenance"><i></i>Maintenance</a></li>
-                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/trip"><i></i>Trips</a></li>
+                    <!--<li><a href="/vehicle/<?php //echo $vehicle->id(); ?>/trip"><i></i>Trips</a></li>-->
                 </ul>
             <?php
             }

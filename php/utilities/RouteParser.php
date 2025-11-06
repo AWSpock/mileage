@@ -61,10 +61,18 @@ class RouteParser
             $this->resourcePath = "/fillup/index";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/maintenance$~", $this->request)) {
+            $this->resourcePath = "/maintenance/index";
+            return;
+        }
 
         /* create */
         if (preg_match("~^/vehicle/(\d+)/fillup/create$~", $this->request)) {
             $this->resourcePath = "/fillup/create";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/maintenance/create$~", $this->request)) {
+            $this->resourcePath = "/maintenance/create";
             return;
         }
 
@@ -73,10 +81,18 @@ class RouteParser
             $this->resourcePath = "/fillup/edit";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/maintenance/(\d+)/edit$~", $this->request)) {
+            $this->resourcePath = "/maintenance/edit";
+            return;
+        }
 
         /* delete */
         if (preg_match("~^/vehicle/(\d+)/fillup/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/fillup/delete";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/maintenance/(\d+)/delete$~", $this->request)) {
+            $this->resourcePath = "/maintenance/delete";
             return;
         }
 
@@ -109,6 +125,15 @@ class RouteParser
         }
         if (preg_match("~^/api/vehicle/(\d+)/fillup/(\d+)$~", $this->request)) {
             $this->resourcePath = "/fillup";
+            return;
+        }
+
+        if (preg_match("~^/api/vehicle/(\d+)/maintenance$~", $this->request)) {
+            $this->resourcePath = "/maintenance";
+            return;
+        }
+        if (preg_match("~^/api/vehicle/(\d+)/maintenance/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/maintenance";
             return;
         }
     }

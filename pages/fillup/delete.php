@@ -30,7 +30,7 @@
         </div>
         <div class="input-group">
             <label class="form-control">Gallon</label>
-            <div><samp data-numberformatter><?php echo htmlentities($recFillup->gallon()); ?></samp></div>
+            <div><samp data-number3formatter><?php echo htmlentities($recFillup->gallon()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Price</label>
