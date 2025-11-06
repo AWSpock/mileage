@@ -28,9 +28,9 @@ function easternToLocal(easternDateString) {
 }
 
 function convertDateFields() {
-  var datesToConvert = document.querySelectorAll("[data-dateformatter]");
+  var toConvert = document.querySelectorAll("[data-dateformatter]");
 
-  datesToConvert.forEach(function (el) {
+  toConvert.forEach(function (el) {
     var odate = el.textContent;
     el.textContent = easternToLocal(odate).toLocaleString("en-US");
     el.removeAttribute("data-dateformatter");
@@ -38,12 +38,48 @@ function convertDateFields() {
 }
 ready(convertDateFields);
 
+function convertDateOnlyFields() {
+  var toConvert = document.querySelectorAll("[data-dateonlyformatter]");
+
+  toConvert.forEach(function (el) {
+    var odate = el.textContent + " 00:00:00";
+    el.textContent = easternToLocal(odate).toLocaleDateString("en-US");
+    el.removeAttribute("data-dateonlyformatter");
+  });
+}
+ready(convertDateOnlyFields);
+
 function moneyFormat(amount) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   }).format(amount);
 }
+
+function convertMoneyFields() {
+  var toConvert = document.querySelectorAll("[data-moneyformatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = moneyFormat(el.textContent);
+    el.removeAttribute("data-moneyformatter");
+  });
+}
+ready(convertMoneyFields);
+
+function numberFormat(amount) {
+  var number = Number(amount);
+  return number.toLocaleString('en-US');
+}
+
+function convertNumberFields() {
+  var toConvert = document.querySelectorAll("[data-numberformatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = numberFormat(el.textContent);
+    el.removeAttribute("data-numberformatter");
+  });
+}
+ready(convertNumberFields);
 
 //
 

@@ -37,31 +37,31 @@
         </div>
         <div class="input-group">
             <label class="form-control">Tank Capacity</label>
-            <div><samp><?php echo htmlentities($recVehicle->tank_capacity()); ?></samp></div>
+            <div><samp data-numberformatter><?php echo htmlentities($recVehicle->tank_capacity()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Purchase Date</label>
-            <div><samp><?php echo htmlentities($recVehicle->purchase_date()); ?></samp></div>
+            <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->purchase_date()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Purchase Price</label>
-            <div><samp><?php echo htmlentities($recVehicle->purchase_price()); ?></samp></div>
+            <div><samp data-moneyformatter><?php echo htmlentities($recVehicle->purchase_price()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Purchase Odometer</label>
-            <div><samp><?php echo htmlentities($recVehicle->purchase_odometer()); ?></samp></div>
+            <div><samp data-numberformatter><?php echo htmlentities($recVehicle->purchase_odometer()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Sell Date</label>
-            <div><samp><?php echo htmlentities($recVehicle->sell_date()); ?></samp></div>
+            <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->sell_date()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Sell Price</label>
-            <div><samp><?php echo htmlentities($recVehicle->sell_price()); ?></samp></div>
+            <div><samp data-moneyformatter><?php echo htmlentities($recVehicle->sell_price()); ?></samp></div>
         </div>
         <div class="input-group">
             <label class="form-control">Sell Odometer</label>
-            <div><samp><?php echo htmlentities($recVehicle->sell_odometer()); ?></samp></div>
+            <div><samp data-numberformatter><?php echo htmlentities($recVehicle->sell_odometer()); ?></samp></div>
         </div>
         <!--<div class="input-group">
             <label class="form-control">Bill Types</label>
