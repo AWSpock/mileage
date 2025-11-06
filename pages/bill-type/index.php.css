@@ -1,0 +1,38 @@
+.data-table-row {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "name name unit precision"
+    "created created updated updated";
+}
+
+.data-table-cell[data-id="name"] {
+  grid-area: name;
+}
+.data-table-cell[data-id="unit"] {
+  grid-area: unit;
+}
+.data-table-cell[data-id="precision"] {
+  grid-area: precision;
+}
+.data-table-cell[data-id="created"] {
+  grid-area: created;
+}
+.data-table-cell[data-id="updated"] {
+  grid-area: updated;
+}
+
+@media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1024px) {
+  .data-table {
+    max-width: 1000px;
+  }
+  .data-table-row {
+    grid-template-columns: 3fr 1fr 1fr 2fr 2fr;
+    grid-template-areas: "name unit precision created updated";
+  }
+}
+@media only screen and (min-width: 1280px) {
+}
+@media only screen and (min-width: 1580px) {
+}
