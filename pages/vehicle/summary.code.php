@@ -117,18 +117,28 @@ if (count($PPG) > 0) {
     $AvgPPG = array_sum($PPG) / count($PPG);
 }
 
-// DAYS
+// DAYS and MILES
 
 $DAY = [];
 $startDate = null;
+$MIL = [];
+$startOdom = null;
+$MPD = 0;
+$mpdDStart = null;
+$mpdOStart = null;
+$MPDLife = 0;
 
 foreach ($fillups as $fillup) {
     if (is_null($startDate)) {
         $startDate = $fillup->date();
+        $startOdom = $fillup->odometer();
+        $mpdDStart = $startDate;
+        $mpdOStart = $startOdom;
         continue;
     }
     if ($fillup->missed()) {
         $startDate = null;
+        $startOdom = null;
         continue;
     }
 
@@ -136,32 +146,29 @@ foreach ($fillups as $fillup) {
     $d2 = new DateTime($fillup->date());
     $interval = $d1->diff($d2);
 
-    array_push($DAY, $interval->format('%a'));
+    $day = $interval->format('%a');
+    array_push($DAY, $day);
     $startDate = $fillup->date();
+
+    $mile = $fillup->odometer() - $startOdom;
+    array_push($MIL, $day);
+    $startOdom = $fillup->odometer();
+
+    if ($day > 0)
+        $MPD = $mile / $day;
+
+    $dt1 = new DateTime($mpdDStart);
+    $dt2 = new DateTime($fillup->date());
+    $intervalt = $dt1->diff($dt2);
+
+    $dayt = $intervalt->format('%a');
+    if ($dayt > 0)
+        $MPDLife = ($fillup->odometer() - $mpdOStart) / $dayt;
 }
 
 $AvgDAY = 0;
 if (count($DAY) > 0) {
     $AvgDAY = array_sum($DAY) / count($DAY);
-}
-
-// MILES
-
-$MIL = [];
-$startOdom = null;
-
-foreach ($fillups as $fillup) {
-    if (is_null($startOdom)) {
-        $startOdom = $fillup->odometer();
-        continue;
-    }
-    if ($fillup->missed()) {
-        $startOdom = null;
-        continue;
-    }
-
-    array_push($MIL, $fillup->odometer() - $startOdom);
-    $startOdom = $fillup->odometer();
 }
 
 $AvgMIL = 0;

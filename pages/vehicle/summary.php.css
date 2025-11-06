@@ -6,6 +6,15 @@ button.link {
   padding: 0.5rem 0.75rem;
 }
 
+.options {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.options a:not(.button) {
+  padding: 1rem;
+}
+
 .vehicle-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -41,13 +50,14 @@ button.link {
   border-radius: 0.4rem;
 }
 
-.options {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.mileperday-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.options a:not(.button) {
-  padding: 1rem;
+.mileperday-stats .info {
+  display: grid;
+  justify-items: center;
 }
 
 .gauges {
