@@ -47,6 +47,17 @@ class Vehicle
     {
         $rec1['id'] = !empty($post['vehicle_id']) ? $post['vehicle_id'] : -1;
         $rec1['name'] = $post['vehicle_name'];
+        $rec1['make'] = $post['vehicle_make'];
+        $rec1['model'] = $post['vehicle_model'];
+        $rec1['year'] = $post['vehicle_year'];
+        $rec1['color'] = $post['vehicle_color'];
+        $rec1['tank_capacity'] = $post['vehicle_tank_capacity'];
+        $rec1['purchase_date'] = $post['vehicle_purchase_date'];
+        $rec1['sell_date'] = $post['vehicle_sell_date'];
+        $rec1['purchase_price'] = $post['vehicle_purchase_price'];
+        $rec1['sell_price'] = $post['vehicle_sell_price'];
+        $rec1['purchase_odometer'] = $post['vehicle_purchase_odometer'];
+        $rec1['sell_odometer'] = $post['vehicle_sell_odometer'];
         $new = new static($rec1);
         return $new;
     }

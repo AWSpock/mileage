@@ -135,16 +135,38 @@ class VehicleRepository
 
         $sql = "
             UPDATE vehicle 
-            SET `name` = ?
+            SET `name` = ?, 
+                `make` = ?,
+                `model` = ?,
+                `year` = ?,
+                `color` = ?,
+                `tank_capacity` = ?,
+                `purchase_date` = ?,
+                `sell_date` = ?,
+                `purchase_price` = ?,
+                `sell_price` = ?,
+                `purchase_odometer` = ?,
+                `sell_odometer` = ?
             WHERE `id` = ? 
             AND `userid` = ?
         ";
 
         $result = $this->db->query($sql, [
             $rec->name(),
+            $rec->make(),
+            $rec->model(),
+            $rec->year(),
+            $rec->color(),
+            $rec->tank_capacity(),
+            $rec->purchase_date(),
+            $rec->sell_date(),
+            $rec->purchase_price(),
+            $rec->sell_price(),
+            $rec->purchase_odometer(),
+            $rec->sell_odometer(),
             $rec->id(),
             $this->userid
-        ], "sii");
+        ], "sssisdssddiiii");
 
         if ($result !== false) {
             if ($result !== 1) {

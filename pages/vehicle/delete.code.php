@@ -1,24 +1,24 @@
 <?php
 
-$addressData = $data->addresses($userAuth->user()->id());
+$vehicleData = $data->vehicles($userAuth->user()->id());
 
-$recAddress = $addressData->getRecordById($address_id);
-if ($recAddress->id() < 0) {
+$recVehicle = $vehicleData->getRecordById($vehicle_id);
+if ($recVehicle->id() < 0) {
     header('Location: /');
     die();
 }
-if (!$recAddress->isOwner()) {
-    header('Location: /address/' . $recAddress->id() . '/summary');
-    die();
-}
+// if (!$recVehicle->isOwner()) {
+//     header('Location: /vehicle/' . $recVehicle->id() . '/summary');
+//     die();
+// }
 
-$recAddress->store_bill_types($data->bill_types($recAddress->id())->getRecords());
+// $recVehicle->store_bill_types($data->bill_types($recVehicle->id())->getRecords());
 
 //
 
 if (!empty($_POST)) {
-    $res = $addressData->deleteRecord($recAddress->id());
-    $_SESSION['last_message_text'] = $addressData->actionDataMessage;
+    $res = $vehicleData->deleteRecord($recVehicle->id());
+    $_SESSION['last_message_text'] = $vehicleData->actionDataMessage;
     if ($res == 1) {
         $_SESSION['last_message_type'] = "success";
         header('Location: /');

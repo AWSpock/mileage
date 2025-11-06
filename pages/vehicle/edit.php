@@ -33,7 +33,7 @@
             </div>
             <div class="input-group">
                 <label for="vehicle.color" class="form-control">Color</label>
-                <input type="text" id="vehicle.color" name="vehicle.color" class="form-control" required="required" value="<?php echo htmlentities($recVehicle->color()); ?>" />
+                <input type="text" id="vehicle.color" name="vehicle.color" class="form-control" value="<?php echo htmlentities($recVehicle->color()); ?>" />
             </div>
             <div class="input-group">
                 <label for="vehicle.tank_capacity" class="form-control">Tank Capacity</label>
