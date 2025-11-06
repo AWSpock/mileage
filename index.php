@@ -27,10 +27,8 @@ switch ($routeParser->ResourcePath()) {
         $uriparts = explode("/", $_SERVER['REQUEST_URI']);
         if (array_key_exists(2, $uriparts))
             $vehicle_id = explode("/", $_SERVER['REQUEST_URI'])[2];
-        // if (array_key_exists(4, $uriparts))
-        //     $billtype_id = explode("/", $_SERVER['REQUEST_URI'])[4];
-        // if (array_key_exists(6, $uriparts))
-        //     $bill_id = explode("/", $_SERVER['REQUEST_URI'])[6];
+        if (array_key_exists(4, $uriparts))
+            $record_id = explode("/", $_SERVER['REQUEST_URI'])[4];
         break;
 }
 

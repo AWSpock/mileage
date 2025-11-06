@@ -36,7 +36,6 @@ function convertDateFields() {
     el.removeAttribute("data-dateformatter");
   });
 }
-ready(convertDateFields);
 
 function convertDateOnlyFields() {
   var toConvert = document.querySelectorAll("[data-dateonlyformatter]");
@@ -47,7 +46,6 @@ function convertDateOnlyFields() {
     el.removeAttribute("data-dateonlyformatter");
   });
 }
-ready(convertDateOnlyFields);
 
 function moneyFormat(amount) {
   return new Intl.NumberFormat("en-US", {
@@ -64,7 +62,24 @@ function convertMoneyFields() {
     el.removeAttribute("data-moneyformatter");
   });
 }
-ready(convertMoneyFields);
+
+function money3Format(amount) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  }).format(amount);
+}
+
+function convertMoney3Fields() {
+  var toConvert = document.querySelectorAll("[data-money3formatter]");
+
+  toConvert.forEach(function (el) {
+    el.textContent = money3Format(el.textContent);
+    el.removeAttribute("data-moneyformatter");
+  });
+}
 
 function numberFormat(amount) {
   var number = Number(amount);
@@ -79,14 +94,20 @@ function convertNumberFields() {
     el.removeAttribute("data-numberformatter");
   });
 }
-ready(convertNumberFields);
+
+function convertAllFields() {
+  convertDateFields();
+  convertDateOnlyFields();
+  convertMoneyFields();
+  convertMoney3Fields();
+  convertNumberFields();
+}
+ready(convertAllFields);
 
 //
 
 var currentUrl = window.location.pathname;
 var vehicle_id = -1;
-// var bill_type_id = -1;
-// var bill_id = -1;
+var record_id = -1;
 if (currentUrl.split("/")[2]) vehicle_id = currentUrl.split("/")[2];
-// if (currentUrl.split("/")[4]) bill_type_id = currentUrl.split("/")[4];
-// if (currentUrl.split("/")[6]) bill_id = currentUrl.split("/")[6];
+if (currentUrl.split("/")[4]) record_id = currentUrl.split("/")[4];

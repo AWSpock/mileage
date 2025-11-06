@@ -57,42 +57,26 @@ class RouteParser
         }
 
         /* index */
-        if (preg_match("~^/vehicle/(\d+)/bill-type$~", $this->request)) {
-            $this->resourcePath = "/bill-type/index";
-            return;
-        }
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
-            $this->resourcePath = "/bill/index";
+        if (preg_match("~^/vehicle/(\d+)/fillup$~", $this->request)) {
+            $this->resourcePath = "/fillup/index";
             return;
         }
 
         /* create */
-        if (preg_match("~^/vehicle/(\d+)/bill-type/create$~", $this->request)) {
-            $this->resourcePath = "/bill-type/create";
-            return;
-        }
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/create$~", $this->request)) {
-            $this->resourcePath = "/bill/create";
+        if (preg_match("~^/vehicle/(\d+)/fillup/create$~", $this->request)) {
+            $this->resourcePath = "/fillup/create";
             return;
         }
 
         /* edit */
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/edit$~", $this->request)) {
-            $this->resourcePath = "/bill-type/edit";
-            return;
-        }
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)/edit$~", $this->request)) {
-            $this->resourcePath = "/bill/edit";
+        if (preg_match("~^/vehicle/(\d+)/fillup/(\d+)/edit$~", $this->request)) {
+            $this->resourcePath = "/fillup/edit";
             return;
         }
 
         /* delete */
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/delete$~", $this->request)) {
-            $this->resourcePath = "/bill-type/delete";
-            return;
-        }
-        if (preg_match("~^/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)/delete$~", $this->request)) {
-            $this->resourcePath = "/bill/delete";
+        if (preg_match("~^/vehicle/(\d+)/fillup/(\d+)/delete$~", $this->request)) {
+            $this->resourcePath = "/fillup/delete";
             return;
         }
 
@@ -119,21 +103,12 @@ class RouteParser
             return;
         }
 
-        if (preg_match("~^/api/vehicle/(\d+)/bill-type$~", $this->request)) {
-            $this->resourcePath = "/bill-type";
+        if (preg_match("~^/api/vehicle/(\d+)/fillup$~", $this->request)) {
+            $this->resourcePath = "/fillup";
             return;
         }
-        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)$~", $this->request)) {
-            $this->resourcePath = "/bill-type";
-            return;
-        }
-
-        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)/bill$~", $this->request)) {
-            $this->resourcePath = "/bill";
-            return;
-        }
-        if (preg_match("~^/api/vehicle/(\d+)/bill-type/(\d+)/bill/(\d+)$~", $this->request)) {
-            $this->resourcePath = "/bill";
+        if (preg_match("~^/api/vehicle/(\d+)/fillup/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/fillup";
             return;
         }
     }

@@ -1,15 +1,13 @@
 <?php
 require_once("/var/www/mileage/php/DataAccess/Database.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/VehicleRepository.php");
-require_once("/var/www/mileage/php/DataAccess/Repositories/BillTypeRepository.php");
-require_once("/var/www/mileage/php/DataAccess/Repositories/BillRepository.php");
+require_once("/var/www/mileage/php/DataAccess/Repositories/FillupRepository.php");
 
 class DataAccess
 {
     private $db;
     private $vehicleRepository = [];
-    private $billTypeRepository = [];
-    private $billRepository = [];
+    private $fillupRepository = [];
 
     public function __construct(mysqli $db = null)
     {
@@ -24,21 +22,13 @@ class DataAccess
         return $this->vehicleRepository[$userid];
     }
 
-    // public function bill_types($address_id)
-    // {
-    //     if (!array_key_exists($address_id, $this->billTypeRepository)) {
-    //         $this->billTypeRepository[$address_id] = new BillTypeRepository($this->db, $address_id);
-    //     }
-    //     return $this->billTypeRepository[$address_id];
-    // }
-
-    // public function bills($address_id, $bill_type_id)
-    // {
-    //     if (!array_key_exists($address_id . "-" . $bill_type_id, $this->billRepository)) {
-    //         $this->billRepository[$bill_type_id] = new BillRepository($this->db, $address_id, $bill_type_id);
-    //     }
-    //     return $this->billRepository[$bill_type_id];
-    // }
+    public function fillups($vehicle_id)
+    {
+        if (!array_key_exists($vehicle_id, $this->fillupRepository)) {
+            $this->fillupRepository[$vehicle_id] = new FillupRepository($this->db, $vehicle_id);
+        }
+        return $this->fillupRepository[$vehicle_id];
+    }
 
     //
 

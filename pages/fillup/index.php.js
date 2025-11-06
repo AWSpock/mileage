@@ -6,7 +6,7 @@ async function loadData() {
     loader.show(true);
 
     var response = await fetch(
-      "/api/address/" + address_id + "/bill-type",
+      "/api/vehicle/" + vehicle_id + "/fillup",
       {
         method: "GET",
       }
@@ -37,19 +37,34 @@ async function loadData() {
       row.setAttribute(
         "href",
         edit_link
-          .replace("ADDRESS_ID", address_id)
-          .replace("BILL_TYPE_ID", i.id)
+          .replace("VEHICLE_ID", vehicle_id)
+          .replace("FILLUP_ID", i.id)
       );
 
       clone.querySelector(
-        '[data-id="name"] .data-table-cell-content'
-      ).textContent = i.name;
+        '[data-id="date"] .data-table-cell-content'
+      ).textContent = i.date;
       clone.querySelector(
-        '[data-id="unit"] .data-table-cell-content'
-      ).textContent = i.unit;
+        '[data-id="odometer"] .data-table-cell-content'
+      ).textContent = i.odometer;
       clone.querySelector(
-        '[data-id="precision"] .data-table-cell-content'
-      ).textContent = i.precision;
+        '[data-id="gallon"] .data-table-cell-content'
+      ).textContent = i.gallon;
+      clone.querySelector(
+        '[data-id="ppg"] .data-table-cell-content'
+      ).textContent = i.ppg;
+      clone.querySelector(
+        '[data-id="price"] .data-table-cell-content'
+      ).textContent = i.price;
+      clone.querySelector(
+        '[data-id="station"] .data-table-cell-content'
+      ).textContent = i.station;
+      clone.querySelector(
+        '[data-id="partial"] .data-table-cell-content'
+      ).textContent = i.partial ? "Yes" : "No";
+      clone.querySelector(
+        '[data-id="missed"] .data-table-cell-content'
+      ).textContent = i.missed ? "Yes" : "No";
       clone.querySelector(
         '[data-id="created"] .data-table-cell-content'
       ).textContent = i.created;
@@ -62,7 +77,7 @@ async function loadData() {
       x++;
     });
 
-    convertDateFields();
+    convertAllFields();
   } catch (error) {
     console.error(error);
     table.innerHTML = "<div class='alert alert-danger'>" + error + "</div>";
