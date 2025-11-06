@@ -9,8 +9,7 @@ if ($userAuth->checkToken()) {
             <div class="menu-title">Favorites</div>
         <?php
         }
-        //if ($vehicle->favorite() === "No" && $favorite) {
-        if ($favorite) {
+        if ($vehicle->favorite() === "No" && $favorite) {
             $favorite = false;
         ?>
             <div class="menu-title">Others</div>

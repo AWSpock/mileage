@@ -7,10 +7,10 @@ if ($recVehicle->id() < 0) {
     header('Location: /');
     die();
 }
-/*if (!$recVehicle->isOwner()) {
+if (!$recVehicle->isOwner()) {
     header('Location: /vehicle/' . $recVehicle->id() . '/summary');
     die();
-}*/
+}
 
 //
 

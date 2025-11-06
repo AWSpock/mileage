@@ -1,10 +1,10 @@
 <div class="header">
-	<h1>Vechiles</h1>
+	<h1>Vehicles</h1>
 </div>
 
 <nav class="breadcrumbs">
 	<ul>
-		<li>Vechiles</li>
+		<li>Vehicles</li>
 	</ul>
 </nav>
 

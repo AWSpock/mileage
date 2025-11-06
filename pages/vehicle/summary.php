@@ -14,7 +14,7 @@
         <div class="options">
             <form method="post" action="" id="frm" class="inline">
                 <?php
-                /*if ($recVehicle->favorite() == "No") {
+                if ($recVehicle->favorite() == "No") {
                 ?>
                     <button type="submit" name="vehicle.favorite" value="Yes" class="link secondary" title="Add Favorite"><i class="fa-regular fa-star"></i></button>
                 <?php
@@ -22,16 +22,15 @@
                 ?>
                     <button type="submit" name="vehicle.favorite" value="No" class="link secondary" title="Remove Favorite"><i class="fa-solid fa-star"></i></button>
                 <?php
-                }*/
+                }
                 ?>
             </form>
             <?php
-            //if ($recVehicle->isOwner()) {
+            if ($recVehicle->isOwner()) {
             ?>
                 <a href="/vehicle/<?php echo htmlentities($vehicle_id); ?>/edit" class="button secondary"><i class="fa-solid fa-pencil"></i>Edit Vehicle</a>
-                <!--<a href="/vehicle/<?php //echo htmlentities($vehicle_id); ?>/bill-type" class="button secondary"><i class="fa-solid fa-gear"></i>Bill Types</a>-->
             <?php
-            //}
+            }
             ?>
         </div>
     </div>

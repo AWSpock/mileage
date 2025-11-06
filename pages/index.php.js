@@ -40,9 +40,9 @@ async function loadData() {
           .replace("VEHICLE_ID", i.id)
       );
 
-    //   clone.querySelector(
-    //     '[data-id="favorite"] .data-table-cell-content'
-    //   ).textContent = i.favorite;
+      clone.querySelector(
+        '[data-id="favorite"] .data-table-cell-content'
+      ).textContent = i.favorite;
       clone.querySelector(
         '[data-id="name"] .data-table-cell-content'
       ).textContent = i.name;

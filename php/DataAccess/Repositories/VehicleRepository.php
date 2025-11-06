@@ -20,37 +20,34 @@ class VehicleRepository
 
     public function getRecordById($id)
     {
-        // , if(isnull(b.`address_id`),'No','Yes') AS `favorite`, ifnull(c.`role`,'Owner') AS `role`
-        /*
-        LEFT OUTER JOIN address_favorite b
-            ON a.`id` = b.`address_id`
-            AND b.`userid` = ?
-        LEFT OUTER JOIN address_share c
-            ON a.`id` = c.`address_id`
-            AND c.`userid` = ?
-        */
-
-        /*
-        OR a.`id` IN (
-            SELECT `address_id`
-            FROM address_share
-            WHERE `userid` = ?
-        )*/
-
         if (!array_key_exists($id, $this->records)) {
             $sql = "
-                SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`make`, a.`model`, a.`year`, a.`color`, a.`tank_capacity`, a.`purchase_date`, a.`sell_date`, a.`purchase_price`, a.`sell_price`, a.`purchase_odometer`, a.`sell_odometer`
+                SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`make`, a.`model`, a.`year`, a.`color`, a.`tank_capacity`, a.`purchase_date`, a.`sell_date`, a.`purchase_price`, a.`sell_price`, a.`purchase_odometer`, a.`sell_odometer`, if(isnull(b.`vehicle_id`),'No','Yes') AS `favorite`, ifnull(c.`role`,'Owner') AS `role`
                 FROM vehicle a
+                    LEFT OUTER JOIN vehicle_favorite b
+                        ON a.`id` = b.`vehicle_id`
+                        AND b.`userid` = ?
+                    LEFT OUTER JOIN vehicle_share c
+                        ON a.`id` = c.`vehicle_id`
+                        AND c.`userid` = ?
                 WHERE a.`id` = ? 
                     AND (
                         a.`userid` = ?
+                        OR a.`id` IN (
+                            SELECT `vehicle_id`
+                            FROM vehicle_share
+                            WHERE `userid` = ?
+                        )
                     )
             ";
 
             $result = $this->db->query($sql, [
+                $this->userid,
+                $this->userid,
                 $id,
-                $this->userid
-            ], "ii");
+                $this->userid,
+                $this->userid,
+            ], "iiiii");
 
             if ($result) {
                 $rec = Vehicle::fromDatabase($result->fetch_array(MYSQLI_ASSOC));
@@ -74,15 +71,29 @@ class VehicleRepository
         }
 
         $sql = "
-            SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`make`, a.`model`, a.`year`, a.`color`, a.`tank_capacity`, a.`purchase_date`, a.`sell_date`, a.`purchase_price`, a.`sell_price`, a.`purchase_odometer`, a.`sell_odometer`
+            SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`make`, a.`model`, a.`year`, a.`color`, a.`tank_capacity`, a.`purchase_date`, a.`sell_date`, a.`purchase_price`, a.`sell_price`, a.`purchase_odometer`, a.`sell_odometer`, if(isnull(b.`vehicle_id`),'No','Yes') AS `favorite`, ifnull(c.`role`,'Owner') AS `role`
             FROM vehicle a
+                LEFT OUTER JOIN vehicle_favorite b
+                    ON a.`id` = b.`vehicle_id`
+                    AND b.`userid` = ?
+                LEFT OUTER JOIN vehicle_share c
+                    ON a.`id` = c.`vehicle_id`
+                    AND c.`userid` = ?
             WHERE a.`userid` = ?
-            ORDER BY `name`
+                OR a.`id` IN (
+                    SELECT `vehicle_id`
+                    FROM vehicle_share
+                    WHERE `userid` = ?
+                )
+            ORDER BY `favorite` DESC, `name`
         ";
 
         $result = $this->db->query($sql, [
+            $this->userid,
+            $this->userid,
+            $this->userid,
             $this->userid
-        ], "i");
+        ], "iiii");
 
         $this->loaded = true;
         $this->records = [];
@@ -92,35 +103,46 @@ class VehicleRepository
         return $this->records;
     }
 
-    // public function insertRecord(Address $rec)
-    // {
-    //     $this->actionDataMessage = "Failed to insert Address";
+    public function insertRecord(Vehicle $rec)
+    {
+        $this->actionDataMessage = "Failed to insert Vehicle";
 
-    //     if (empty($rec->street())) {
-    //         $this->actionDataMessage = "Street is required to insert Address";
-    //         return 0;
-    //     }
+        if (empty($rec->name())) {
+            $this->actionDataMessage = "Name is required to insert Vehicle";
+            return 0;
+        }
 
-    //     $this->db->beginTransaction();
+        $this->db->beginTransaction();
 
-    //     $sql = "
-    //         INSERT INTO address (`street`,`userid`)
-    //         VALUES (?,?)
-    //     ";
+        $sql = "
+            INSERT INTO vehicle (`name`,`make`,`model`,`year`,`color`,`tank_capacity`,`purchase_date`,`sell_date`,`purchase_price`,`sell_price`,`purchase_odometer`,`sell_odometer`,`userid`)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ";
 
-    //     $result = $this->db->query($sql, [
-    //         $rec->street(),
-    //         $this->userid
-    //     ], "si");
+        $result = $this->db->query($sql, [
+            $rec->name(),
+            $rec->make(),
+            $rec->model(),
+            $rec->year(),
+            $rec->color(),
+            $rec->tank_capacity(),
+            $rec->purchase_date(),
+            $rec->sell_date(),
+            $rec->purchase_price(),
+            $rec->sell_price(),
+            $rec->purchase_odometer(),
+            $rec->sell_odometer(),
+            $this->userid
+        ], "sssisdssddiii");
 
-    //     if (is_int($result) && $result > 0) {
-    //         $this->actionDataMessage = "Street Inserted";
-    //         $this->db->commit();
-    //         return $result;
-    //     }
-    //     $this->db->rollback();
-    //     return 0;
-    // }
+        if (is_int($result) && $result > 0) {
+            $this->actionDataMessage = "Vehicle Inserted";
+            $this->db->commit();
+            return $result;
+        }
+        $this->db->rollback();
+        return 0;
+    }
 
     public function updateRecord(Vehicle $rec)
     {
@@ -182,89 +204,87 @@ class VehicleRepository
         return false;
     }
 
-    // public function deleteRecord(Address $rec)
-    // {
-    //     $this->actionDataMessage = "Failed to delete Address";
+    public function deleteRecord(Vehicle $rec)
+    {
+        $this->actionDataMessage = "Failed to delete Vehicle";
 
-    //     $this->db->beginTransaction();
+        $this->db->beginTransaction();
 
-    //     $sql = "
-    //         DELETE a, b, c, d, e
-    //         FROM address a
-    //             LEFT OUTER JOIN bill_type b ON a.`id` = b.`address_id`
-    //             LEFT OUTER JOIN address_favorite c ON a.`id` = c.`address_id`
-    //             LEFT OUTER JOIN address_share d ON a.`id` = d.`address_id`
-    //             LEFT OUTER JOIN bill e ON a.`id` = e.`address_id`
-    //         WHERE a.`id` = ? 
-    //         AND a.`userid` = ?
-    //     ";
+        $sql = "
+            DELETE a, b, c
+            FROM vehicle a
+                LEFT OUTER JOIN vehicle_favorite b ON a.`id` = b.`vehicle_id`
+                LEFT OUTER JOIN vehicle_share c ON a.`id` = b.`vehicle_id`
+            WHERE a.`id` = ? 
+            AND a.`userid` = ?
+        ";
 
-    //     $result = $this->db->query($sql, [
-    //         $rec->id(),
-    //         $this->userid
-    //     ], "ii");
+        $result = $this->db->query($sql, [
+            $rec->id(),
+            $this->userid
+        ], "ii");
 
-    //     if (is_int($result) && $result > 0) {
-    //         $this->actionDataMessage = "Address Deleted";
-    //         $this->db->commit();
-    //         return 1;
-    //     }
-    //     $this->db->rollback();
-    //     return 0;
-    // }
+        if (is_int($result) && $result > 0) {
+            $this->actionDataMessage = "Vehicle Deleted";
+            $this->db->commit();
+            return 1;
+        }
+        $this->db->rollback();
+        return 0;
+    }
 
     //
 
-    // public function setFavorite($id)
-    // {
-    //     $this->actionDataMessage = "Failed to Add Favorite Address";
+    public function setFavorite($id)
+    {
+        $this->actionDataMessage = "Failed to Add Favorite Vehicle";
 
-    //     $this->db->beginTransaction();
+        $this->db->beginTransaction();
 
-    //     $sql = "
-    //         INSERT INTO address_favorite (`address_id`, `userid`)
-    //         VALUES (?,?)
-    //     ";
+        $sql = "
+            INSERT INTO vehicle_favorite (`vehicle_id`, `userid`)
+            VALUES (?,?)
+        ";
 
-    //     $result = $this->db->query($sql, [
-    //         $id,
-    //         $this->userid
-    //     ], "ii");
+        $result = $this->db->query($sql, [
+            $id,
+            $this->userid
+        ], "ii");
 
-    //     if ($result === true) {
-    //         $this->actionDataMessage = "Added Favorite Address";
-    //         $this->db->commit();
-    //         return true;
-    //     }
+        if ($result === true) {
+            $this->actionDataMessage = "Added Favorite Vehicle";
+            $this->db->commit();
+            return true;
+        }
 
-    //     $this->db->rollback();
-    //     return false;
-    // }
+        $this->db->rollback();
+        return false;
+    }
 
-    // public function removeFavorite($id)
-    // {
-    //     $this->actionDataMessage = "Failed to Remove Favorite Address";
+    public function removeFavorite($id)
+    {
+        $this->actionDataMessage = "Failed to Remove Favorite Vehicle";
 
-    //     $this->db->beginTransaction();
+        $this->db->beginTransaction();
 
-    //     $sql = "
-    //         DELETE FROM address_favorite
-    //         WHERE `address_id` = ? 
-    //         AND `userid` = ?
-    //     ";
+        $sql = "
+            DELETE FROM vehicle_favorite
+            WHERE `vehicle_id` = ? 
+            AND `userid` = ?
+        ";
 
-    //     $result = $this->db->query($sql, [
-    //         $id,
-    //         $this->userid
-    //     ], "ii");
+        $result = $this->db->query($sql, [
+            $id,
+            $this->userid
+        ], "ii");
 
-    //     if (is_int($result) && $result > 0) {
-    //         $this->actionDataMessage = "Removed Favorite Address";
-    //         $this->db->commit();
-    //         return true;
-    //     }
+        if (is_int($result) && $result > 0) {
+            $this->actionDataMessage = "Removed Favorite Vehicle";
+            $this->db->commit();
+            return true;
+        }
 
-    //     $this->db->rollback();
-    //     return false;
-    // }
+        $this->db->rollback();
+        return false;
+    }
 }

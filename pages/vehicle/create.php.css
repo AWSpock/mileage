@@ -11,7 +11,6 @@
         column-gap: 1rem;
         grid-template-areas:
             "group1 group2"
-            "group1 group3"
             "buttons buttons";
     }
 
@@ -21,10 +20,6 @@
 
     .group-two {
         grid-area: group2;
-    }
-
-    .group-three {
-        grid-area: group3;
     }
 
     .button-group {
@@ -39,10 +34,5 @@
 }
 
 @media only screen and (min-width: 1580px) {
-    .full-form {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas:
-            "group1 group2 group3"
-            "buttons buttons buttons";
-    }
+    
 }

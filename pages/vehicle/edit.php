@@ -41,35 +41,33 @@
             </div>
         </div>
         <div class="group-two">
-            <div class="group-two-one">
-                <h2>Purchase Info</h2>
-                <div class="input-group">
-                    <label for="vehicle.purchase_date" class="form-control">Purchase Date</label>
-                    <input type="date" id="vehicle.purchase_date" name="vehicle.purchase_date" class="form-control" value="<?php echo htmlentities($recVehicle->purchase_date()); ?>" />
-                </div>
-                <div class="input-group">
-                    <label for="vehicle.purchase_price" class="form-control">Purchase Price</label>
-                    <input type="number" id="vehicle.purchase_price" name="vehicle.purchase_price" class="form-control" min="0" step=".01" value="<?php echo htmlentities($recVehicle->purchase_price()); ?>" />
-                </div>
-                <div class="input-group">
-                    <label for="vehicle.purchase_odometer" class="form-control">Purchase Odometer</label>
-                    <input type="number" id="vehicle.purchase_odometer" name="vehicle.purchase_odometer" class="form-control" min="0" step="1" value="<?php echo htmlentities($recVehicle->purchase_odometer()); ?>" />
-                </div>
+            <h2>Purchase Info</h2>
+            <div class="input-group">
+                <label for="vehicle.purchase_date" class="form-control">Purchase Date</label>
+                <input type="date" id="vehicle.purchase_date" name="vehicle.purchase_date" class="form-control" value="<?php echo htmlentities($recVehicle->purchase_date()); ?>" />
             </div>
-            <div class="group-two-two">
-                <h2>Sell Info</h2>
-                <div class="input-group">
-                    <label for="vehicle.sell_date" class="form-control">Sell Date</label>
-                    <input type="date" id="vehicle.sell_date" name="vehicle.sell_date" class="form-control" value="<?php echo htmlentities($recVehicle->sell_date()); ?>" />
-                </div>
-                <div class="input-group">
-                    <label for="vehicle.sell_price" class="form-control">Sell Price</label>
-                    <input type="number" id="vehicle.sell_price" name="vehicle.sell_price" class="form-control" min="0" step=".01" value="<?php echo htmlentities($recVehicle->sell_price()); ?>" />
-                </div>
-                <div class="input-group">
-                    <label for="vehicle.sell_odometer" class="form-control">Sell Odometer</label>
-                    <input type="number" id="vehicle.sell_odometer" name="vehicle.sell_odometer" class="form-control" min="0" step="1" value="<?php echo htmlentities($recVehicle->sell_odometer()); ?>" />
-                </div>
+            <div class="input-group">
+                <label for="vehicle.purchase_price" class="form-control">Purchase Price</label>
+                <input type="number" id="vehicle.purchase_price" name="vehicle.purchase_price" class="form-control" min="0" step=".01" value="<?php echo htmlentities($recVehicle->purchase_price()); ?>" />
+            </div>
+            <div class="input-group">
+                <label for="vehicle.purchase_odometer" class="form-control">Purchase Odometer</label>
+                <input type="number" id="vehicle.purchase_odometer" name="vehicle.purchase_odometer" class="form-control" min="0" step="1" value="<?php echo htmlentities($recVehicle->purchase_odometer()); ?>" />
+            </div>
+        </div>
+        <div class="group-three">
+            <h2>Sell Info</h2>
+            <div class="input-group">
+                <label for="vehicle.sell_date" class="form-control">Sell Date</label>
+                <input type="date" id="vehicle.sell_date" name="vehicle.sell_date" class="form-control" value="<?php echo htmlentities($recVehicle->sell_date()); ?>" />
+            </div>
+            <div class="input-group">
+                <label for="vehicle.sell_price" class="form-control">Sell Price</label>
+                <input type="number" id="vehicle.sell_price" name="vehicle.sell_price" class="form-control" min="0" step=".01" value="<?php echo htmlentities($recVehicle->sell_price()); ?>" />
+            </div>
+            <div class="input-group">
+                <label for="vehicle.sell_odometer" class="form-control">Sell Odometer</label>
+                <input type="number" id="vehicle.sell_odometer" name="vehicle.sell_odometer" class="form-control" min="0" step="1" value="<?php echo htmlentities($recVehicle->sell_odometer()); ?>" />
             </div>
         </div>
         <div class="button-group">

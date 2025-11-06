@@ -17,8 +17,8 @@ class Vehicle
     protected $sell_price;
     protected $purchase_odometer;
     protected $sell_odometer;
-    // protected $favorite;
-    // protected $role;
+    protected $favorite;
+    protected $role;
 
     protected $bill_types;
 
@@ -39,8 +39,8 @@ class Vehicle
         $this->sell_price = !empty($rec['sell_price']) ? $rec['sell_price'] : null;
         $this->purchase_odometer = !empty($rec['purchase_odometer']) ? $rec['purchase_odometer'] : null;
         $this->sell_odometer = !empty($rec['sell_odometer']) ? $rec['sell_odometer'] : null;
-        // $this->favorite = !empty($rec['favorite']) ? $rec['favorite'] : null;
-        // $this->role = !empty($rec['role']) ? $rec['role'] : null;
+        $this->favorite = !empty($rec['favorite']) ? $rec['favorite'] : null;
+        $this->role = !empty($rec['role']) ? $rec['role'] : null;
     }
 
     public static function fromPost($post)
@@ -53,11 +53,11 @@ class Vehicle
         $rec1['color'] = $post['vehicle_color'];
         $rec1['tank_capacity'] = $post['vehicle_tank_capacity'];
         $rec1['purchase_date'] = $post['vehicle_purchase_date'];
-        $rec1['sell_date'] = $post['vehicle_sell_date'];
+        $rec1['sell_date'] = !empty($post['vehicle_sell_date']) ? $post['vehicle_sell_date'] : null;
         $rec1['purchase_price'] = $post['vehicle_purchase_price'];
-        $rec1['sell_price'] = $post['vehicle_sell_price'];
+        $rec1['sell_price'] = !empty($post['vehicle_sell_price']) ? $post['vehicle_sell_price'] : null;
         $rec1['purchase_odometer'] = $post['vehicle_purchase_odometer'];
-        $rec1['sell_odometer'] = $post['vehicle_sell_odometer'];
+        $rec1['sell_odometer'] = !empty($post['vehicle_sell_odometer']) ? $post['vehicle_sell_odometer'] : null;
         $new = new static($rec1);
         return $new;
     }
@@ -79,8 +79,8 @@ class Vehicle
         $rec1['sell_price'] = $db['sell_price'];
         $rec1['purchase_odometer'] = $db['purchase_odometer'];
         $rec1['sell_odometer'] = $db['sell_odometer'];
-        // $rec1['favorite'] = $db['favorite'];
-        // $rec1['role'] = $db['role'];
+        $rec1['favorite'] = $db['favorite'];
+        $rec1['role'] = $db['role'];
         $new = new static($rec1);
         return $new;
     }
@@ -145,26 +145,26 @@ class Vehicle
     {
         return $this->sell_odometer;
     }
-    // public function favorite()
-    // {
-    //     return $this->favorite;
-    // }
-    // public function role()
-    // {
-    //     return $this->role;
-    // }
-    // public function isOwner()
-    // {
-    //     return $this->role == "Owner";
-    // }
-    // public function isManager()
-    // {
-    //     return $this->role == "Manager";
-    // }
-    // public function isViewer()
-    // {
-    //     return $this->role == "Viewer";
-    // }
+    public function favorite()
+    {
+        return $this->favorite;
+    }
+    public function role()
+    {
+        return $this->role;
+    }
+    public function isOwner()
+    {
+        return $this->role == "Owner";
+    }
+    public function isManager()
+    {
+        return $this->role == "Manager";
+    }
+    public function isViewer()
+    {
+        return $this->role == "Viewer";
+    }
 
     public function toString($pretty = false)
     {
