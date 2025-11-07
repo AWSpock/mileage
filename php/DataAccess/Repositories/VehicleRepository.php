@@ -211,10 +211,12 @@ class VehicleRepository
         $this->db->beginTransaction();
 
         $sql = "
-            DELETE a, b, c
+            DELETE a, b, c, d, e
             FROM vehicle a
                 LEFT OUTER JOIN vehicle_favorite b ON a.`id` = b.`vehicle_id`
                 LEFT OUTER JOIN vehicle_share c ON a.`id` = b.`vehicle_id`
+                LEFT OUTER JOIN fillup d ON a.`id` = d.`vehicle_id`
+                LEFT OUTER JOIN maintenance e ON a.`id` = e.`vehicle_id`
             WHERE a.`id` = ? 
             AND a.`userid` = ?
         ";
