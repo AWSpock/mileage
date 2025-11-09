@@ -151,7 +151,7 @@ foreach ($fillups as $fillup) {
     $startDate = $fillup->date();
 
     $mile = $fillup->odometer() - $startOdom;
-    array_push($MIL, $day);
+    array_push($MIL, $mile);
     $startOdom = $fillup->odometer();
 
     if ($day > 0)

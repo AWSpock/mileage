@@ -55,34 +55,36 @@
                 <div><samp data-number1formatter><?php echo htmlentities($recVehicle->tank_capacity()); ?></samp></div>
             </div>
         </div>
+        <h3>Purchase Information</h3>
         <div class="vehicle-purchase">
             <div class="info">
-                <label class="form-control">Purchase Date</label>
+                <label class="form-control">Date</label>
                 <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->purchase_date()); ?></samp></div>
             </div>
             <div class="info">
-                <label class="form-control">Purchase Price</label>
+                <label class="form-control">Price</label>
                 <div><samp data-moneyformatter><?php echo htmlentities($recVehicle->purchase_price()); ?></samp></div>
             </div>
             <div class="info">
-                <label class="form-control">Purchase Odometer</label>
+                <label class="form-control">Odometer</label>
                 <div><samp data-numberformatter><?php echo htmlentities($recVehicle->purchase_odometer()); ?></samp></div>
             </div>
         </div>
         <?php
         if ($recVehicle->sell_odometer() != null) {
         ?>
+            <h3>Sell Information</h3>
             <div class="vehicle-sell">
                 <div class="info">
-                    <label class="form-control">Sell Date</label>
+                    <label class="form-control">Date</label>
                     <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->sell_date()); ?></samp></div>
                 </div>
                 <div class="info">
-                    <label class="form-control">Sell Price</label>
+                    <label class="form-control">Price</label>
                     <div><samp data-moneyformatter><?php echo htmlentities($recVehicle->sell_price()); ?></samp></div>
                 </div>
                 <div class="info">
-                    <label class="form-control">Sell Odometer</label>
+                    <label class="form-control">Odometer</label>
                     <div><samp data-numberformatter><?php echo htmlentities($recVehicle->sell_odometer()); ?></samp></div>
                 </div>
             </div>
