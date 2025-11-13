@@ -168,10 +168,29 @@ class Vehicle
 
     public function toString($pretty = false)
     {
-        if ($pretty === true)
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+        $obj = (object) [
+            "id" => $this->id(),
+            "created" => $this->created(),
+            "updated" => $this->updated(),
+            "name" => $this->name(),
+            "make" => $this->make(),
+            "model" => $this->model(),
+            "year" => $this->year(),
+            "color" => $this->color(),
+            "tank_capacity" => $this->tank_capacity(),
+            "purchase_date" => $this->purchase_date(),
+            "sell_date" => $this->sell_date(),
+            "purchase_price" => $this->purchase_price(),
+            "sell_price" => $this->sell_price(),
+            "purchase_odometer" => $this->purchase_odometer(),
+            "sell_odometer" => $this->sell_odometer(),
+            "favorite" => $this->favorite()
+        ];
 
-        return json_encode(get_object_vars($this));
+        if ($pretty === true)
+            return json_encode(get_object_vars($obj), JSON_PRETTY_PRINT);
+
+        return json_encode(get_object_vars($obj));
     }
 
     //

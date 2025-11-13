@@ -9,7 +9,7 @@ class Fillup
     protected $odometer;
     protected $gallon;
     protected $ppg;
-    protected $price;
+    // protected $price;
     protected $station;
     protected $partial;
     protected $missed;
@@ -23,7 +23,7 @@ class Fillup
         $this->odometer = !empty($rec['odometer']) ? intval($rec['odometer']) : null;
         $this->gallon = !empty($rec['gallon']) ? $rec['gallon'] : null;
         $this->ppg = !empty($rec['ppg']) ? $rec['ppg'] : null;
-        $this->price = !(empty($rec['ppg']) && empty($rec['gallon'])) ? $rec['ppg'] * $rec['gallon'] : null;
+        // $this->price = !(empty($rec['ppg']) && empty($rec['gallon'])) ? $rec['ppg'] * $rec['gallon'] : null;
         $this->station = !empty($rec['station']) ? $rec['station'] : null;
         $this->partial = !empty($rec['partial']) ? $rec['partial'] : null;
         $this->missed = !empty($rec['missed']) ? $rec['missed'] : null;
@@ -77,19 +77,21 @@ class Fillup
     }
     public function odometer()
     {
-        return intval($this->odometer);
+        return is_null($this->odometer) ? null : intval($this->odometer);
     }
     public function gallon()
     {
-        return floatval($this->gallon);
+        return is_null($this->gallon) ? null : floatval($this->gallon);
     }
     public function ppg()
     {
-        return floatval($this->ppg);
+        return is_null($this->ppg) ? null : floatval($this->ppg);
     }
     public function price()
     {
-        return floatval($this->price);
+        // return floatval($this->price);
+        // return !(empty($this->ppg) && empty($this->gallon)) ? $this->ppg * $this->gallon : null;
+        return floatval($this->ppg * $this->gallon);
     }
     public function station()
     {
@@ -97,18 +99,32 @@ class Fillup
     }
     public function partial()
     {
-        return (bool)$this->partial;
+        return boolval($this->partial);
     }
     public function missed()
     {
-        return (bool)$this->missed;
+        return boolval($this->missed);
     }
 
     public function toString($pretty = false)
     {
-        if ($pretty === true)
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+        $obj = (object) [
+            "id" => $this->id(),
+            "created" => $this->created(),
+            "updated" => $this->updated(),
+            "date" => $this->date(),
+            "odometer" => $this->odometer(),
+            "gallon" => $this->gallon(),
+            "ppg" => $this->ppg(),
+            "price" => $this->price(),
+            "station" => $this->station(),
+            "partial" => $this->partial(),
+            "missed" => $this->missed()
+        ];
 
-        return json_encode(get_object_vars($this));
+        if ($pretty === true)
+            return json_encode(get_object_vars($obj), JSON_PRETTY_PRINT);
+
+        return json_encode(get_object_vars($obj));
     }
 }

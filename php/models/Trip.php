@@ -60,9 +60,17 @@ class Trip
 
     public function toString($pretty = false)
     {
-        if ($pretty === true)
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+        $obj = (object) [
+            "id" => $this->id(),
+            "created" => $this->created(),
+            "updated" => $this->updated(),
+            "name" => $this->name(),
+            "description" => $this->description()
+        ];
 
-        return json_encode(get_object_vars($this));
+        if ($pretty === true)
+            return json_encode(get_object_vars($obj), JSON_PRETTY_PRINT);
+
+        return json_encode(get_object_vars($obj));
     }
 }

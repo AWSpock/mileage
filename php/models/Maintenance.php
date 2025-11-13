@@ -67,11 +67,11 @@ class Maintenance
     }
     public function odometer()
     {
-        return intval($this->odometer);
+        return is_null($this->odometer) ? null : intval($this->odometer);
     }
     public function price()
     {
-        return floatval($this->price);
+        return is_null($this->price) ? null : floatval($this->price);
     }
     public function description()
     {
@@ -84,9 +84,20 @@ class Maintenance
 
     public function toString($pretty = false)
     {
-        if ($pretty === true)
-            return json_encode(get_object_vars($this), JSON_PRETTY_PRINT);
+        $obj = (object) [
+            "id" => $this->id(),
+            "created" => $this->created(),
+            "updated" => $this->updated(),
+            "date" => $this->date(),
+            "odometer" => $this->odometer(),
+            "price" => $this->price(),
+            "description" => $this->description(),
+            "garage" => $this->garage()
+        ];
 
-        return json_encode(get_object_vars($this));
+        if ($pretty === true)
+            return json_encode(get_object_vars($obj), JSON_PRETTY_PRINT);
+
+        return json_encode(get_object_vars($obj));
     }
 }
