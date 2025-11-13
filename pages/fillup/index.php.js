@@ -66,11 +66,17 @@ async function loadData() {
         '[data-id="missed"] .data-table-cell-content'
       ).textContent = i.missed ? "Yes" : "No";
       clone.querySelector(
-        '[data-id="created"] .data-table-cell-content'
-      ).textContent = i.created;
+        '[data-id="mpg"] .data-table-cell-content'
+      ).textContent = i.mpg;
       clone.querySelector(
-        '[data-id="updated"] .data-table-cell-content'
-      ).textContent = i.updated;
+        '[data-id="days"] .data-table-cell-content'
+      ).textContent = i.days;
+      // clone.querySelector(
+      //   '[data-id="created"] .data-table-cell-content'
+      // ).textContent = i.created;
+      // clone.querySelector(
+      //   '[data-id="updated"] .data-table-cell-content'
+      // ).textContent = i.updated;
 
       table.appendChild(clone);
 

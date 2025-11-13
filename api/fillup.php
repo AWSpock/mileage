@@ -14,6 +14,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         if (isset($record_id)) {
             echo $data->fillups($recVehicle->id())->getRecordById($record_id)->toString();
         } else {
+            // $data->fillups($recVehicle->id())->calculateStats();
             $recs = [];
             foreach ($data->fillups($recVehicle->id())->getRecords() as $rec) {
                 array_push($recs, json_decode($rec->toString()));

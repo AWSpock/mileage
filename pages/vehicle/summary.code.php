@@ -46,28 +46,10 @@ usort($fillups, function ($a, $b) {
 // MPG
 
 $MPG = [];
-$startOdom = null;
-$totalGallon = 0;
 
 foreach ($fillups as $fillup) {
-    if (is_null($startOdom)) {
-        $startOdom = $fillup->odometer();
-        $totalGallon = 0;
-        continue;
-    }
-    if ($fillup->missed()) {
-        $startOdom = null;
-        $totalGallon = 0;
-        continue;
-    }
-
-    $totalGallon += $fillup->gallon();
-    if ($fillup->partial()) {
-        continue;
-    }
-    array_push($MPG, ($fillup->odometer() - $startOdom) / $totalGallon);
-    $totalGallon = 0;
-    $startOdom = $fillup->odometer();
+    if (!is_null($fillup->mpg()))
+        array_push($MPG, $fillup->mpg());
 }
 
 $AvgMPG = 0;
@@ -120,42 +102,28 @@ if (count($PPG) > 0) {
 // DAYS and MILES
 
 $DAY = [];
-$startDate = null;
 $MIL = [];
-$startOdom = null;
 $MPD = 0;
 $mpdDStart = null;
 $mpdOStart = null;
 $MPDLife = 0;
 
 foreach ($fillups as $fillup) {
-    if (is_null($startDate)) {
-        $startDate = $fillup->date();
-        $startOdom = $fillup->odometer();
-        $mpdDStart = $startDate;
-        $mpdOStart = $startOdom;
+    if (is_null($mpdDStart)) {
+        $mpdDStart = $fillup->date();
+        $mpdOStart = $fillup->odometer();
         continue;
     }
     if ($fillup->missed()) {
-        $startDate = null;
-        $startOdom = null;
         continue;
     }
 
-    $d1 = new DateTime($startDate);
-    $d2 = new DateTime($fillup->date());
-    $interval = $d1->diff($d2);
+    array_push($DAY, $fillup->days());
 
-    $day = $interval->format('%a');
-    array_push($DAY, $day);
-    $startDate = $fillup->date();
+    array_push($MIL, $fillup->miles());
 
-    $mile = $fillup->odometer() - $startOdom;
-    array_push($MIL, $mile);
-    $startOdom = $fillup->odometer();
-
-    if ($day > 0)
-        $MPD = $mile / $day;
+    // if ($fillup->days() > 0)
+    //     $MPD = $mile / $fillup->days();
 
     $dt1 = new DateTime($mpdDStart);
     $dt2 = new DateTime($fillup->date());

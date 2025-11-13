@@ -9,10 +9,13 @@ class Fillup
     protected $odometer;
     protected $gallon;
     protected $ppg;
-    // protected $price;
     protected $station;
     protected $partial;
     protected $missed;
+
+    protected $mpg;
+    protected $days;
+    protected $miles;
 
     public function __construct($rec = null)
     {
@@ -23,10 +26,12 @@ class Fillup
         $this->odometer = !empty($rec['odometer']) ? intval($rec['odometer']) : null;
         $this->gallon = !empty($rec['gallon']) ? $rec['gallon'] : null;
         $this->ppg = !empty($rec['ppg']) ? $rec['ppg'] : null;
-        // $this->price = !(empty($rec['ppg']) && empty($rec['gallon'])) ? $rec['ppg'] * $rec['gallon'] : null;
         $this->station = !empty($rec['station']) ? $rec['station'] : null;
         $this->partial = !empty($rec['partial']) ? $rec['partial'] : null;
         $this->missed = !empty($rec['missed']) ? $rec['missed'] : null;
+        $this->mpg = !empty($rec['mpg']) ? $rec['mpg'] : null;
+        $this->days = !empty($rec['days']) ? $rec['days'] : null;
+        $this->miles = !empty($rec['miles']) ? $rec['miles'] : null;
     }
 
     public static function fromPost($post)
@@ -55,6 +60,21 @@ class Fillup
         $rec1['station'] = $db['station'];
         $rec1['partial'] = $db['partial'];
         $rec1['missed'] = $db['missed'];
+        $rec1['mpg'] = $db['mpg'];
+
+
+        if ($db['days'] === "NULL") {
+            $rec1['days'] = null;
+        } else {
+            if (empty($db['days'])) {
+                $rec1['days'] = "00";
+            } else {
+                $rec1['days'] = intval($db['days']);
+            }
+        }
+        // $rec1['days'] = $db['days'] == "NULL" ? NULL : intval($db['days']);
+
+        $rec1['miles'] = $db['miles'];
         $new = new static($rec1);
         return $new;
     }
@@ -89,8 +109,6 @@ class Fillup
     }
     public function price()
     {
-        // return floatval($this->price);
-        // return !(empty($this->ppg) && empty($this->gallon)) ? $this->ppg * $this->gallon : null;
         return floatval($this->ppg * $this->gallon);
     }
     public function station()
@@ -106,6 +124,41 @@ class Fillup
         return boolval($this->missed);
     }
 
+    public function mpg()
+    {
+        return is_null($this->mpg) ? null : floatval($this->mpg);
+    }
+    public function set_mpg($val)
+    {
+        $this->mpg = $val;
+    }
+    public function days()
+    {
+        return is_null($this->days) ? null : intval($this->days);
+    }
+    public function set_days($val)
+    {
+        $this->days = $val;
+    }
+    public function miles()
+    {
+        return is_null($this->miles) ? null : intval($this->miles);
+    }
+    public function set_miles($val)
+    {
+        $this->miles = $val;
+    }
+
+
+    // public function milesperday()
+    // {
+    //     if(is_null($this->miles) || is_null($this->days))
+    //         return null;
+    //     if($this->days() == 0)
+    //         return
+    //     return is_null($this->miles) ||  ? null : intval($this->miles);
+    // }
+
     public function toString($pretty = false)
     {
         $obj = (object) [
@@ -119,7 +172,10 @@ class Fillup
             "price" => $this->price(),
             "station" => $this->station(),
             "partial" => $this->partial(),
-            "missed" => $this->missed()
+            "missed" => $this->missed(),
+            "mpg" => $this->mpg(),
+            "days" => $this->days(),
+            "miles" => $this->miles()
         ];
 
         if ($pretty === true)

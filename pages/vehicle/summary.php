@@ -313,10 +313,10 @@
             <div class="mileperday stats">
                 <h3>Miles Per Day</h3>
                 <div class="mileperday-stats">
-                    <div class="info">
+                    <!-- <div class="info">
                         <label class="form-control">Last</label>
-                        <div><samp data-numberformatter><?php echo htmlentities($MPD); ?></samp></div>
-                    </div>
+                        <div><samp data-numberformatter><?php //echo htmlentities($MPD); ?></samp></div>
+                    </div> -->
                     <div class="info">
                         <label class="form-control">Lifetime</label>
                         <div><samp data-numberformatter><?php echo htmlentities($MPDLife); ?></samp></div>

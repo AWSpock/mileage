@@ -39,7 +39,11 @@ function convertMoneyFields() {
   var toConvert = document.querySelectorAll("[data-moneyformatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = moneyFormat(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = moneyFormat(el.textContent);
+    }
     el.removeAttribute("data-moneyformatter");
   });
 }
@@ -57,7 +61,11 @@ function convertMoney3Fields() {
   var toConvert = document.querySelectorAll("[data-money3formatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = money3Format(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = money3Format(el.textContent);
+    }
     el.removeAttribute("data-moneyformatter");
   });
 }
@@ -75,7 +83,11 @@ function convertNumber0Fields() {
   var toConvert = document.querySelectorAll("[data-numberformatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = number0Format(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = number0Format(el.textContent);
+    }
     el.removeAttribute("data-numberformatter");
   });
 }
@@ -93,7 +105,11 @@ function convertNumber1Fields() {
   var toConvert = document.querySelectorAll("[data-number1formatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = number1Format(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = number1Format(el.textContent);
+    }
     el.removeAttribute("data-number1formatter");
   });
 }
@@ -111,7 +127,11 @@ function convertNumber2Fields() {
   var toConvert = document.querySelectorAll("[data-number2formatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = number2Format(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = number2Format(el.textContent);
+    }
     el.removeAttribute("data-number2formatter");
   });
 }
@@ -129,7 +149,11 @@ function convertNumber3Fields() {
   var toConvert = document.querySelectorAll("[data-number3formatter]");
 
   toConvert.forEach(function (el) {
-    el.textContent = number3Format(el.textContent);
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = number3Format(el.textContent);
+    }
     el.removeAttribute("data-number3formatter");
   });
 }

@@ -42,12 +42,18 @@
 				<div class="data-table-cell header-cell" data-id="missed">
 					<div class="data-table-cell-label">Missed</div>
 				</div>
-				<div class="data-table-cell header-cell" data-id="created">
+				<div class="data-table-cell header-cell" data-id="mpg">
+					<div class="data-table-cell-label">MPG</div>
+				</div>
+				<div class="data-table-cell header-cell" data-id="days">
+					<div class="data-table-cell-label">Days</div>
+				</div>
+				<!-- <div class="data-table-cell header-cell" data-id="created">
 					<div class="data-table-cell-label">Created</div>
 				</div>
 				<div class="data-table-cell header-cell" data-id="updated">
 					<div class="data-table-cell-label">Updated</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -87,13 +93,21 @@
 			<div class="data-table-cell-label">Missed</div>
 			<div class="data-table-cell-content"></div>
 		</div>
-		<div class="data-table-cell" data-id="created">
+		<div class="data-table-cell" data-id="mpg">
+			<div class="data-table-cell-label">MPG</div>
+			<div class="data-table-cell-content" data-number3formatter></div>
+		</div>
+		<div class="data-table-cell" data-id="days">
+			<div class="data-table-cell-label">Days</div>
+			<div class="data-table-cell-content" data-numberformatter></div>
+		</div>
+		<!-- <div class="data-table-cell" data-id="created">
 			<div class="data-table-cell-label">Create</div>
 			<div class="data-table-cell-content" data-dateformatter></div>
 		</div>
 		<div class="data-table-cell" data-id="updated">
 			<div class="data-table-cell-label">Updated</div>
 			<div class="data-table-cell-content" data-dateformatter></div>
-		</div>
+		</div> -->
 	</a>
 </template>
