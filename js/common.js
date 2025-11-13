@@ -8,31 +8,12 @@ async function ready(fn) {
 
 var loader = new Loader("Loader");
 
-function easternToLocal(easternDateString) {
-  const eastern = "America/New_York";
-  const localTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  // Interpret as Eastern Time
-  const easternDate = new Date(
-    new Date(easternDateString).toLocaleString("en-US", {
-      timeZone: eastern,
-    })
-  );
-
-  // Convert to local time
-  return new Date(
-    easternDate.toLocaleString("en-US", {
-      timeZone: localTZ,
-    })
-  );
-}
-
 function convertDateFields() {
   var toConvert = document.querySelectorAll("[data-dateformatter]");
 
   toConvert.forEach(function (el) {
     var odate = el.textContent;
-    el.textContent = easternToLocal(odate).toLocaleString("en-US");
+    el.textContent = new Date(odate + " UTC").toLocaleString("en-US");
     el.removeAttribute("data-dateformatter");
   });
 }
@@ -42,7 +23,7 @@ function convertDateOnlyFields() {
 
   toConvert.forEach(function (el) {
     var odate = el.textContent + " 00:00:00";
-    el.textContent = easternToLocal(odate).toLocaleDateString("en-US");
+    el.textContent = new Date(odate).toLocaleDateString("en-US");
     el.removeAttribute("data-dateonlyformatter");
   });
 }
