@@ -177,3 +177,12 @@ var vehicle_id = -1;
 var record_id = -1;
 if (currentUrl.split("/")[2]) vehicle_id = currentUrl.split("/")[2];
 if (currentUrl.split("/")[4]) record_id = currentUrl.split("/")[4];
+
+//
+
+function returnDateInput(date) {
+  var year = date.getFullYear();
+  var month = String(date.getMonth() + 1).padStart(2, '0');
+  var day = String(date.getDate()).padStart(2, '0');
+  return year + "-" + month + "-" + day;
+}

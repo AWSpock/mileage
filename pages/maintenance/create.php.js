@@ -1,3 +1,3 @@
 ready(function () {
-    document.querySelector("#maintenance\\.date").valueAsDate = new Date();
+    document.querySelector("#maintenance\\.date").value = returnDateInput(new Date());
 });
