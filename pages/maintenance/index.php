@@ -33,9 +33,9 @@
 				<div class="data-table-cell header-cell" data-id="garage">
 					<div class="data-table-cell-label">Garage</div>
 				</div>
-				<div class="data-table-cell header-cell" data-id="created">
+				<!-- <div class="data-table-cell header-cell" data-id="created">
 					<div class="data-table-cell-label">Created</div>
-				</div>
+				</div> -->
 				<div class="data-table-cell header-cell" data-id="updated">
 					<div class="data-table-cell-label">Updated</div>
 				</div>
@@ -66,10 +66,10 @@
 			<div class="data-table-cell-label">Garage</div>
 			<div class="data-table-cell-content"></div>
 		</div>
-		<div class="data-table-cell" data-id="created">
+		<!-- <div class="data-table-cell" data-id="created">
 			<div class="data-table-cell-label">Create</div>
 			<div class="data-table-cell-content" data-dateformatter></div>
-		</div>
+		</div> -->
 		<div class="data-table-cell" data-id="updated">
 			<div class="data-table-cell-label">Updated</div>
 			<div class="data-table-cell-content" data-dateformatter></div>

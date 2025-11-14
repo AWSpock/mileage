@@ -26,7 +26,7 @@ button.link {
 .vehicle-sell {
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   border: 1px solid var(--secondary-background-color);
   border-radius: 0.4rem;
 }
@@ -37,6 +37,11 @@ button.link {
   padding: 1rem;
   display: grid;
   justify-items: center;
+}
+
+.vehicle-purchase .info.date,
+.vehicle-sell .info.date {
+  grid-column: 1 / 3;
 }
 
 .fillup-stats {
@@ -73,6 +78,16 @@ button.link {
 @media only screen and (min-width: 1024px) {
   .vehicle-info {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .vehicle-purchase,
+  .vehicle-sell {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .vehicle-purchase .info.date,
+  .vehicle-sell .info.date {
+    grid-column: unset;
   }
 
   .fillup-stats {

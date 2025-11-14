@@ -48,6 +48,14 @@
             <label class="form-control">Missed</label>
             <div><samp><?php echo htmlentities($recFillup->missed() ? "Yes" : "No"); ?></samp></div>
         </div>
+        <div class="input-group">
+            <label class="form-control">Updated</label>
+            <div><samp data-dateformatter><?php echo htmlentities($recFillup->updated()); ?></samp></div>
+        </div>
+        <div class="input-group">
+            <label class="form-control">Created</label>
+            <div><samp data-dateformatter><?php echo htmlentities($recFillup->created()); ?></samp></div>
+        </div>
         <div class="button-group">
             <button type="submit" class="button remove"><i class="fa-solid fa-trash"></i>Confirm Delete</button>
             <a href="/vehicle/<?php echo htmlentities($recVehicle->id()); ?>/fillup/<?php echo htmlentities($recFillup->id()); ?>/edit" class="button secondary"><i class="fa-solid fa-ban"></i>Cancel</a>

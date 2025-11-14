@@ -272,20 +272,11 @@ class FillupRepository
 
         $startDate = null;
         $startOdom = null;
-        $mpdDStart = null;
-        $mpdOStart = null;
 
         foreach ($fillups as $fillup) {
-            if (is_null($startDate)) {
+            if (is_null($startDate) || $fillup->missed()) {
                 $startDate = $fillup->date();
                 $startOdom = $fillup->odometer();
-                $mpdDStart = $startDate;
-                $mpdOStart = $startOdom;
-                continue;
-            }
-            if ($fillup->missed()) {
-                $startDate = null;
-                $startOdom = null;
                 continue;
             }
 
@@ -300,17 +291,6 @@ class FillupRepository
             $mile = $fillup->odometer() - $startOdom;
             $fillup->set_miles($mile);
             $startOdom = $fillup->odometer();
-
-            // if ($day > 0)
-            //     $MPD = $mile / $day;
-
-            // $dt1 = new DateTime($mpdDStart);
-            // $dt2 = new DateTime($fillup->date());
-            // $intervalt = $dt1->diff($dt2);
-
-            // $dayt = $intervalt->format('%a');
-            // if ($dayt > 0)
-            //     $MPDLife = ($fillup->odometer() - $mpdOStart) / $dayt;
         }
 
         foreach ($fillups as $fillup) {

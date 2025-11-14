@@ -57,7 +57,7 @@
         </div>
         <h3>Purchase Information</h3>
         <div class="vehicle-purchase">
-            <div class="info">
+            <div class="info date">
                 <label class="form-control">Date</label>
                 <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->purchase_date()); ?></samp></div>
             </div>
@@ -75,7 +75,7 @@
         ?>
             <h3>Sell Information</h3>
             <div class="vehicle-sell">
-                <div class="info">
+                <div class="info date">
                     <label class="form-control">Date</label>
                     <div><samp data-dateonlyformatter><?php echo htmlentities($recVehicle->sell_date()); ?></samp></div>
                 </div>
@@ -313,10 +313,10 @@
             <div class="mileperday stats">
                 <h3>Miles Per Day</h3>
                 <div class="mileperday-stats">
-                    <!-- <div class="info">
+                    <div class="info">
                         <label class="form-control">Last</label>
-                        <div><samp data-numberformatter><?php //echo htmlentities($MPD); ?></samp></div>
-                    </div> -->
+                        <div><samp data-numberformatter><?php echo htmlentities($MPD); ?></samp></div>
+                    </div>
                     <div class="info">
                         <label class="form-control">Lifetime</label>
                         <div><samp data-numberformatter><?php echo htmlentities($MPDLife); ?></samp></div>

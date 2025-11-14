@@ -1,0 +1,98 @@
+.data-table-row {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "name name"
+    "description description"
+    "start_date end_date"
+    "start_odometer end_odometer"
+    "days miles"
+    "gallons price"
+    "mpg ppg"
+    "updated updated";
+  row-gap: 1rem;
+}
+
+.data-table-cell[data-id="name"] {
+  grid-area: name;
+}
+
+.data-table-cell[data-id="description"] {
+  grid-area: description;
+}
+
+.data-table-cell[data-id="start_date"] {
+  grid-area: start_date;
+}
+
+.data-table-cell[data-id="end_date"] {
+  grid-area: end_date;
+}
+
+.data-table-cell[data-id="days"] {
+  grid-area: days;
+}
+
+.data-table-cell[data-id="miles"] {
+  grid-area: miles;
+}
+
+.data-table-cell[data-id="gallon"] {
+  grid-area: gallon;
+}
+
+.data-table-cell[data-id="price"] {
+  grid-area: price;
+}
+
+.data-table-cell[data-id="mpg"] {
+  grid-area: mpg;
+}
+
+.data-table-cell[data-id="ppg"] {
+  grid-area: ppg;
+}
+
+
+.data-table-cell[data-id="created"] {
+  grid-area: created;
+}
+
+.data-table-cell[data-id="updated"] {
+  grid-area: updated;
+}
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 1024px) {
+  .data-table-row.header-row {
+    display: none;
+  }
+
+  .data-table-row:not(.header-row) .data-table-cell-label {
+    display: block;
+  }
+
+  /* .data-table-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "name name description description"
+      "start_date start_date";
+  } */
+}
+
+@media only screen and (min-width: 1280px) {
+  .data-table-row.header-row {
+    display: grid;
+  }
+
+  .data-table-row:not(.header-row) .data-table-cell-label {
+    display: none;
+  }
+
+  .data-table-row {
+    grid-template-columns: 2fr 3fr 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: "name description start_date end_date start_odometer end_odometer days miles gallons price mpg ppg updated";
+  }
+}
+
+@media only screen and (min-width: 1580px) {}

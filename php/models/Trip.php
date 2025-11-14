@@ -14,7 +14,7 @@ class Trip
         $this->created = !empty($rec['created']) ? $rec['created'] : null;
         $this->updated = !empty($rec['updated']) ? $rec['updated'] : null;
         $this->name = !empty($rec['name']) ? $rec['name'] : null;
-        $this->description = !empty($rec['description']) ? intval($rec['description']) : null;
+        $this->description = !empty($rec['description']) ? $rec['description'] : null;
     }
 
     public static function fromPost($post)

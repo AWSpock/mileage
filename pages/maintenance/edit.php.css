@@ -1,0 +1,37 @@
+form.main-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "date odometer"
+        "garage garage"
+        "price price"
+        "description description"
+        "buttons buttons"
+        "updated created";
+    column-gap: 1rem;
+}
+
+.input-group.date {
+    grid-area: date;
+}
+.input-group.odometer {
+    grid-area: odometer;
+}
+.input-group.garage {
+    grid-area: garage;
+}
+.input-group.price {
+    grid-area: price;
+}
+.input-group.description {
+    grid-area: description;
+}
+.button-group {
+    grid-area: buttons;
+}
+.input-group.updated {
+    grid-area: updated;
+}
+.input-group.created {
+    grid-area: created;
+}

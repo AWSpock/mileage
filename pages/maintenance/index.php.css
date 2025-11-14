@@ -1,10 +1,10 @@
 .data-table-row {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    "date date odometer odometer"
-    "price garage garage garage"
-    "description description description description"
-    "created created updated updated";
+    "date odometer price"
+    "garage garage garage"
+    "description description updated";
+    row-gap: 1rem;
 }
 
 .data-table-cell[data-id="date"] {
@@ -47,10 +47,11 @@
   }
 
   .data-table-row {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      "date odometer price garage"
-      "description description created updated";
+      "date odometer price"
+      "garage garage garage"
+      "description description updated";
   }
 }
 
@@ -64,8 +65,8 @@
   }
 
   .data-table-row {
-    grid-template-columns: 1fr 1fr 1fr 2fr 3fr 2fr 2fr;
-    grid-template-areas: "date odometer price garage description created updated";
+    grid-template-columns: 1fr 1fr 1fr 2fr 3fr 2fr;
+    grid-template-areas: "date odometer price garage description updated";
   }
 }
 

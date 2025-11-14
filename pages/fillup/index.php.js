@@ -74,9 +74,9 @@ async function loadData() {
       // clone.querySelector(
       //   '[data-id="created"] .data-table-cell-content'
       // ).textContent = i.created;
-      // clone.querySelector(
-      //   '[data-id="updated"] .data-table-cell-content'
-      // ).textContent = i.updated;
+      clone.querySelector(
+        '[data-id="updated"] .data-table-cell-content'
+      ).textContent = i.updated;
 
       table.appendChild(clone);
 

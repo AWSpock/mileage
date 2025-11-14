@@ -1,0 +1,43 @@
+form.main-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "date odometer"
+        "station station"
+        "ppg gallon"
+        "partial missed"
+        "buttons buttons"
+        "updated created";
+    column-gap: 1rem;
+}
+
+.input-group.date {
+    grid-area: date;
+}
+.input-group.odometer {
+    grid-area: odometer;
+}
+.input-group.station {
+    grid-area: station;
+}
+.input-group.ppg {
+    grid-area: ppg;
+}
+.input-group.gallon {
+    grid-area: gallon;
+}
+.input-group.partial {
+    grid-area: partial;
+}
+.input-group.missed {
+    grid-area: missed;
+}
+.button-group {
+    grid-area: buttons;
+}
+.input-group.updated {
+    grid-area: updated;
+}
+.input-group.created {
+    grid-area: created;
+}

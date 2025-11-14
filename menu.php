@@ -18,18 +18,18 @@ if ($userAuth->checkToken()) {
         ?>
         <li>
             <a href="/vehicle/<?php echo $vehicle->id(); ?>/summary"><i class="fa-solid fa-car-side"></i><?php echo htmlentities($vehicle->name()); ?></a>
-            <?php
+        </li>
+        <?php
             if (isset($vehicle_id) && $vehicle->id() == $vehicle_id) {
             ?>
-                <ul>
-                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/fillup"><i></i>Fillups</a></li>
-                    <li><a href="/vehicle/<?php echo $vehicle->id(); ?>/maintenance"><i></i>Maintenance</a></li>
-                    <!--<li><a href="/vehicle/<?php //echo $vehicle->id(); ?>/trip"><i></i>Trips</a></li>-->
-                </ul>
+                <!-- <ul> -->
+                    <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/fillup"><i class="fa-solid fa-gas-pump"></i>Fillups</a></li>
+                    <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/maintenance"><i class="fa-solid fa-screwdriver-wrench"></i>Maintenance</a></li>
+                    <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/trip"><i class="fa-solid fa-suitcase"></i>Trips</a></li>
+                <!-- </ul> -->
             <?php
             }
             ?>
-        </li>
 <?php
     }
 }

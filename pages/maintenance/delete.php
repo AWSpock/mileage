@@ -25,6 +25,10 @@
             <div><samp data-numberformatter><?php echo htmlentities($recMaintenance->odometer()); ?></samp></div>
         </div>
         <div class="input-group">
+            <label class="form-control">Garage</label>
+            <div><samp><?php echo htmlentities($recMaintenance->garage()); ?></samp></div>
+        </div>
+        <div class="input-group">
             <label class="form-control">Price</label>
             <div><samp data-moneyformatter><?php echo htmlentities($recMaintenance->price()); ?></samp></div>
         </div>
@@ -33,8 +37,12 @@
             <div><samp><?php echo htmlentities($recMaintenance->description()); ?></samp></div>
         </div>
         <div class="input-group">
-            <label class="form-control">Garage</label>
-            <div><samp><?php echo htmlentities($recMaintenance->garage()); ?></samp></div>
+            <label class="form-control">Updated</label>
+            <div><samp data-dateformatter><?php echo htmlentities($recMaintenance->updated()); ?></samp></div>
+        </div>
+        <div class="input-group">
+            <label class="form-control">Created</label>
+            <div><samp data-dateformatter><?php echo htmlentities($recMaintenance->created()); ?></samp></div>
         </div>
         <div class="button-group">
             <button type="submit" class="button remove"><i class="fa-solid fa-trash"></i>Confirm Delete</button>

@@ -1,15 +1,15 @@
 .data-table-row {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "date date odometer odometer"
-    "gallon gallon ppg price"
-    "station station partial missed"
-    "mpg mpg days days";
+    "date date odometer odometer mpg"
+    "station station ppg gallon price"
+    "days partial missed updated updated";
   /* grid-template-areas:
     "date date odometer odometer"
     "gallon gallon ppg price"
     "station station partial missed"
     "created created updated updated"; */
+  row-gap: 1rem;
 }
 
 .data-table-cell[data-id="date"] {
@@ -52,13 +52,13 @@
   grid-area: days;
 }
 
-/* .data-table-cell[data-id="created"] {
+.data-table-cell[data-id="created"] {
   grid-area: created;
 }
 
 .data-table-cell[data-id="updated"] {
   grid-area: updated;
-} */
+}
 
 @media only screen and (min-width: 768px) {}
 
@@ -72,10 +72,10 @@
   }
 
   .data-table-row {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-      "date odometer gallon ppg price"
-      "station partial missed mpg days";
+      "date odometer mpg gallon ppg price"
+      "station partial missed days updated updated";
     /* grid-template-areas: 
     "date odometer gallon ppg price station"
     "partial missed created created updated updated"; */
@@ -92,8 +92,8 @@
   }
 
   .data-table-row {
-    grid-template-columns: 2fr 2fr 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "date odometer gallon ppg price station partial missed mpg days";
+    grid-template-columns: 2fr 2fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: "date odometer mpg station gallon ppg price days partial missed updated";
     /* grid-template-areas: "date odometer gallon ppg price station partial missed created updated"; */
   }
 }

@@ -39,110 +39,120 @@ if (!empty($_POST['vehicle_favorite'])) {
 
 $fillups = $data->fillups($recVehicle->id())->getRecords();
 
+// MILES PER DAY
+
+$firstDate = null;
+$firstOdom = null;
+$lastDate = null;
+$lastOdom = null;
+$startDate = null;
+$startOdom = null;
+$MPD = null;
+$MPDLife = null;
+
+foreach ($fillups as $fillup) {
+    if (!is_null($MPD)) {
+        $lastDate = $fillup->date();
+        $lastOdom = $fillup->odometer();
+        continue;
+    }
+    if (is_null($startDate)) {
+        $firstDate = $fillup->date();
+        $firstOdom = $fillup->odometer();
+        $startDate = $fillup->date();
+        $startOdom = $fillup->odometer();
+        continue;
+    }
+    if ($startDate == $fillup->date()) {
+        continue;
+    }
+
+    $dt1 = new DateTime($fillup->date());
+    $dt2 = new DateTime($startDate);
+    $interval = $dt1->diff($dt2);
+
+    $day = $interval->format('%a');
+    $MPD = ($startOdom - $fillup->odometer()) / $day;
+}
+if (!(is_null($firstDate) && is_null($lastDate) && is_null($firstOdom) && is_null($lastOodom))) {
+    $dt1 = new DateTime($lastDate);
+    $dt2 = new DateTime($firstDate);
+    $interval = $dt1->diff($dt2);
+
+    $day = $interval->format('%a');
+    $MPDLife = ($firstOdom - $lastOdom) / $day;
+}
+
+//
+
 usort($fillups, function ($a, $b) {
     return $a->odometer() > $b->odometer();
 });
 
-// MPG
+// MPG, GALLON, PRICE, PPG
 
 $MPG = [];
+$GAL = [];
+$PRI = [];
+$PPG = [];
 
 foreach ($fillups as $fillup) {
     if (!is_null($fillup->mpg()))
         array_push($MPG, $fillup->mpg());
-}
 
-$AvgMPG = 0;
-if (count($MPG) > 0) {
-    $AvgMPG = array_sum($MPG) / count($MPG);
-}
-
-// GALLON
-
-$GAL = [];
-
-foreach ($fillups as $fillup) {
     if ($fillup->gallon() > 0)
         array_push($GAL, $fillup->gallon());
-}
 
-$AvgGAL = 0;
-if (count($GAL) > 0) {
-    $AvgGAL = array_sum($GAL) / count($GAL);
-}
-
-// PRICE
-
-$PRI = [];
-
-foreach ($fillups as $fillup) {
     if ($fillup->price() > 0)
         array_push($PRI, $fillup->price());
-}
 
-$AvgPRI = 0;
-if (count($PRI) > 0) {
-    $AvgPRI = array_sum($PRI) / count($PRI);
-}
-
-// PPG
-
-$PPG = [];
-
-foreach ($fillups as $fillup) {
     if ($fillup->ppg() > 0)
         array_push($PPG, $fillup->ppg());
 }
 
+$AvgMPG = 0;
+$AvgGAL = 0;
+$AvgPRI = 0;
 $AvgPPG = 0;
-if (count($PPG) > 0) {
+
+if (count($MPG) > 0)
+    $AvgMPG = array_sum($MPG) / count($MPG);
+
+if (count($GAL) > 0)
+    $AvgGAL = array_sum($GAL) / count($GAL);
+
+if (count($PRI) > 0)
+    $AvgPRI = array_sum($PRI) / count($PRI);
+
+if (count($PPG) > 0)
     $AvgPPG = array_sum($PPG) / count($PPG);
-}
+
 
 // DAYS and MILES
 
 $DAY = [];
 $MIL = [];
-$MPD = 0;
-$mpdDStart = null;
-$mpdOStart = null;
-$MPDLife = 0;
 
 foreach ($fillups as $fillup) {
-    if (is_null($mpdDStart)) {
-        $mpdDStart = $fillup->date();
-        $mpdOStart = $fillup->odometer();
-        continue;
-    }
-    if ($fillup->missed()) {
-        continue;
-    }
+    // if ($fillup->missed()) {
+    //     continue;
+    // }
 
-    array_push($DAY, $fillup->days());
+    if (!is_null($fillup->days()))
+        array_push($DAY, $fillup->days());
 
-    array_push($MIL, $fillup->miles());
-
-    // if ($fillup->days() > 0)
-    //     $MPD = $mile / $fillup->days();
-
-    $dt1 = new DateTime($mpdDStart);
-    $dt2 = new DateTime($fillup->date());
-    $intervalt = $dt1->diff($dt2);
-
-    $dayt = $intervalt->format('%a');
-    if ($dayt > 0)
-        $MPDLife = ($fillup->odometer() - $mpdOStart) / $dayt;
+    if (!is_null($fillup->miles()))
+        array_push($MIL, $fillup->miles());
 }
 
 $AvgDAY = 0;
-if (count($DAY) > 0) {
-    $AvgDAY = array_sum($DAY) / count($DAY);
-}
-
 $AvgMIL = 0;
-if (count($MIL) > 0) {
+
+if (count($DAY) > 0)
+    $AvgDAY = array_sum($DAY) / count($DAY);
+
+if (count($MIL) > 0)
     $AvgMIL = array_sum($MIL) / count($MIL);
-}
 
 //
 

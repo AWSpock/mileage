@@ -65,6 +65,10 @@ class RouteParser
             $this->resourcePath = "/maintenance/index";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/trip$~", $this->request)) {
+            $this->resourcePath = "/trip/index";
+            return;
+        }
 
         /* create */
         if (preg_match("~^/vehicle/(\d+)/fillup/create$~", $this->request)) {
@@ -73,6 +77,10 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/maintenance/create$~", $this->request)) {
             $this->resourcePath = "/maintenance/create";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/trip/create$~", $this->request)) {
+            $this->resourcePath = "/trip/create";
             return;
         }
 
@@ -85,6 +93,10 @@ class RouteParser
             $this->resourcePath = "/maintenance/edit";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/edit$~", $this->request)) {
+            $this->resourcePath = "/trip/edit";
+            return;
+        }
 
         /* delete */
         if (preg_match("~^/vehicle/(\d+)/fillup/(\d+)/delete$~", $this->request)) {
@@ -93,6 +105,10 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/maintenance/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/maintenance/delete";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/delete$~", $this->request)) {
+            $this->resourcePath = "/trip/delete";
             return;
         }
 
@@ -134,6 +150,15 @@ class RouteParser
         }
         if (preg_match("~^/api/vehicle/(\d+)/maintenance/(\d+)$~", $this->request)) {
             $this->resourcePath = "/maintenance";
+            return;
+        }
+
+        if (preg_match("~^/api/vehicle/(\d+)/trip$~", $this->request)) {
+            $this->resourcePath = "/trip";
+            return;
+        }
+        if (preg_match("~^/api/vehicle/(\d+)/trip/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/trip";
             return;
         }
     }
