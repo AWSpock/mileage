@@ -22,9 +22,9 @@ $tags = [];
 
 if (!empty($_POST)) {
     $recTrip = Trip::fromPost($_POST);
-    $record_id = $tripData->insertRecord($recTrip);
+    $trip_id = $tripData->insertRecord($recTrip);
     $_SESSION['last_message_text'] = $tripData->actionDataMessage;
-    if ($record_id > 0) {
+    if ($trip_id > 0) {
         $_SESSION['last_message_type'] = "success";
         header('Location: /vehicle/' . $recVehicle->id() . '/trip');
         die();

@@ -1,0 +1,36 @@
+form.main-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "name"
+        "description"
+        "tag"
+        "buttons"
+        "updated"
+        "created";
+    column-gap: 1rem;
+}
+
+.input-group.name {
+    grid-area: name;
+}
+
+.input-group.description {
+    grid-area: description;
+}
+
+.input-group.tag {
+    grid-area: tag;
+}
+
+.button-group {
+    grid-area: buttons;
+}
+
+.input-group.updated {
+    grid-area: updated;
+}
+
+.input-group.created {
+    grid-area: created;
+}

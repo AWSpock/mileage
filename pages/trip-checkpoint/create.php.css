@@ -1,0 +1,23 @@
+form.main-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "name"
+        "odometer"
+        "description"
+        "buttons";
+    column-gap: 1rem;
+}
+
+.input-group.name {
+    grid-area: name;
+}
+.input-group.odometer {
+    grid-area: odometer;
+}
+.input-group.tag {
+    grid-area: tag;
+}
+.button-group {
+    grid-area: buttons;
+}

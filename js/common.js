@@ -176,7 +176,13 @@ var currentUrl = window.location.pathname;
 var vehicle_id = -1;
 var record_id = -1;
 if (currentUrl.split("/")[2]) vehicle_id = currentUrl.split("/")[2];
-if (currentUrl.split("/")[4]) record_id = currentUrl.split("/")[4];
+if (currentUrl.split("/")[4]) {
+  record_id = currentUrl.split("/")[4];
+  fillup_id = currentUrl.split("/")[4];
+  maintenance_id = currentUrl.split("/")[4];
+  trip_id = currentUrl.split("/")[4];
+}
+if (currentUrl.split("/")[4]) trip_checkpoint_id = currentUrl.split("/")[6];
 
 //
 

@@ -4,6 +4,7 @@ require_once("/var/www/mileage/php/DataAccess/Repositories/VehicleRepository.php
 require_once("/var/www/mileage/php/DataAccess/Repositories/FillupRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/MaintenanceRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/TripRepository.php");
+require_once("/var/www/mileage/php/DataAccess/Repositories/TripCheckpointRepository.php");
 
 class DataAccess
 {
@@ -12,6 +13,7 @@ class DataAccess
     private $fillupRepository = [];
     private $maintenanceRepository = [];
     private $tripRepository = [];
+    private $tripCheckpointRepository = [];
 
     public function __construct(mysqli $db = null)
     {
@@ -48,6 +50,14 @@ class DataAccess
             $this->tripRepository[$vehicle_id] = new TripRepository($this->db, $vehicle_id);
         }
         return $this->tripRepository[$vehicle_id];
+    }
+
+    public function trip_checkpoints($vehicle_id, $trip_id)
+    {
+        if (!array_key_exists($vehicle_id . "-" . $trip_id, $this->tripCheckpointRepository)) {
+            $this->tripCheckpointRepository[$trip_id] = new TripCheckpointRepository($this->db, $vehicle_id, $trip_id);
+        }
+        return $this->tripCheckpointRepository[$trip_id];
     }
 
     //

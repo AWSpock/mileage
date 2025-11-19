@@ -69,6 +69,10 @@ class RouteParser
             $this->resourcePath = "/trip/index";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/checkpoint$~", $this->request)) {
+            $this->resourcePath = "/trip-checkpoint/index";
+            return;
+        }
 
         /* create */
         if (preg_match("~^/vehicle/(\d+)/fillup/create$~", $this->request)) {
@@ -81,6 +85,10 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/trip/create$~", $this->request)) {
             $this->resourcePath = "/trip/create";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/checkpoint/create$~", $this->request)) {
+            $this->resourcePath = "/trip-checkpoint/create";
             return;
         }
 
@@ -97,6 +105,10 @@ class RouteParser
             $this->resourcePath = "/trip/edit";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/checkpoint/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/trip-checkpoint/edit";
+            return;
+        }
 
         /* delete */
         if (preg_match("~^/vehicle/(\d+)/fillup/(\d+)/delete$~", $this->request)) {
@@ -109,6 +121,16 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/trip/delete";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/checkpoint/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/trip-checkpoint/delete";
+            return;
+        }
+
+        /* summary */
+        if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/summary$~", $this->request)) {
+            $this->resourcePath = "/trip/summary";
             return;
         }
 

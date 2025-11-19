@@ -19,19 +19,26 @@ if ($recTrip->id() < 0) {
     die();
 }
 
-// $recTrip->store_bills($data->bills($recVehicle->id(), $recTrip->id())->getRecords());
+$recTripCheckpoint = new TripCheckpoint();
 
-//
+// 
 
 if (!empty($_POST)) {
-    $res = $tripData->deleteRecord($recTrip);
+    $tripCheckpointData = $data->trip_checkpoints($recVehicle->id(), $recTrip->id());
+    $recTripCheckpoint = TripCheckpoint::fromPost($_POST);
+    $trip_checkpoint_id = $tripCheckpointData->insertRecord($recTripCheckpoint);
     $_SESSION['last_message_text'] = $tripData->actionDataMessage;
-    if ($res == 1) {
+    if ($trip_id > 0) {
         $_SESSION['last_message_type'] = "success";
-        header('Location: /vehicle/' . $recVehicle->id() . '/trip');
+        header('Location: /vehicle/' . $recVehicle->id() . '/trip/' . $recTrip->id() . '/checkpoint');
         die();
     } else {
         $_SESSION['last_message_type'] = "danger";
     }
+} else {
+    // foreach ($tripData->getRecords() as $trip) {
+    //     if (!in_array($trip->tag(), $tags))
+    //         array_push($tags, $trip->station());
+    // }
+    // sort($tags);
 }
-?>

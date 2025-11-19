@@ -8,6 +8,8 @@ class Trip
     protected $name;
     protected $description;
 
+    protected $trip_checkpoints;
+
     public function __construct($rec = null)
     {
         $this->id = !empty($rec['id']) ? $rec['id'] : -1;
@@ -72,5 +74,28 @@ class Trip
             return json_encode(get_object_vars($obj), JSON_PRETTY_PRINT);
 
         return json_encode(get_object_vars($obj));
+    }
+
+    //
+
+    public function trip_checkpoints()
+    {
+        return $this->trip_checkpoints;
+    }
+    public function store_trip_checkpoint(TripCheckpoint $rec)
+    {
+        if ($this->trip_checkpoints === null)
+            $this->trip_checkpoints = [];
+        $this->trip_checkpoints[$rec->id()] = $rec;
+    }
+    public function store_trip_checkpoints(array $recs)
+    {
+        $this->trip_checkpoints = [];
+
+        foreach ($recs as $rec) {
+            if (!$rec instanceof TripCheckpoint)
+                throw new InvalidArgumentException("Array must contain only instances of TripCheckpoint");
+            $this->trip_checkpoints[$rec->id()] = $rec;
+        }
     }
 }

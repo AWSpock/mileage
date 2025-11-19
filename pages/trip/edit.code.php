@@ -13,7 +13,7 @@ if (!($recVehicle->isOwner() || $recVehicle->isManager())) {
 }
 
 $tripData = $data->trips($recVehicle->id());
-$recTrip = $tripData->getRecordById($record_id);
+$recTrip = $tripData->getRecordById($trip_id);
 if ($recTrip->id() < 0) {
     header('Location: /vehicle/' . $recVehicle->id() . '/trip');
     die();

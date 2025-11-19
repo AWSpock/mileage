@@ -59,11 +59,11 @@ class TripCheckpoint
     }
     public function odometer()
     {
-        return intval($this->odometer);
+        return is_null($this->odometer) ? null : intval($this->odometer);
     }
     public function description()
     {
-        return floatval($this->description);
+        return $this->description;
     }
 
     public function toString($pretty = false)

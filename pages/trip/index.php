@@ -66,7 +66,7 @@
 </div>
 
 <template id="template">
-	<a href="/vehicle/VEHICLE_ID/trip/TRIP_ID/edit" class="data-table-row">
+	<a href="/vehicle/VEHICLE_ID/trip/TRIP_ID/summary" class="data-table-row">
 		<div class="data-table-cell" data-id="name">
 			<div class="data-table-cell-label">Name</div>
 			<div class="data-table-cell-content"></div>
