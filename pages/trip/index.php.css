@@ -6,8 +6,6 @@
     "start_date end_date"
     "start_odometer end_odometer"
     "days miles"
-    "gallons price"
-    "mpg ppg"
     "updated updated";
   row-gap: 1rem;
 }

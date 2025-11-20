@@ -22,10 +22,15 @@ class TripRepository
     {
         if (!array_key_exists($id, $this->records)) {
             $sql = "
-                SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`
+                SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`, 
+                    MIN(b.`odometer`) AS start_odometer, MIN(b.`date`) AS start_date, 
+                    MAX(b.`odometer`) AS end_odometer, MAX(b.`date`) AS end_date,
+                    MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) + 1 AS days
                 FROM trip a
+                    LEFT OUTER JOIN trip_checkpoint b ON b.trip_id = a.id
                 WHERE a.`vehicle_id` = ?
                     AND a.`id` = ?
+                GROUP BY a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`
             ";
 
             $result = $this->db->query($sql, [
@@ -55,10 +60,15 @@ class TripRepository
         }
 
         $sql = "
-            SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`
+            SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`, 
+                MIN(b.`odometer`) AS start_odometer, MIN(b.`date`) AS start_date, 
+                MAX(b.`odometer`) AS end_odometer, MAX(b.`date`) AS end_date,
+                MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) + 1 AS days
             FROM trip a
+	            LEFT OUTER JOIN trip_checkpoint b ON b.trip_id = a.id
             WHERE a.`vehicle_id` = ?
-            ORDER BY a.`name` DESC, a.`description` DESC
+            GROUP BY a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`
+            ORDER BY start_date DESC, start_odometer DESC
         ";
 
         $result = $this->db->query($sql, [

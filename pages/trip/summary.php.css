@@ -1,0 +1,57 @@
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "date odometer"
+        "description description";
+}
+
+.info .date {
+    grid-area: date;
+}
+
+.info .odometer {
+    grid-area: odometer;
+}
+
+.info .description {
+    grid-area: description;
+}
+
+.info-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "miles days"
+        "gallons price"
+        "mpg ppg";
+}
+
+.indent {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.info-stats .miles {
+    grid-area: miles;
+}
+
+.info-stats .days {
+    grid-area: days;
+}
+
+.info-stats .gallons {
+    grid-area: gallons;
+}
+
+.info-stats .price {
+    grid-area: price;
+}
+
+.info-stats .mpg {
+    grid-area: mpg;
+}
+
+.info-stats .ppg {
+    grid-area: ppg;
+}

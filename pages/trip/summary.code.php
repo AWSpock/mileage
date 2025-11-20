@@ -22,9 +22,18 @@ if ($recTrip->id() < 0) {
 // $tags = [];
 
 $recTrip->store_trip_checkpoints($data->trip_checkpoints($recVehicle->id(), $recTrip->id())->getRecords());
+$checkpoints = $recTrip->trip_checkpoints();
 
 $fillupData = $data->fillups($recVehicle->id());
 $fillups = $fillupData->getRecords();
+
+usort($fillups, function ($a, $b) {
+    return $a->odometer() > $b->odometer();
+});
+
+usort($checkpoints, function ($a, $b) {
+    return $a->odometer() > $b->odometer();
+});
 
 //
 
@@ -46,3 +55,5 @@ $fillups = $fillupData->getRecords();
 //     // }
 //     // sort($tags);
 // }
+
+

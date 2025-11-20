@@ -55,7 +55,7 @@ class DataAccess
     public function trip_checkpoints($vehicle_id, $trip_id)
     {
         if (!array_key_exists($vehicle_id . "-" . $trip_id, $this->tripCheckpointRepository)) {
-            $this->tripCheckpointRepository[$trip_id] = new TripCheckpointRepository($this->db, $vehicle_id, $trip_id);
+            $this->tripCheckpointRepository[$trip_id] = new TripCheckpointRepository($this->db, $trip_id);
         }
         return $this->tripCheckpointRepository[$trip_id];
     }

@@ -47,24 +47,24 @@ async function loadData() {
       clone.querySelector(
         '[data-id="description"] .data-table-cell-content'
       ).textContent = i.description;
-      // clone.querySelector(
-      //   '[data-id="start_date"] .data-table-cell-content'
-      // ).textContent = i.start_date;
-      // clone.querySelector(
-      //   '[data-id="end_date"] .data-table-cell-content'
-      // ).textContent = i.end_date;
-      // clone.querySelector(
-      //   '[data-id="start_odometer"] .data-table-cell-content'
-      // ).textContent = i.start_odometer;
-      // clone.querySelector(
-      //   '[data-id="end_odometer"] .data-table-cell-content'
-      // ).textContent = i.end_odometer;
-      // clone.querySelector(
-      //   '[data-id="days"] .data-table-cell-content'
-      // ).textContent = i.total_days;
-      // clone.querySelector(
-      //   '[data-id="miles"] .data-table-cell-content'
-      // ).textContent = i.total_miles;
+      clone.querySelector(
+        '[data-id="start_date"] .data-table-cell-content'
+      ).textContent = i.start_date;
+      clone.querySelector(
+        '[data-id="end_date"] .data-table-cell-content'
+      ).textContent = i.end_date;
+      clone.querySelector(
+        '[data-id="start_odometer"] .data-table-cell-content'
+      ).textContent = i.start_odometer;
+      clone.querySelector(
+        '[data-id="end_odometer"] .data-table-cell-content'
+      ).textContent = i.end_odometer;
+      clone.querySelector(
+        '[data-id="days"] .data-table-cell-content'
+      ).textContent = i.days;
+      clone.querySelector(
+        '[data-id="miles"] .data-table-cell-content'
+      ).textContent = i.miles;
       // clone.querySelector(
       //   '[data-id="gallons"] .data-table-cell-content'
       // ).textContent = i.estimated_gallon;
