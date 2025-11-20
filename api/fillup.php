@@ -11,8 +11,8 @@ if ($recVehicle->id() < 0) {
 
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":
-        if (isset($record_id)) {
-            echo $data->fillups($recVehicle->id())->getRecordById($record_id)->toString();
+        if (isset($fillup_id)) {
+            echo $data->fillups($recVehicle->id())->getRecordById($fillup_id)->toString();
         } else {
             // $data->fillups($recVehicle->id())->calculateStats();
             $recs = [];

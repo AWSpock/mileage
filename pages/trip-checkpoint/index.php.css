@@ -1,55 +1,22 @@
 .data-table-row {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "name name"
+    "date odometer"
     "description description"
-    "start_date end_date"
-    "start_odometer end_odometer"
-    "days miles"
-    "gallons price"
-    "mpg ppg"
     "updated updated";
   row-gap: 1rem;
 }
 
-.data-table-cell[data-id="name"] {
-  grid-area: name;
+.data-table-cell[data-id="date"] {
+  grid-area: date;
+}
+
+.data-table-cell[data-id="odometer"] {
+  grid-area: odometer;
 }
 
 .data-table-cell[data-id="description"] {
   grid-area: description;
-}
-
-.data-table-cell[data-id="start_date"] {
-  grid-area: start_date;
-}
-
-.data-table-cell[data-id="end_date"] {
-  grid-area: end_date;
-}
-
-.data-table-cell[data-id="days"] {
-  grid-area: days;
-}
-
-.data-table-cell[data-id="miles"] {
-  grid-area: miles;
-}
-
-.data-table-cell[data-id="gallon"] {
-  grid-area: gallon;
-}
-
-.data-table-cell[data-id="price"] {
-  grid-area: price;
-}
-
-.data-table-cell[data-id="mpg"] {
-  grid-area: mpg;
-}
-
-.data-table-cell[data-id="ppg"] {
-  grid-area: ppg;
 }
 
 
@@ -90,8 +57,8 @@
   }
 
   .data-table-row {
-    grid-template-columns: 2fr 3fr 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-    grid-template-areas: "name description start_date end_date start_odometer end_odometer days miles gallons price mpg ppg updated";
+    grid-template-columns: 1fr 1fr 3fr 2fr;
+    grid-template-areas: "date odometer description updated";
   }
 }
 

@@ -29,7 +29,7 @@ if (!empty($_POST)) {
     $_SESSION['last_message_text'] = $tripData->actionDataMessage;
     if ($res == 1 || $res == 2) {
         $_SESSION['last_message_type'] = "success";
-        header('Location: /vehicle/' . $recVehicle->id() . '/trip');
+        header('Location: /vehicle/' . $recVehicle->id() . '/trip/' . $recTrip->id() . "/summary");
         die();
     } else {
         $_SESSION['last_message_type'] = "danger";

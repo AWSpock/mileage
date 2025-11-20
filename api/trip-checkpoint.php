@@ -9,13 +9,22 @@ if ($recVehicle->id() < 0) {
     die();
 }
 
+$tripData = $data->trips($recVehicle->id());
+
+$recTrip = $tripData->getRecordById($trip_id);
+if ($recTrip->id() < 0) {
+    echo "Trip Not Found";
+    http_response_code(404);
+    die();
+}
+
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":
-        if (isset($trip_id)) {
-            echo $data->trips($recVehicle->id())->getRecordById($trip_id)->toString();
+        if (isset($trip_checkpoint_id)) {
+            echo $data->trip_checkpoints($recVehicle->id(), $recTrip->id())->getRecordById($trip_checkpoint_id)->toString();
         } else {
             $recs = [];
-            foreach ($data->trips($recVehicle->id())->getRecords() as $rec) {
+            foreach ($data->trip_checkpoints($recVehicle->id(), $recTrip->id())->getRecords() as $rec) {
                 array_push($recs, json_decode($rec->toString()));
             }
             echo json_encode($recs);

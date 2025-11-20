@@ -23,6 +23,9 @@ if ($recTrip->id() < 0) {
 
 $recTrip->store_trip_checkpoints($data->trip_checkpoints($recVehicle->id(), $recTrip->id())->getRecords());
 
+$fillupData = $data->fillups($recVehicle->id());
+$fillups = $fillupData->getRecords();
+
 //
 
 // if (!empty($_POST)) {

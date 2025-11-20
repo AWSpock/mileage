@@ -11,8 +11,8 @@ if ($recVehicle->id() < 0) {
 
 switch ($_SERVER["REQUEST_METHOD"]) {
     case "GET":
-        if (isset($record_id)) {
-            echo $data->maintenances($recVehicle->id())->getRecordById($record_id)->toString();
+        if (isset($maintenance_id)) {
+            echo $data->maintenances($recVehicle->id())->getRecordById($maintenance_id)->toString();
         } else {
             $recs = [];
             foreach ($data->maintenances($recVehicle->id())->getRecords() as $rec) {

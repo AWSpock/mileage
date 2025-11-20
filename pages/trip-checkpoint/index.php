@@ -14,7 +14,7 @@
 
 <div class="content">
 	<div class="row">
-		<a href="/vehicle/<?php echo htmlentities($recVehicle->id()); ?>/trip/create" class="button primary"><i class="fa-solid fa-plus"></i>Add Trip</a>
+		<a href="/vehicle/<?php echo htmlentities($recVehicle->id()); ?>/trip/<?php echo htmlentities($recTrip->id()); ?>/checkpoint/create" class="button primary"><i class="fa-solid fa-plus"></i>Add Checkpoint</a>
 	</div>
 	<div class="row">
 		<p>Record Count: <span id="data-table-count">?</span></p>
@@ -41,10 +41,10 @@
 </div>
 
 <template id="template">
-	<a href="/vehicle/VEHICLE_ID/trip/TRIP_ID/summary" class="data-table-row">
+	<a href="/vehicle/VEHICLE_ID/trip/TRIP_ID/checkpoint/TRIP_CHECKPOINT_ID/edit" class="data-table-row">
 		<div class="data-table-cell" data-id="date">
-			<div class="data-table-cell-label" data-dateonlyformatter>Date</div>
-			<div class="data-table-cell-content"></div>
+			<div class="data-table-cell-label">Date</div>
+			<div class="data-table-cell-content" data-dateonlyformatter></div>
 		</div>
 		<div class="data-table-cell" data-id="odometer">
 			<div class="data-table-cell-label">Odometer</div>

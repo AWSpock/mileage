@@ -2,21 +2,21 @@ form.main-form {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-        "name"
+        "date"
         "odometer"
         "description"
         "buttons";
     column-gap: 1rem;
 }
 
-.input-group.name {
-    grid-area: name;
+.input-group.date {
+    grid-area: date;
 }
 .input-group.odometer {
     grid-area: odometer;
 }
-.input-group.tag {
-    grid-area: tag;
+.input-group.description {
+    grid-area: description;
 }
 .button-group {
     grid-area: buttons;

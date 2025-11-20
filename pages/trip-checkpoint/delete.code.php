@@ -28,14 +28,14 @@ if ($recTripCheckpoint->id() < 0) {
 
 //
 
-// if (!empty($_POST)) {
-//     $res = $tripData->deleteRecord($recTrip);
-//     $_SESSION['last_message_text'] = $tripData->actionDataMessage;
-//     if ($res == 1) {
-//         $_SESSION['last_message_type'] = "success";
-//         header('Location: /vehicle/' . $recVehicle->id() . '/trip');
-//         die();
-//     } else {
-//         $_SESSION['last_message_type'] = "danger";
-//     }
-// }
+if (!empty($_POST)) {
+    $res = $tripCheckpointData->deleteRecord($recTripCheckpoint);
+    $_SESSION['last_message_text'] = $tripCheckpointData->actionDataMessage;
+    if ($res == 1) {
+        $_SESSION['last_message_type'] = "success";
+        header('Location: /vehicle/' . $recVehicle->id() . '/trip/' . $recTrip->id() . '/checkpoint');
+        die();
+    } else {
+        $_SESSION['last_message_type'] = "danger";
+    }
+}

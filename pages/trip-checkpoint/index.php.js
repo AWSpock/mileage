@@ -6,7 +6,7 @@ async function loadData() {
     loader.show(true);
 
     var response = await fetch(
-      "/api/vehicle/" + vehicle_id + "/trip" + trip_checkpoint_id + "/checkpoint",
+      "/api/vehicle/" + vehicle_id + "/trip/" + trip_id + "/checkpoint",
       {
         method: "GET",
       }
