@@ -1,3 +1,7 @@
+.data-table {
+    display: block;
+}
+
 .info {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -23,7 +27,12 @@
 
 .checkpoint {
     padding: 1rem 0 1.5rem 0;
-    /* background-color: var(--secondary-background-color); */
+    background-color: unset;
+    border: none;
+}
+
+.checkpoint:hover {
+    background-color: var(--primary-background-color) !important;
 }
 
 .checkpoint-stats {
@@ -91,3 +100,26 @@
     margin-block-start: .2rem;
     margin-block-end: 1rem;
 }
+
+.data-table-row:hover {
+    background-color: var(--secondary-background-color);
+}
+
+.data-table-row:not(.header-row) .data-table-cell-label {
+    display: block;
+}
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 1024px) {
+    .info-stats {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "title1 title1 title2 title2 title3 title3"
+            "miles days gallons price mpg ppg";
+    }
+}
+
+@media only screen and (min-width: 1280px) {}
+
+@media only screen and (min-width: 1580px) {}

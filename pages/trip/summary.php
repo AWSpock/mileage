@@ -24,261 +24,141 @@
 
         <h2>Checkpoints</h2>
         <p>Count: <span data-numberformatter><?php echo count($checkpoints); ?></span></p>
-        <?php
 
-        $sTCOdom = null;
-        $sTCDate = null;
-        $tripHasMissed = false;
-        $tripFills = [];
-        $firstCP = null;
-        $lastCP = null;
-        foreach ($checkpoints as $recTripCheckpoint) {
-
-            if (is_null($sTCOdom)) {
-                $firstCP = $recTripCheckpoint;
-        ?>
-
-                <div class="checkpoint">
-                    <h3>Initial Checkpoint</h3>
-                    <div class="info">
-                        <div class="date">Date: <span data-dateonlyformatter><?php echo htmlentities($recTripCheckpoint->date()); ?></span></div>
-                        <div class="odometer">Odometer: <span data-numberformatter><?php echo htmlentities($recTripCheckpoint->odometer()); ?></span></div>
-                        <div class="description"><span><?php echo htmlentities($recTripCheckpoint->description()); ?></span></div>
-                    </div>
-                </div>
-
+        <div class="data-table">
             <?php
-            } else {
-                $lastCP = $recTripCheckpoint;
+
+            $count = 0;
+            foreach ($checkpoints as $recTripCheckpoint) {
+                $stat = $checkpointStats[$count];
+                if ($count == 0) {
             ?>
-
-                <div class="checkpoint-stats">
-                    <?php
-
-                    $fills = [];
-                    $useNext = false;
-                    $hasMissed = false;
-                    $oneMore = true;
-                    foreach ($fillups as $fillup) {
-                        if ($fillup->odometer() < $sTCOdom) {
-                            continue;
-                        }
-
-                        if ($fillup->missed()) {
-                            // can't determine stats
-                            $hasMissed = true;
-                            $tripHasMissed = true;
-                            break;
-                        }
-
-                        array_push($fills, $fillup);
-                        if (!in_array($fillup, $tripFills, true))
-                            array_push($tripFills, $fillup);
-
-                        if ($fillup->partial()) {
-                            $useNext = true;
-                            $oneMore = true;
+                    <div class="checkpoint data-table-row">
+                        <h3>Initial Checkpoint</h3>
+                        <div class="info">
+                            <div class="date data-table-cell">
+                                <div class="data-table-cell-label">Date</div>
+                                <div class="data-table-cell-content"><span data-dateonlyformatter><?php echo htmlentities($recTripCheckpoint->date()); ?></span></div>
+                            </div>
+                            <div class="odometer data-table-cell">
+                                <div class="data-table-cell-label">Odometer</div>
+                                <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($recTripCheckpoint->odometer()); ?></span></div>
+                            </div>
+                            <div class="description data-table-cell">
+                                <div class="data-table-cell-content"><span><?php echo htmlentities($recTripCheckpoint->description()); ?></span></div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <div class="checkpoint-stats data-table-row">
+                        <h4>Leg Stats</h4>
+                        <?php
+                        if (is_null($stat)) {
+                        ?>
+                            <p>Can't determine stats due to a missed fillup</p>
+                        <?php
                         } else {
-                            $useNext = false;
+                        ?>
+                            <div class="info-stats">
+                                <h4 class="title1">Actuals</h4>
+                                <div class="miles data-table-cell">
+                                    <div class="data-table-cell-label">Miles</div>
+                                    <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($stat->miles); ?></span></div>
+                                </div>
+                                <div class="days data-table-cell">
+                                    <div class="data-table-cell-label">Days</div>
+                                    <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($stat->days); ?></span></div>
+                                </div>
+                                <h4 class="title2">Estimates</h4>
+                                <div class="gallons data-table-cell">
+                                    <div class="data-table-cell-label">Gallons</div>
+                                    <div class="data-table-cell-content"><span data-number3formatter><?php echo htmlentities($stat->gallons); ?></span></div>
+                                </div>
+                                <div class="price data-table-cell">
+                                    <div class="data-table-cell-label">Price</div>
+                                    <div class="data-table-cell-content"><span data-moneyformatter><?php echo htmlentities($stat->price); ?></span></div>
+                                </div>
+                                <h4 class="title3">Averages</h4>
+                                <div class="mpg data-table-cell">
+                                    <div class="data-table-cell-label">MPG</div>
+                                    <div class="data-table-cell-content"><span data-number3formatter><?php echo htmlentities($stat->mpg); ?></span></div>
+                                </div>
+                                <div class="ppg data-table-cell">
+                                    <div class="data-table-cell-label">PPG</div>
+                                    <div class="data-table-cell-content"><span data-money3formatter><?php echo htmlentities($stat->ppg); ?></span></div>
+                                </div>
+                            </div>
+                        <?php
                         }
+                        ?>
+                    </div>
 
-                        if ($useNext === false && $fillup->odometer() > $recTripCheckpoint->odometer()) {
-                            if ($oneMore) {
-                                $oneMore = false;
-                            } else {
-                                break;
-                            }
-                        }
-                    }
+                    <div class="checkpoint data-table-row">
+                        <h3>Checkpoint</h3>
+                        <div class="info">
+                            <div class="date data-table-cell">
+                                <div class="data-table-cell-label">Date</div>
+                                <div class="data-table-cell-content"><span data-dateonlyformatter><?php echo htmlentities($recTripCheckpoint->date()); ?></span></div>
+                            </div>
+                            <div class="odometer data-table-cell">
+                                <div class="data-table-cell-label">Odometer</div>
+                                <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($recTripCheckpoint->odometer()); ?></span></div>
+                            </div>
+                            <div class="description data-table-cell">
+                                <div class="data-table-cell-content"><span><?php echo htmlentities($recTripCheckpoint->description()); ?></span></div>
+                            </div>
+                        </div>
+                    </div>
+            <?php
 
-                    ?>
-                    <h4>Leg Stats</h4>
-                    <?php
-                    if ($hasMissed) {
-                    ?>
-                        <p>Can't determine stats due to a missed fillup</p>
-                    <?php
-                        continue;
-                    }
+                }
+                $count++;
+            }
 
-                    // echo "<pre>";
-                    // print_r($fills);
-                    // echo "</pre>";
-                    // echo "<p>Start: " . $startOdom . "<br>End: " . $endOdom . "</p>";
-                    // echo "<p>Checkpoint Start: " . $sTCOdom . "<br>Checkpoint End: " . $recTripCheckpoint->odometer() . "</p>";
-
-                    $eTCOdom = $recTripCheckpoint->odometer();
-
-                    $gallons = 0;
-                    $price = 0;
-                    $ppg = [];
-                    $mpg = [];
-                    $prevMpgEmpty = false;
-                    foreach ($fills as $fill) {
-                        $start = $fill->odometer() - $fill->miles();
-                        $end = $fill->odometer();
-                        $miles = $fill->miles();
-
-                        $portion = 1;
-                        if ($start > $eTCOdom) {
-                            // echo "0";
-                            $portion = 0;
-                        } else if ($start < $sTCOdom && $end >= $eTCOdom) {
-                            // echo "1";
-                            $portion = ($eTCOdom - $sTCOdom) / $miles;
-                        } else if ($start < $sTCOdom && $end <= $eTCOdom) {
-                            // echo "2";
-                            $portion = ($end - $sTCOdom) / $miles;
-                        } else if ($start > $sTCOdom && $end > $eTCOdom) {
-                            // echo "3";
-                            $portion = ($eTCOdom - $start) / $miles;
-                        } else {
-                            // echo "5";
-                        }
-                        $gallons += $fill->gallon() * $portion;
-                        $price += $fill->price() * $portion;
-                        // echo "price: " . $price . " by " . ($fill->price() * $portion) . " and " . $fill->price() . "<br>";
-                        if ($portion > 0)
-                            array_push($ppg, $fill->ppg());
-                        if (!is_null($fill->mpg()) && ($portion == 0 && $prevMpgEmpty) || (!is_null($fill->mpg())  && $portion > 0)) {
-                            array_push($mpg, $fill->mpg());
-                            $prevMpgEmpty = false;
-                        } else {
-                            $prevMpgEmpty = true;
-                        }
-                    }
-
-                    $miles = $recTripCheckpoint->odometer() - $sTCOdom;
-                    $d1 = new DateTime($sTCDate);
-                    $d2 = new DateTime($recTripCheckpoint->date());
-                    $interval = $d1->diff($d2);
-                    $days = $interval->days;
-
-                    $estimated_gallons = $gallons;
-                    $estimated_price = $price;
-
-                    $average_ppg = 0;
-                    $average_mpg = 0;
-                    if (count($mpg) > 0)
-                        $average_mpg = array_sum($mpg) / count($mpg);
-                    if (count($ppg) > 0)
-                        $average_ppg = array_sum($ppg) / count($ppg);
-
-                    ?>
+            ?>
+            <hr>
+            <h2>Full Trip Stats</h2>
+            <?php
+            if (is_null($tripStats)) {
+                echo "<p>Can't determine stats due to a missed fillup</p>";
+            } else {
+            ?>
+                <div class="checkpoint-stats data-table-row">
                     <div class="info-stats">
                         <h4 class="title1">Actuals</h4>
-                        <div class="miles">Miles: <span data-numberformatter><?php echo htmlentities($miles); ?></span></div>
-                        <div class="days">Days: <span data-numberformatter><?php echo htmlentities($days); ?></span></div>
+                        <div class="miles data-table-cell">
+                            <div class="data-table-cell-label">Miles</div>
+                            <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($tripStats->miles); ?></span></div>
+                        </div>
+                        <div class="days data-table-cell">
+                            <div class="data-table-cell-label">Days</div>
+                            <div class="data-table-cell-content"><span data-numberformatter><?php echo htmlentities($tripStats->days); ?></span></div>
+                        </div>
                         <h4 class="title2">Estimates</h4>
-                        <div class="gallons">Gallons: <span data-number3formatter><?php echo htmlentities($estimated_gallons); ?></span></div>
-                        <div class="price">Price: <span data-moneyformatter><?php echo htmlentities($estimated_price); ?></span></div>
+                        <div class="gallons data-table-cell">
+                            <div class="data-table-cell-label">Gallons</div>
+                            <div class="data-table-cell-content"><span data-number3formatter><?php echo htmlentities($tripStats->gallons); ?></span></div>
+                        </div>
+                        <div class="price data-table-cell">
+                            <div class="data-table-cell-label">Price</div>
+                            <div class="data-table-cell-content"><span data-moneyformatter><?php echo htmlentities($tripStats->price); ?></span></div>
+                        </div>
                         <h4 class="title3">Averages</h4>
-                        <div class="mpg">MPG: <span data-number3formatter><?php echo htmlentities($average_mpg); ?></span></div>
-                        <div class="ppg">PPG: <span data-money3formatter><?php echo htmlentities($average_ppg); ?></span></div>
+                        <div class="mpg data-table-cell">
+                            <div class="data-table-cell-label">MPG</div>
+                            <div class="data-table-cell-content"><span data-number3formatter><?php echo htmlentities($tripStats->mpg); ?></span></div>
+                        </div>
+                        <div class="ppg data-table-cell">
+                            <div class="data-table-cell-label">PPG</div>
+                            <div class="data-table-cell-content"><span data-money3formatter><?php echo htmlentities($tripStats->ppg); ?></span></div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="checkpoint">
-                    <h3>Checkpoint</h3>
-                    <div class="info">
-                        <div class="date">Date: <span data-dateonlyformatter><?php echo htmlentities($recTripCheckpoint->date()); ?></span></div>
-                        <div class="odometer">Odometer: <span data-numberformatter><?php echo htmlentities($recTripCheckpoint->odometer()); ?></span></div>
-                        <div class="description"><span><?php echo htmlentities($recTripCheckpoint->description()); ?></span></div>
-                    </div>
-                </div>
-        <?php
-
+            <?php
             }
-
-            $sTCOdom = $recTripCheckpoint->odometer();
-            $sTCDate = $recTripCheckpoint->date();
-        }
-
-        ?>
-        <hr>
-        <h2>Full Trip Stats</h2>
-        <?php
-        if ($tripHasMissed) {
-            echo "<p>Can't determine stats due to a missed fillup</p>";
-        } else {
-
-            // echo "<pre>";
-            // print_r($tripFills);
-            // echo "</pre>";
-            // echo "<p>Start: " . $startOdom . "<br>End: " . $endOdom . "</p>";
-            // echo "<p>Checkpoint Start: " . $sTCOdom . "<br>Checkpoint End: " . $recTripCheckpoint->odometer() . "</p>";
-
-            $gallons = 0;
-            $price = 0;
-            $ppg = [];
-            $mpg = [];
-            $sTOdom = $firstCP->odometer();
-            $eTOdom = $lastCP->odometer();
-            $prevMpgEmpty = false;
-            foreach ($tripFills as $fill) {
-                $start = ($fill->odometer() - $fill->miles());
-                $end = $fill->odometer();
-                $miles = $fill->miles();
-
-                $portion = 1;
-                if ($start > $eTOdom) {
-                    // echo "0";
-                    $portion = 0;
-                } else if ($start < $sTOdom && $end >= $eTOdom) {
-                    // echo "1";
-                    $portion = ($eTOdom - $sTOdom) / $miles;
-                } else if ($start < $sTOdom && $end <= $eTOdom) {
-                    // echo "2";
-                    $portion = ($end - $sTOdom) / $miles;
-                } else if ($start > $sTOdom && $end > $eTOdom) {
-                    // echo "3";
-                    $portion = ($eTOdom - $start) / $miles;
-                } else {
-                    // echo "5";
-                }
-                $gallons += $fill->gallon() * $portion;
-                $price += $fill->price() * $portion;
-                // echo "price: " . $price . " by " . ($fill->price() * $portion) . " and " . $fill->price() . "<br>";
-                if ($portion > 0)
-                    array_push($ppg, $fill->ppg());
-                if (!is_null($fill->mpg()) && ($portion == 0 && $prevMpgEmpty) || (!is_null($fill->mpg())  && $portion > 0)) {
-                    array_push($mpg, $fill->mpg());
-                    $prevMpgEmpty = false;
-                } else {
-                    $prevMpgEmpty = true;
-                }
-            }
-
-            $miles = $lastCP->odometer() - $sTOdom;
-            $d1 = new DateTime($firstCP->date());
-            $d2 = new DateTime($lastCP->date());
-            $interval = $d1->diff($d2);
-            $days = $interval->days;
-
-            $estimated_gallons = $gallons;
-            $estimated_price = $price;
-
-            $average_ppg = 0;
-            $average_mpg = 0;
-            if (count($ppg) > 0)
-                $average_ppg = array_sum($ppg) / count($ppg);
-            if (count($mpg) > 0)
-                $average_mpg = array_sum($mpg) / count($mpg);
-
-        ?>
-            <div class="info-stats">
-                <h4 class="title1">Actuals</h4>
-                <div class="miles">Miles: <span data-numberformatter><?php echo htmlentities($miles); ?></span></div>
-                <div class="days">Days: <span data-numberformatter><?php echo htmlentities($days); ?></span></div>
-                <h4 class="title2">Estimates</h4>
-                <div class="gallons">Gallons: <span data-number3formatter><?php echo htmlentities($estimated_gallons); ?></span></div>
-                <div class="price">Price: <span data-moneyformatter><?php echo htmlentities($estimated_price); ?></span></div>
-                <h4 class="title3">Averages</h4>
-                <div class="mpg">MPG: <span data-number3formatter><?php echo htmlentities($average_mpg); ?></span></div>
-                <div class="ppg">PPG: <span data-money3formatter><?php echo htmlentities($average_ppg); ?></span></div>
-            </div>
-        <?php
-        }
-        ?>
+            ?>
+        </div>
     </div>
 </div>
