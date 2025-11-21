@@ -81,7 +81,7 @@ class Fillup
 
     public function id()
     {
-        return $this->id;
+        return intval($this->id);
     }
     public function created()
     {
@@ -97,15 +97,15 @@ class Fillup
     }
     public function odometer()
     {
-        return is_null($this->odometer) ? null : intval($this->odometer);
+        return ($this->odometer === NULL) ? null : intval($this->odometer);
     }
     public function gallon()
     {
-        return is_null($this->gallon) ? null : floatval($this->gallon);
+        return ($this->gallon === NULL) ? null : floatval($this->gallon);
     }
     public function ppg()
     {
-        return is_null($this->ppg) ? null : floatval($this->ppg);
+        return ($this->ppg === NULL) ? null : floatval($this->ppg);
     }
     public function price()
     {
@@ -126,7 +126,7 @@ class Fillup
 
     public function mpg()
     {
-        return is_null($this->mpg) ? null : floatval($this->mpg);
+        return ($this->mpg === NULL) ? null : floatval($this->mpg);
     }
     public function set_mpg($val)
     {
@@ -134,7 +134,7 @@ class Fillup
     }
     public function days()
     {
-        return is_null($this->days) ? null : intval($this->days);
+        return ($this->days === NULL) ? null : intval($this->days);
     }
     public function set_days($val)
     {
@@ -142,7 +142,7 @@ class Fillup
     }
     public function miles()
     {
-        return is_null($this->miles) ? null : intval($this->miles);
+        return ($this->miles === NULL) ? null : intval($this->miles);
     }
     public function set_miles($val)
     {

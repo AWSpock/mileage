@@ -87,7 +87,7 @@ class Vehicle
 
     public function id()
     {
-        return $this->id;
+        return intval($this->id);
     }
     public function created()
     {
@@ -111,7 +111,7 @@ class Vehicle
     }
     public function year()
     {
-        return $this->year;
+        return ($this->year === NULL) ? null : intval($this->year);
     }
     public function color()
     {
@@ -119,7 +119,7 @@ class Vehicle
     }
     public function tank_capacity()
     {
-        return $this->tank_capacity;
+        return ($this->tank_capacity === NULL) ? null : floatval($this->tank_capacity);
     }
     public function purchase_date()
     {
@@ -131,19 +131,19 @@ class Vehicle
     }
     public function purchase_price()
     {
-        return $this->purchase_price;
+        return ($this->purchase_price === NULL) ? null : floatval($this->purchase_price);
     }
     public function sell_price()
     {
-        return $this->sell_price;
+        return ($this->sell_price === NULL) ? null : floatval($this->sell_price);
     }
     public function purchase_odometer()
     {
-        return $this->purchase_odometer;
+        return ($this->purchase_odometer === NULL) ? null : intval($this->purchase_odometer);
     }
     public function sell_odometer()
     {
-        return $this->sell_odometer;
+        return ($this->sell_odometer === NULL) ? null : intval($this->sell_odometer);
     }
     public function favorite()
     {
@@ -155,15 +155,15 @@ class Vehicle
     }
     public function isOwner()
     {
-        return $this->role == "Owner";
+        return boolval($this->role == "Owner");
     }
     public function isManager()
     {
-        return $this->role == "Manager";
+        return boolval($this->role == "Manager");
     }
     public function isViewer()
     {
-        return $this->role == "Viewer";
+        return boolval($this->role == "Viewer");
     }
 
     public function toString($pretty = false)

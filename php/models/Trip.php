@@ -60,7 +60,7 @@ class Trip
 
     public function id()
     {
-        return $this->id;
+        return intval($this->id);
     }
     public function created()
     {
@@ -89,15 +89,15 @@ class Trip
     }
     public function start_odometer()
     {
-        return $this->start_odometer;
+        return ($this->start_odometer === NULL) ? null : intval($this->start_odometer);
     }
     public function end_odometer()
     {
-        return $this->end_odometer;
+        return ($this->end_odometer === NULL) ? null : intval($this->end_odometer);
     }
     public function miles()
     {
-        return is_null($this->miles) ? null : intval($this->miles);
+        return ($this->miles === NULL) ? null : intval($this->miles);
     }
     public function days()
     {

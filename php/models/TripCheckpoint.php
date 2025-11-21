@@ -43,7 +43,7 @@ class TripCheckpoint
 
     public function id()
     {
-        return $this->id;
+        return intval($this->id);
     }
     public function created()
     {
@@ -59,7 +59,7 @@ class TripCheckpoint
     }
     public function odometer()
     {
-        return is_null($this->odometer) ? null : intval($this->odometer);
+        return ($this->odometer === NULL) ? null : intval($this->odometer);
     }
     public function description()
     {

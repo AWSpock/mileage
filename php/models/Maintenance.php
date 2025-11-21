@@ -51,7 +51,7 @@ class Maintenance
 
     public function id()
     {
-        return $this->id;
+        return intval($this->id);
     }
     public function created()
     {
@@ -67,11 +67,11 @@ class Maintenance
     }
     public function odometer()
     {
-        return is_null($this->odometer) ? null : intval($this->odometer);
+        return ($this->odometer === NULL) ? null : intval($this->odometer);
     }
     public function price()
     {
-        return is_null($this->price) ? null : floatval($this->price);
+        return ($this->price === NULL) ? null : floatval($this->price);
     }
     public function description()
     {
