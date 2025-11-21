@@ -25,7 +25,7 @@ class TripRepository
                 SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`, 
                     MIN(b.`odometer`) AS start_odometer, MIN(b.`date`) AS start_date, 
                     MAX(b.`odometer`) AS end_odometer, MAX(b.`date`) AS end_date,
-                    MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) + 1 AS days
+                    MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) AS days
                 FROM trip a
                     LEFT OUTER JOIN trip_checkpoint b ON b.trip_id = a.id
                 WHERE a.`vehicle_id` = ?
@@ -63,7 +63,7 @@ class TripRepository
             SELECT a.`id`, a.`created`, a.`updated`, a.`name`, a.`description`, 
                 MIN(b.`odometer`) AS start_odometer, MIN(b.`date`) AS start_date, 
                 MAX(b.`odometer`) AS end_odometer, MAX(b.`date`) AS end_date,
-                MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) + 1 AS days
+                MAX(b.`odometer`) - MIN(b.`odometer`) AS miles, DATEDIFF(MAX(b.`date`), MIN(b.`date`)) AS days
             FROM trip a
 	            LEFT OUTER JOIN trip_checkpoint b ON b.trip_id = a.id
             WHERE a.`vehicle_id` = ?

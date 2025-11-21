@@ -29,7 +29,7 @@ class Trip
         $this->start_odometer = !empty($rec['start_odometer']) ? $rec['start_odometer'] : null;
         $this->end_odometer = !empty($rec['end_odometer']) ? $rec['end_odometer'] : null;
         $this->miles = !empty($rec['miles']) ? $rec['miles'] : null;
-        $this->days = !empty($rec['days']) ? $rec['days'] : null;
+        $this->days = !empty($rec['days']) ? intval($rec['days']) : null;
     }
 
     public static function fromPost($post)
@@ -52,7 +52,7 @@ class Trip
         $rec1['end_date'] = $db['end_date'];
         $rec1['start_odometer'] = $db['start_odometer'];
         $rec1['end_odometer'] = $db['end_odometer'];
-        $rec1['days'] = $db['days'];
+        $rec1['days'] = intval($db['days']);
         $rec1['miles'] = $db['miles'];
         $new = new static($rec1);
         return $new;

@@ -2,8 +2,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-        "date odometer"
-        "description description";
+        "description description"
+        "date odometer";
+    column-gap: .5rem;
+    row-gap: .5rem;
 }
 
 .info .date {
@@ -16,20 +18,31 @@
 
 .info .description {
     grid-area: description;
+    font-size: 1.1rem;
+}
+
+.checkpoint {
+    padding: 1rem 0 1.5rem 0;
+    /* background-color: var(--secondary-background-color); */
+}
+
+.checkpoint-stats {
+    padding: 1rem 1rem 1.5rem 1rem;
+    background-color: var(--secondary-background-color);
 }
 
 .info-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
+        "title1 title1"
         "miles days"
+        "title2 title2"
         "gallons price"
+        "title3 title3"
         "mpg ppg";
-}
-
-.indent {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    column-gap: .5rem;
+    row-gap: .5rem;
 }
 
 .info-stats .miles {
@@ -54,4 +67,27 @@
 
 .info-stats .ppg {
     grid-area: ppg;
+}
+
+.info-stats .title1 {
+    grid-area: title1;
+    margin-block-start: .2rem;
+    margin-block-end: .2rem;
+}
+
+.info-stats .title2 {
+    grid-area: title2;
+    margin-block-start: .2rem;
+    margin-block-end: .2rem;
+}
+
+.info-stats .title3 {
+    grid-area: title3;
+    margin-block-start: .2rem;
+    margin-block-end: .2rem;
+}
+
+.checkpoint-stats h4 {
+    margin-block-start: .2rem;
+    margin-block-end: 1rem;
 }
