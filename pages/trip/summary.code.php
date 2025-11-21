@@ -148,6 +148,10 @@ foreach ($checkpoints as $recTripCheckpoint) {
             $average_mpg = array_sum($mpg) / count($mpg);
         if (count($ppg) > 0)
             $average_ppg = array_sum($ppg) / count($ppg);
+        if ($miles == 0) {
+            $average_mpg = null;
+            $average_ppg = null;
+        }
 
         $stat = (object)[
             "miles" => $miles,

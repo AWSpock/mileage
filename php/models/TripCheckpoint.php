@@ -11,12 +11,12 @@ class TripCheckpoint
 
     public function __construct($rec = null)
     {
-        $this->id = !empty($rec['id']) ? $rec['id'] : -1;
-        $this->created = !empty($rec['created']) ? $rec['created'] : null;
-        $this->updated = !empty($rec['updated']) ? $rec['updated'] : null;
-        $this->date = !empty($rec['date']) ? $rec['date'] : null;
-        $this->odometer = !empty($rec['odometer']) ? intval($rec['odometer']) : null;
-        $this->description = !empty($rec['description']) ? $rec['description'] : null;
+        $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
+        $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
+        $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
+        $this->date = (array_key_exists("date", $rec) && $rec['date'] !== NULL) ? $rec['date'] : null;
+        $this->odometer = (array_key_exists("odometer", $rec) && $rec['odometer'] !== NULL) ? intval($rec['odometer']) : null;
+        $this->description = (array_key_exists("description", $rec) && $rec['description'] !== NULL) ? $rec['description'] : null;
     }
 
     public static function fromPost($post)
