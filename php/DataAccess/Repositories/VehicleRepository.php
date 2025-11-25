@@ -149,7 +149,7 @@ class VehicleRepository
         $this->actionDataMessage = "Failed to update Vehicle";
 
         if (empty($rec->name())) {
-            $this->actionDataMessage = "Street is required to update Vehicle";
+            $this->actionDataMessage = "Name is required to update Vehicle";
             return 0;
         }
 
