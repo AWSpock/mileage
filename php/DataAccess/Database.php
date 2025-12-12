@@ -1,6 +1,6 @@
 <?php
 
-require_once("/var/www/warranty/php/DataAccess/DatabaseException.php");
+require_once(__DIR__ . '/DatabaseException.php');
 
 class DatabaseV2
 {
