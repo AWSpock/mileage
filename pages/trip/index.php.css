@@ -34,22 +34,6 @@
   grid-area: miles;
 }
 
-.data-table-cell[data-id="gallon"] {
-  grid-area: gallon;
-}
-
-.data-table-cell[data-id="price"] {
-  grid-area: price;
-}
-
-.data-table-cell[data-id="mpg"] {
-  grid-area: mpg;
-}
-
-.data-table-cell[data-id="ppg"] {
-  grid-area: ppg;
-}
-
 
 .data-table-cell[data-id="created"] {
   grid-area: created;
@@ -88,8 +72,8 @@
   }
 
   .data-table-row {
-    grid-template-columns: 2fr 3fr 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-    grid-template-areas: "name description start_date end_date start_odometer end_odometer days miles gallons price mpg ppg updated";
+    grid-template-columns: 2fr 3fr 2fr 2fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: "name description start_date end_date start_odometer end_odometer days miles updated";
   }
 }
 

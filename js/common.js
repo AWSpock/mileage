@@ -71,7 +71,7 @@ function convertMoney3Fields() {
 }
 
 function number0Format(amount) {
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
@@ -93,7 +93,7 @@ function convertNumber0Fields() {
 }
 
 function number1Format(amount) {
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
@@ -115,7 +115,7 @@ function convertNumber1Fields() {
 }
 
 function number2Format(amount) {
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
@@ -137,7 +137,7 @@ function convertNumber2Fields() {
 }
 
 function number3Format(amount) {
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 3,
     maximumFractionDigits: 3,
   });
@@ -158,6 +158,28 @@ function convertNumber3Fields() {
   });
 }
 
+function percent1Format(amount) {
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+
+  return formatter.format(amount) + " %";
+}
+
+function convertPercent1Fields() {
+  var toConvert = document.querySelectorAll("[data-percent1formatter]");
+
+  toConvert.forEach(function (el) {
+    if (el.textContent == "") {
+      el.textContent = "NULL";
+    } else {
+      el.textContent = percent1Format(el.textContent);
+    }
+    el.removeAttribute("data-percent1formatter");
+  });
+}
+
 function convertAllFields() {
   convertDateFields();
   convertDateOnlyFields();
@@ -167,6 +189,7 @@ function convertAllFields() {
   convertNumber1Fields();
   convertNumber2Fields();
   convertNumber3Fields();
+  convertPercent1Fields();
 }
 ready(convertAllFields);
 
@@ -193,7 +216,7 @@ if (currentUrl.split("/")[4]) trip_checkpoint_id = currentUrl.split("/")[6];
 
 function returnDateInput(date) {
   var year = date.getFullYear();
-  var month = String(date.getMonth() + 1).padStart(2, '0');
-  var day = String(date.getDate()).padStart(2, '0');
+  var month = String(date.getMonth() + 1).padStart(2, "0");
+  var day = String(date.getDate()).padStart(2, "0");
   return year + "-" + month + "-" + day;
 }

@@ -66,18 +66,6 @@ async function loadData() {
         '[data-id="miles"] .data-table-cell-content'
       ).textContent = i.miles;
       // clone.querySelector(
-      //   '[data-id="gallons"] .data-table-cell-content'
-      // ).textContent = i.estimated_gallon;
-      // clone.querySelector(
-      //   '[data-id="price"] .data-table-cell-content'
-      // ).textContent = i.estimated_price;
-      // clone.querySelector(
-      //   '[data-id="mpg"] .data-table-cell-content'
-      // ).textContent = i.average_mpg;
-      // clone.querySelector(
-      //   '[data-id="ppg"] .data-table-cell-content'
-      // ).textContent = i.average_ppg;
-      // clone.querySelector(
       //   '[data-id="created"] .data-table-cell-content'
       // ).textContent = i.created;
       clone.querySelector(

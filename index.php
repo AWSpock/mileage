@@ -69,41 +69,6 @@ switch ($routeParser->ResourcePath()) {
 </head>
 
 <body class="container">
-    <div class="menu" id="menu">
-        <h2 class="menu-title" id="menu-title">Menu</h2>
-        <div class="menu-content" id="menu-content">
-            <ul>
-                <li><a href="/"><i class="fa-solid fa-hand-spock"></i>Spockfamily</a></li>
-            </ul>
-            <ul>
-                <?php
-                if ($userAuth->checkToken()) {
-                ?>
-                    <li><a href="//auth2.spockfamily.net/logout"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>Log Out</a></li>
-                <?php
-                } else {
-                ?>
-                    <li><a href="//auth2.spockfamily.net/login?redirect=<?php echo urlencode($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']); ?>"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Log In</a></li>
-                <?php
-                }
-                ?>
-            </ul>
-            <?php
-            $file = "/var/www/mileage/menu.php";
-            if (file_exists($file)) {
-            ?>
-                <hr />
-                <ul>
-                    <?php
-                    include($file);
-                    ?>
-                </ul>
-            <?php
-            }
-            ?>
-        </div>
-    </div>
-
     <?php
     if (file_exists($routeParser->PagePath())) {
         try {
@@ -138,6 +103,42 @@ switch ($routeParser->ResourcePath()) {
     }
     echo "\n";
     ?>
+
+    <div class="menu" id="menu">
+        <h2 class="menu-title" id="menu-title">Menu</h2>
+        <div class="menu-content" id="menu-content">
+            <ul>
+                <li><a href="/"><i class="fa-solid fa-hand-spock"></i>Spockfamily</a></li>
+            </ul>
+            <ul>
+                <?php
+                if ($userAuth->checkToken()) {
+                ?>
+                    <li><a href="//auth2.spockfamily.net/logout"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>Log Out</a></li>
+                <?php
+                } else {
+                ?>
+                    <li><a href="//auth2.spockfamily.net/login?redirect=<?php echo urlencode($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']); ?>"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Log In</a></li>
+                <?php
+                }
+                ?>
+            </ul>
+            <?php
+            $file = "/var/www/mileage/menu.php";
+            if (file_exists($file)) {
+            ?>
+                <hr />
+                <ul>
+                    <?php
+                    include($file);
+                    ?>
+                </ul>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+    
     <div class="menu-button">
         <a class="close-button" href="javascript:void(0)" id="menu-button">
             <i class="fa-solid fa-bars"></i>

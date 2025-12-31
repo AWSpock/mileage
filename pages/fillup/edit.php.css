@@ -1,43 +1,120 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "form"
+    "stats";
+  column-gap: 1rem;
+  grid-template-rows: min-content;
+}
+
 form.main-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "date odometer"
-        "station station"
-        "ppg gallon"
-        "partial missed"
-        "buttons buttons"
-        "updated created";
-    column-gap: 1rem;
+  grid-area: form;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title title"
+    "date odometer"
+    "station station"
+    "ppg gallon"
+    "partial missed"
+    "buttons buttons"
+    "updated created";
+  column-gap: 1rem;
+}
+
+form.main-form h2 {
+  grid-area: title;
 }
 
 .input-group.date {
-    grid-area: date;
+  grid-area: date;
 }
 .input-group.odometer {
-    grid-area: odometer;
+  grid-area: odometer;
 }
 .input-group.station {
-    grid-area: station;
+  grid-area: station;
 }
 .input-group.ppg {
-    grid-area: ppg;
+  grid-area: ppg;
 }
 .input-group.gallon {
-    grid-area: gallon;
+  grid-area: gallon;
 }
 .input-group.partial {
-    grid-area: partial;
+  grid-area: partial;
 }
 .input-group.missed {
-    grid-area: missed;
+  grid-area: missed;
 }
 .button-group {
-    grid-area: buttons;
+  grid-area: buttons;
+  margin-bottom: 1rem;
 }
 .input-group.updated {
-    grid-area: updated;
+  grid-area: updated;
 }
 .input-group.created {
-    grid-area: created;
+  grid-area: created;
+}
+
+.stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "title2 title2 title2"
+    "days miles mpd"
+    "price ppd gpd"
+    "mpg ptank range";
+  height: min-content;
+  column-gap: 1rem;
+}
+
+.stats h2 {
+  grid-area: title2;
+}
+.input-group.days {
+  grid-area: days;
+}
+.input-group.miles {
+  grid-area: miles;
+}
+.input-group.gpd {
+  grid-area: gpd;
+}
+.input-group.mpd {
+  grid-area: mpd;
+}
+.input-group.price {
+  grid-area: price;
+}
+.input-group.ppd {
+  grid-area: ppd;
+}
+.input-group.mpg {
+  grid-area: mpg;
+}
+.input-group.ptank {
+  grid-area: ptank;
+}
+.input-group.range {
+  grid-area: range;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "form stats";
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+}
+
+@media only screen and (min-width: 1580px) {
 }

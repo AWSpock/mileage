@@ -42,18 +42,6 @@
 				<div class="data-table-cell header-cell" data-id="miles">
 					<div class="data-table-cell-label">Total Miles</div>
 				</div>
-				<!-- <div class="data-table-cell header-cell" data-id="gallons">
-					<div class="data-table-cell-label">Estimated Gallons</div>
-				</div>
-				<div class="data-table-cell header-cell" data-id="price">
-					<div class="data-table-cell-label">Estimated Price</div>
-				</div>
-				<div class="data-table-cell header-cell" data-id="mpg">
-					<div class="data-table-cell-label">Average MPG</div>
-				</div>
-				<div class="data-table-cell header-cell" data-id="ppg">
-					<div class="data-table-cell-label">Average PPG</div>
-				</div> -->
 				<!-- <div class="data-table-cell header-cell" data-id="created">
 					<div class="data-table-cell-label">Created</div>
 				</div> -->
@@ -99,22 +87,6 @@
 			<div class="data-table-cell-label">Total Miles</div>
 			<div class="data-table-cell-content" data-numberformatter></div>
 		</div>
-		<!-- <div class="data-table-cell header-cell" data-id="gallons">
-			<div class="data-table-cell-label">Estimated Gallons</div>
-			<div class="data-table-cell-content" data-money3formatter></div>
-		</div>
-		<div class="data-table-cell header-cell" data-id="price">
-			<div class="data-table-cell-label">Estimated Price</div>
-			<div class="data-table-cell-content" data-moneyformatter></div>
-		</div>
-		<div class="data-table-cell" data-id="mpg">
-			<div class="data-table-cell-label">Average MPG</div>
-			<div class="data-table-cell-content" data-number3formatter></div>
-		</div>
-		<div class="data-table-cell header-cell" data-id="ppg">
-			<div class="data-table-cell-label">Average PPG</div>
-			<div class="data-table-cell-content" data-money3formatter></div>
-		</div> -->
 		<!-- <div class="data-table-cell" data-id="created">
 			<div class="data-table-cell-label">Create</div>
 			<div class="data-table-cell-content" data-dateformatter></div>

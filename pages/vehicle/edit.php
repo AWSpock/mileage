@@ -75,5 +75,15 @@
             <a href="/vehicle/<?php echo htmlentities($recVehicle->id()); ?>/summary" class="button secondary"><i class="fa-solid fa-ban"></i>Cancel</a>
             <a href="/vehicle/<?php echo htmlentities($recVehicle->id()); ?>/delete" class="button remove"><i class="fa-solid fa-trash"></i>Delete?</a>
         </div>
+        <div class="dates">
+            <div class="input-group updated">
+                <label class="form-control">Updated</label>
+                <div><samp data-dateformatter><?php echo htmlentities($recVehicle->updated()); ?></samp></div>
+            </div>
+            <div class="input-group created">
+                <label class="form-control">Created</label>
+                <div><samp data-dateformatter><?php echo htmlentities($recVehicle->created()); ?></samp></div>
+            </div>
+        </div>
     </form>
 </div>

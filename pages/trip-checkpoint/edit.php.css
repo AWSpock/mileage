@@ -1,36 +1,36 @@
 form.main-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-        "date"
-        "odometer"
-        "description"
-        "buttons"
-        "updated"
-        "created";
-    column-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "date date"
+    "odometer odometer"
+    "description description"
+    "buttons buttons"
+    "updated created";
+  column-gap: 1rem;
 }
 
 .input-group.date {
-    grid-area: date;
+  grid-area: date;
 }
 
 .input-group.odometer {
-    grid-area: odometer;
+  grid-area: odometer;
 }
 
 .input-group.description {
-    grid-area: description;
+  grid-area: description;
 }
 
 .button-group {
-    grid-area: buttons;
+  grid-area: buttons;
+  margin-bottom: 1rem;
 }
 
 .input-group.updated {
-    grid-area: updated;
+  grid-area: updated;
 }
 
 .input-group.created {
-    grid-area: created;
+  grid-area: created;
 }

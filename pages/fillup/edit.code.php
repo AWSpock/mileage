@@ -29,7 +29,7 @@ if (!empty($_POST)) {
     $_SESSION['last_message_text'] = $fillupData->actionDataMessage;
     if ($res == 1 || $res == 2) {
         $_SESSION['last_message_type'] = "success";
-        header('Location: /vehicle/' . $recVehicle->id() . '/fillup');
+        header('Location: /vehicle/' . $recVehicle->id() . '/fillup/' . $recFillup->id() . '/edit');
         die();
     } else {
         $_SESSION['last_message_type'] = "danger";
