@@ -4,7 +4,5 @@ RewriteEngine on
 
 RewriteRule ^api/?(.*)$ api.php [L]
 
-RewriteRule ^controller/?(.*)$ controller.php [L]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule !\.(css|js|jpg|png)$ index.php [L]
