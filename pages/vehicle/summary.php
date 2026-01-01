@@ -318,7 +318,7 @@
                         <div><samp data-numberformatter><?php echo htmlentities($summary->MPD); ?></samp></div>
                     </div>
                     <div class="info">
-                        <label class="form-control">Lifetime</label>
+                        <label class="form-control">Avg</label>
                         <div><samp data-numberformatter><?php echo htmlentities($summary->MPDLife); ?></samp></div>
                     </div>
                 </div>
