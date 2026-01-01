@@ -80,6 +80,16 @@ button.link {
   justify-items: center;
 }
 
+.mileperyear-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mileperyear-stats .info {
+  display: grid;
+  justify-items: center;
+}
+
 .gauges {
   margin-top: 1rem;
   display: grid;

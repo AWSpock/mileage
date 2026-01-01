@@ -100,31 +100,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($MPG), min($MPG), max($MPG)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->MPG), min($summary->MPG), max($summary->MPG)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-number3formatter><?php echo end($MPG); ?></span></div>
+                                    <div class="gauge__mid"><span data-number3formatter><?php echo end($summary->MPG); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-number3formatter><?php echo min($MPG); ?></span></div>
-                            <div><span data-number3formatter><?php echo max($MPG); ?></span></div>
+                            <div><span data-number3formatter><?php echo min($summary->MPG); ?></span></div>
+                            <div><span data-number3formatter><?php echo max($summary->MPG); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgMPG, min($MPG), max($MPG)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgMPG, min($summary->MPG), max($summary->MPG)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-number3formatter><?php echo $AvgMPG; ?></span></div>
+                                    <div class="gauge__mid"><span data-number3formatter><?php echo $summary->AvgMPG; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-number3formatter><?php echo min($MPG); ?></span></div>
-                            <div><span data-number3formatter><?php echo max($MPG); ?></span></div>
+                            <div><span data-number3formatter><?php echo min($summary->MPG); ?></span></div>
+                            <div><span data-number3formatter><?php echo max($summary->MPG); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -136,31 +136,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($PRI), min($PRI), max($PRI)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->PRI), min($summary->PRI), max($summary->PRI)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-moneyformatter><?php echo end($PRI); ?></span></div>
+                                    <div class="gauge__mid"><span data-moneyformatter><?php echo end($summary->PRI); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-moneyformatter><?php echo min($PRI); ?></span></div>
-                            <div><span data-moneyformatter><?php echo max($PRI); ?></span></div>
+                            <div><span data-moneyformatter><?php echo min($summary->PRI); ?></span></div>
+                            <div><span data-moneyformatter><?php echo max($summary->PRI); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgPRI, min($PRI), max($PRI)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgPRI, min($summary->PRI), max($summary->PRI)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-moneyformatter><?php echo $AvgPRI; ?></span></div>
+                                    <div class="gauge__mid"><span data-moneyformatter><?php echo $summary->AvgPRI; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-moneyformatter><?php echo min($PRI); ?></span></div>
-                            <div><span data-moneyformatter><?php echo max($PRI); ?></span></div>
+                            <div><span data-moneyformatter><?php echo min($summary->PRI); ?></span></div>
+                            <div><span data-moneyformatter><?php echo max($summary->PRI); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -172,31 +172,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($GAL), min($GAL), max($GAL)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->GAL), min($summary->GAL), max($summary->GAL)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-number3formatter><?php echo end($GAL); ?></span></div>
+                                    <div class="gauge__mid"><span data-number3formatter><?php echo end($summary->GAL); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-number3formatter><?php echo min($GAL); ?></span></div>
-                            <div><span data-number3formatter><?php echo max($GAL); ?></span></div>
+                            <div><span data-number3formatter><?php echo min($summary->GAL); ?></span></div>
+                            <div><span data-number3formatter><?php echo max($summary->GAL); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgGAL, min($GAL), max($GAL)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgGAL, min($summary->GAL), max($summary->GAL)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-number3formatter><?php echo $AvgGAL; ?></span></div>
+                                    <div class="gauge__mid"><span data-number3formatter><?php echo $summary->AvgGAL; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-number3formatter><?php echo min($GAL); ?></span></div>
-                            <div><span data-number3formatter><?php echo max($GAL); ?></span></div>
+                            <div><span data-number3formatter><?php echo min($summary->GAL); ?></span></div>
+                            <div><span data-number3formatter><?php echo max($summary->GAL); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -208,31 +208,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($PPG), min($PPG), max($PPG)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->PPG), min($summary->PPG), max($summary->PPG)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-money3formatter><?php echo end($PPG); ?></span></div>
+                                    <div class="gauge__mid"><span data-money3formatter><?php echo end($summary->PPG); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-money3formatter><?php echo min($PPG); ?></span></div>
-                            <div><span data-money3formatter><?php echo max($PPG); ?></span></div>
+                            <div><span data-money3formatter><?php echo min($summary->PPG); ?></span></div>
+                            <div><span data-money3formatter><?php echo max($summary->PPG); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgPPG, min($PPG), max($PPG)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgPPG, min($summary->PPG), max($summary->PPG)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-money3formatter><?php echo $AvgPPG; ?></span></div>
+                                    <div class="gauge__mid"><span data-money3formatter><?php echo $summary->AvgPPG; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-money3formatter><?php echo min($PPG); ?></span></div>
-                            <div><span data-money3formatter><?php echo max($PPG); ?></span></div>
+                            <div><span data-money3formatter><?php echo min($summary->PPG); ?></span></div>
+                            <div><span data-money3formatter><?php echo max($summary->PPG); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -244,31 +244,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($DAY), min($DAY), max($DAY)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->DAY), min($summary->DAY), max($summary->DAY)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-numberformatter><?php echo end($DAY); ?></span></div>
+                                    <div class="gauge__mid"><span data-numberformatter><?php echo end($summary->DAY); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-numberformatter><?php echo min($DAY); ?></span></div>
-                            <div><span data-numberformatter><?php echo max($DAY); ?></span></div>
+                            <div><span data-numberformatter><?php echo min($summary->DAY); ?></span></div>
+                            <div><span data-numberformatter><?php echo max($summary->DAY); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgDAY, min($DAY), max($DAY)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgDAY, min($summary->DAY), max($summary->DAY)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-numberformatter><?php echo $AvgDAY; ?></span></div>
+                                    <div class="gauge__mid"><span data-numberformatter><?php echo $summary->AvgDAY; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-numberformatter><?php echo min($DAY); ?></span></div>
-                            <div><span data-numberformatter><?php echo max($DAY); ?></span></div>
+                            <div><span data-numberformatter><?php echo min($summary->DAY); ?></span></div>
+                            <div><span data-numberformatter><?php echo max($summary->DAY); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -280,31 +280,31 @@
                     <div class="info__block selected" data-id="last">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($MIL), min($MIL), max($MIL)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage(end($summary->MIL), min($summary->MIL), max($summary->MIL)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-numberformatter><?php echo end($MIL); ?></span></div>
+                                    <div class="gauge__mid"><span data-numberformatter><?php echo end($summary->MIL); ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Last</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-numberformatter><?php echo min($MIL); ?></span></div>
-                            <div><span data-numberformatter><?php echo max($MIL); ?></span></div>
+                            <div><span data-numberformatter><?php echo min($summary->MIL); ?></span></div>
+                            <div><span data-numberformatter><?php echo max($summary->MIL); ?></span></div>
                         </div>
                     </div>
                     <div class="info__block selected" data-id="avg">
                         <div class="gauge">
                             <div class="gauge__body">
-                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($AvgMIL, min($MIL), max($MIL)); ?>turn);"></div>
+                                <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($summary->AvgMIL, min($summary->MIL), max($summary->MIL)); ?>turn);"></div>
                                 <div class="gauge__cover primary">
-                                    <div class="gauge__mid"><span data-numberformatter><?php echo $AvgMIL; ?></span></div>
+                                    <div class="gauge__mid"><span data-numberformatter><?php echo $summary->AvgMIL; ?></span></div>
                                 </div>
                             </div>
                             <div class="gauge__title">Avg</div>
                         </div>
                         <div class="gaugeLabelBottom">
-                            <div><span data-numberformatter><?php echo min($MIL); ?></span></div>
-                            <div><span data-numberformatter><?php echo max($MIL); ?></span></div>
+                            <div><span data-numberformatter><?php echo min($summary->MIL); ?></span></div>
+                            <div><span data-numberformatter><?php echo max($summary->MIL); ?></span></div>
                         </div>
                     </div>
                 </div>
@@ -315,11 +315,25 @@
                 <div class="mileperday-stats">
                     <div class="info">
                         <label class="form-control">Last</label>
-                        <div><samp data-numberformatter><?php echo htmlentities($MPD); ?></samp></div>
+                        <div><samp data-numberformatter><?php echo htmlentities($summary->MPD); ?></samp></div>
                     </div>
                     <div class="info">
                         <label class="form-control">Lifetime</label>
-                        <div><samp data-numberformatter><?php echo htmlentities($MPDLife); ?></samp></div>
+                        <div><samp data-numberformatter><?php echo htmlentities($summary->MPDLife); ?></samp></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mileperyear stats">
+                <h3>Miles Per Year</h3>
+                <div class="mileperyear-stats">
+                    <div class="info">
+                        <label class="form-control">Last</label>
+                        <div><samp data-numberformatter><?php echo htmlentities($summary->MPY); ?></samp></div>
+                    </div>
+                    <div class="info">
+                        <label class="form-control">Avg</label>
+                        <div><samp data-numberformatter><?php echo htmlentities($summary->MPYAvg); ?></samp></div>
                     </div>
                 </div>
             </div>
@@ -327,52 +341,40 @@
 
         <div class="reminder-stats">
             <h2>Reminders</h2>
-            <div class="reminders">
-                <?php
-                $today = new DateTime();
-                foreach ($reminders as $reminder) {
-                    $due = "";
-                    if ($reminder->due_odometer() !== null && $reminder->due_odometer() <= $max_odometer)
-                        $due = "overdue";
-                    if ($reminder->due_date() !== null) {
-                        $dt = new DateTime($reminder->due_date());
-                        if ($dt <= $today)
-                            $due = "overdue";
+            <?php
+            if (count($summary->reminders) > 0) {
+            ?>
+                <div class="reminders">
+                    <?php
+                    foreach ($summary->reminders as $reminder) {
+                    ?>
+                        <div class="reminder <?php echo $reminder->due; ?>">
+                            <h3><?php echo $reminder->title; ?></h3>
+                            <p><?php echo $reminder->description; ?></p>
+                            <?php
+                            if ($reminder->odom_due !== null) {
+                            ?>
+                                <p>Due @ <span data-numberformatter><?php echo $reminder->odom_due->due_odometer; ?></span> (in <span data-numberformatter><?php echo $reminder->odom_due->due_in; ?></span> <?php echo $reminder->odom_due->unit; ?>)</p>
+                            <?php
+                            }
+                            if ($reminder->date_due !== null) {
+                            ?>
+                                <p>Due on <span data-dateonlyformatter><?php echo $reminder->date_due->due_date; ?></span> (in <span data-numberformatter><?php echo $reminder->date_due->due_in; ?></span> <?php echo $reminder->date_due->unit; ?>)</p>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    <?php
                     }
-                ?>
-                    <div class="reminder <?php echo $due; ?>">
-                        <h3><?php
-                            echo htmlentities($reminder->name());
-                            echo $due == "overdue" ? " is DUE!" : ""; ?></h3>
-                        <p><?php echo str_replace("\n", "<br>", htmlentities($reminder->description())); ?></p>
-                        <?php
-                        if ($reminder->due_odometer() !== null) {
-                            $due_in = $reminder->due_odometer() - $max_odometer;
-                            $due_in_v = "mile";
-                            if ($due_in !== 1) {
-                                $due_in_v .= "s";
-                            }
-                        ?>
-                            <p>Due @ <span data-numberformatter><?php echo htmlentities($reminder->due_odometer()); ?></span> (in <span data-numberformatter><?php echo $due_in; ?></span> <?php echo $due_in_v; ?>)</p>
-                        <?php
-                        }
-                        if ($reminder->due_date() !== null) {
-                            $dt = new DateTime($reminder->due_date());
-                            $due_in = $dt->diff($today)->days;
-                            $due_in_v = "day";
-                            if ($due_in !== 1) {
-                                $due_in_v .= "s";
-                            }
-                        ?>
-                            <p>Due on <span data-dateonlyformatter><?php echo htmlentities($reminder->due_date()); ?></span> (in <span data-numberformatter><?php echo $due_in; ?></span> <?php echo $due_in_v; ?>)</p>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
+                    ?>
+                </div>
+            <?php
+            } else {
+            ?>
+                <div class="alert alert-info">No Reminders Exist</div>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>
