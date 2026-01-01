@@ -3,6 +3,7 @@ require_once("/var/www/mileage/php/DataAccess/Database.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/VehicleRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/FillupRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/MaintenanceRepository.php");
+require_once("/var/www/mileage/php/DataAccess/Repositories/ReminderRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/TripRepository.php");
 require_once("/var/www/mileage/php/DataAccess/Repositories/TripCheckpointRepository.php");
 
@@ -12,6 +13,7 @@ class DataAccess
     private $vehicleRepository = [];
     private $fillupRepository = [];
     private $maintenanceRepository = [];
+    private $reminderRepository = [];
     private $tripRepository = [];
     private $tripCheckpointRepository = [];
 
@@ -42,6 +44,14 @@ class DataAccess
             $this->maintenanceRepository[$vehicle_id] = new MaintenanceRepository($this->db, $vehicle_id);
         }
         return $this->maintenanceRepository[$vehicle_id];
+    }
+
+    public function reminders($vehicle_id)
+    {
+        if (!array_key_exists($vehicle_id, $this->reminderRepository)) {
+            $this->reminderRepository[$vehicle_id] = new ReminderRepository($this->db, $vehicle_id);
+        }
+        return $this->reminderRepository[$vehicle_id];
     }
 
     public function trips($vehicle_id)

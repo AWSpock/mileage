@@ -1,0 +1,41 @@
+form.main-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "name name"
+        "description description"
+        "due_months due_miles"
+        "due_date due_odometer"
+    "buttons buttons"
+    "updated created";
+  column-gap: 1rem;
+}
+
+.input-group.name {
+    grid-area: name;
+}
+.input-group.description {
+    grid-area: description;
+}
+.input-group.due_months {
+    grid-area: due_months;
+}
+.input-group.due_miles {
+    grid-area: due_miles;
+}
+.input-group.due_date {
+    grid-area: due_date;
+}
+.input-group.due_odometer {
+    grid-area: due_odometer;
+}
+.button-group {
+  grid-area: buttons;
+  margin-bottom: 1rem;
+}
+.input-group.updated {
+  grid-area: updated;
+}
+.input-group.created {
+  grid-area: created;
+}

@@ -65,6 +65,10 @@ class RouteParser
             $this->resourcePath = "/maintenance/index";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/reminder$~", $this->request)) {
+            $this->resourcePath = "/reminder/index";
+            return;
+        }
         if (preg_match("~^/vehicle/(\d+)/trip$~", $this->request)) {
             $this->resourcePath = "/trip/index";
             return;
@@ -81,6 +85,10 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/maintenance/create$~", $this->request)) {
             $this->resourcePath = "/maintenance/create";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/reminder/create$~", $this->request)) {
+            $this->resourcePath = "/reminder/create";
             return;
         }
         if (preg_match("~^/vehicle/(\d+)/trip/create$~", $this->request)) {
@@ -101,6 +109,10 @@ class RouteParser
             $this->resourcePath = "/maintenance/edit";
             return;
         }
+        if (preg_match("~^/vehicle/(\d+)/reminder/(\d+)/edit$~", $this->request)) {
+            $this->resourcePath = "/reminder/edit";
+            return;
+        }
         if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/edit$~", $this->request)) {
             $this->resourcePath = "/trip/edit";
             return;
@@ -117,6 +129,10 @@ class RouteParser
         }
         if (preg_match("~^/vehicle/(\d+)/maintenance/(\d+)/delete$~", $this->request)) {
             $this->resourcePath = "/maintenance/delete";
+            return;
+        }
+        if (preg_match("~^/vehicle/(\d+)/reminder/(\d+)/delete$~", $this->request)) {
+            $this->resourcePath = "/reminder/delete";
             return;
         }
         if (preg_match("~^/vehicle/(\d+)/trip/(\d+)/delete$~", $this->request)) {
@@ -172,6 +188,15 @@ class RouteParser
         }
         if (preg_match("~^/api/vehicle/(\d+)/maintenance/(\d+)$~", $this->request)) {
             $this->resourcePath = "/maintenance";
+            return;
+        }
+
+        if (preg_match("~^/api/vehicle/(\d+)/reminder$~", $this->request)) {
+            $this->resourcePath = "/reminder";
+            return;
+        }
+        if (preg_match("~^/api/vehicle/(\d+)/reminder/(\d+)$~", $this->request)) {
+            $this->resourcePath = "/reminder";
             return;
         }
 

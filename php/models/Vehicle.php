@@ -24,23 +24,26 @@ class Vehicle
 
     public function __construct($rec = null)
     {
-        $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
-        $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
-        $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
-        $this->name = (array_key_exists("name", $rec) && $rec['name'] !== NULL) ? $rec['name'] : null;
-        $this->make = (array_key_exists("make", $rec) && $rec['make'] !== NULL) ? $rec['make'] : null;
-        $this->model = (array_key_exists("model", $rec) && $rec['model'] !== NULL) ? $rec['model'] : null;
-        $this->year = (array_key_exists("year", $rec) && $rec['year'] !== NULL) ? $rec['year'] : null;
-        $this->color = (array_key_exists("color", $rec) && $rec['color'] !== NULL) ? $rec['color'] : null;
-        $this->tank_capacity = (array_key_exists("tank_capacity", $rec) && $rec['tank_capacity'] !== NULL) ? $rec['tank_capacity'] : null;
-        $this->purchase_date = (array_key_exists("purchase_date", $rec) && $rec['purchase_date'] !== NULL) ? $rec['purchase_date'] : null;
-        $this->sell_date = (array_key_exists("sell_date", $rec) && $rec['sell_date'] !== NULL) ? $rec['sell_date'] : null;
-        $this->purchase_price = (array_key_exists("purchase_price", $rec) && $rec['purchase_price'] !== NULL) ? $rec['purchase_price'] : null;
-        $this->sell_price = (array_key_exists("sell_price", $rec) && $rec['sell_price'] !== NULL) ? $rec['sell_price'] : null;
-        $this->purchase_odometer = (array_key_exists("purchase_odometer", $rec) && $rec['purchase_odometer'] !== NULL) ? $rec['purchase_odometer'] : null;
-        $this->sell_odometer = (array_key_exists("sell_odometer", $rec) && $rec['sell_odometer'] !== NULL) ? $rec['sell_odometer'] : null;
-        $this->favorite = (array_key_exists("favorite", $rec) && $rec['favorite'] !== NULL) ? $rec['favorite'] : null;
-        $this->role = (array_key_exists("role", $rec) && $rec['role'] !== NULL) ? $rec['role'] : null;
+        $this->id = -1;
+        if ($rec !== null) {
+            $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
+            $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
+            $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
+            $this->name = (array_key_exists("name", $rec) && $rec['name'] !== NULL) ? $rec['name'] : null;
+            $this->make = (array_key_exists("make", $rec) && $rec['make'] !== NULL) ? $rec['make'] : null;
+            $this->model = (array_key_exists("model", $rec) && $rec['model'] !== NULL) ? $rec['model'] : null;
+            $this->year = (array_key_exists("year", $rec) && $rec['year'] !== NULL) ? $rec['year'] : null;
+            $this->color = (array_key_exists("color", $rec) && $rec['color'] !== NULL) ? $rec['color'] : null;
+            $this->tank_capacity = (array_key_exists("tank_capacity", $rec) && $rec['tank_capacity'] !== NULL) ? $rec['tank_capacity'] : null;
+            $this->purchase_date = (array_key_exists("purchase_date", $rec) && $rec['purchase_date'] !== NULL) ? $rec['purchase_date'] : null;
+            $this->sell_date = (array_key_exists("sell_date", $rec) && $rec['sell_date'] !== NULL) ? $rec['sell_date'] : null;
+            $this->purchase_price = (array_key_exists("purchase_price", $rec) && $rec['purchase_price'] !== NULL) ? $rec['purchase_price'] : null;
+            $this->sell_price = (array_key_exists("sell_price", $rec) && $rec['sell_price'] !== NULL) ? $rec['sell_price'] : null;
+            $this->purchase_odometer = (array_key_exists("purchase_odometer", $rec) && $rec['purchase_odometer'] !== NULL) ? $rec['purchase_odometer'] : null;
+            $this->sell_odometer = (array_key_exists("sell_odometer", $rec) && $rec['sell_odometer'] !== NULL) ? $rec['sell_odometer'] : null;
+            $this->favorite = (array_key_exists("favorite", $rec) && $rec['favorite'] !== NULL) ? $rec['favorite'] : null;
+            $this->role = (array_key_exists("role", $rec) && $rec['role'] !== NULL) ? $rec['role'] : null;
+        }
     }
 
     public static function fromPost($post)

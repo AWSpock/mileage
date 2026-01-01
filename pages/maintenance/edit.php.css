@@ -1,4 +1,15 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "form"
+    "renew";
+  column-gap: 1rem;
+  grid-template-rows: min-content;
+}
+
 form.main-form {
+  grid-area: form;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -35,4 +46,41 @@ form.main-form {
 }
 .input-group.created {
   grid-area: created;
+}
+
+.renew-reminders {
+  grid-area: renew;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "title2"
+    "reminders";
+  height: min-content;
+  column-gap: 1rem;
+}
+
+.renew-reminders h2 {
+  grid-area: title2;
+}
+
+.renew-reminders .reminders {
+  grid-area: reminders;
+  display: grid;
+  row-gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "form renew";
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+}
+
+@media only screen and (min-width: 1580px) {
 }

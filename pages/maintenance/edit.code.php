@@ -20,6 +20,7 @@ if ($recMaintenance->id() < 0) {
 }
 
 $garages = [];
+$reminders = [];
 
 //
 
@@ -40,4 +41,6 @@ if (!empty($_POST)) {
             array_push($garages, $maintenance->garage());
     }
     sort($garages);
+
+    $reminders = $data->reminders($vehicle_id)->getRecords();
 }

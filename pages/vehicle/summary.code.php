@@ -165,3 +165,19 @@ function returnPercentage($value, $min = 0, $max = 100)
     }
     return 0;
 }
+
+// REMINDER STUFF
+
+$reminders = $data->reminders($vehicle_id)->getRecords();
+
+$max_odometer = 0;
+
+foreach ($fillups as $fillup) {
+    if ($max_odometer < $fillup->odometer())
+        $max_odometer = $fillup->odometer();
+}
+
+foreach ($data->maintenances($vehicle_id)->getRecords() as $maintenance) {
+    if ($max_odometer < $maintenance->odometer())
+        $max_odometer = $maintenance->odometer();
+}

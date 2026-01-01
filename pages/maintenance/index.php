@@ -45,7 +45,7 @@
 </div>
 
 <template id="template">
-	<a href="/vehicle/VEHICLE_ID/maintenance/FILLUP_ID/edit" class="data-table-row">
+	<a href="/vehicle/VEHICLE_ID/maintenance/MAINTENANCE_ID/edit" class="data-table-row">
 		<div class="data-table-cell" data-id="date">
 			<div class="data-table-cell-label">Date</div>
 			<div class="data-table-cell-content" data-dateonlyformatter></div>

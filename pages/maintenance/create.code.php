@@ -26,7 +26,7 @@ if (!empty($_POST)) {
     $_SESSION['last_message_text'] = $maintenanceData->actionDataMessage;
     if ($record_id > 0) {
         $_SESSION['last_message_type'] = "success";
-        header('Location: /vehicle/' . $recVehicle->id() . '/maintenance');
+        header('Location: /vehicle/' . $recVehicle->id() . '/maintenance/' . $record_id . '/edit');
         die();
     } else {
         $_SESSION['last_message_type'] = "danger";

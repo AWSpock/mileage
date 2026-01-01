@@ -1,0 +1,80 @@
+.data-table-row {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "name name name name"
+    "due_months due_months due_miles due_miles"
+    "due_date due_date due_odometer due_odometer"
+    "updated updated updated updated";
+  row-gap: 1rem;
+}
+
+.data-table-cell[data-id="name"] {
+  grid-area: name;
+}
+
+.data-table-cell[data-id="description"] {
+  grid-area: description;
+}
+
+.data-table-cell[data-id="due_months"] {
+  grid-area: due_months;
+}
+
+.data-table-cell[data-id="due_miles"] {
+  grid-area: due_miles;
+}
+
+.data-table-cell[data-id="due_date"] {
+  grid-area: due_date;
+}
+
+.data-table-cell[data-id="due_odometer"] {
+  grid-area: due_odometer;
+}
+
+.data-table-cell[data-id="created"] {
+  grid-area: created;
+}
+
+.data-table-cell[data-id="updated"] {
+  grid-area: updated;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+  .data-table-row.header-row {
+    display: none;
+  }
+
+  .data-table-row:not(.header-row) .data-table-cell-label {
+    display: block;
+  }
+
+  /* .data-table-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "date odometer price"
+      "garage garage garage"
+      "description description updated";
+  } */
+}
+
+@media only screen and (min-width: 1280px) {
+  .data-table-row.header-row {
+    display: grid;
+  }
+
+  .data-table-row:not(.header-row) .data-table-cell-label {
+    display: none;
+  }
+
+  .data-table-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: "name due_months due_miles due_date due_odometer updated";
+  }
+}
+
+@media only screen and (min-width: 1580px) {
+}

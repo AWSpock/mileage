@@ -19,19 +19,22 @@ class Fillup
 
     public function __construct($rec = null)
     {
-        $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
-        $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
-        $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
-        $this->date = (array_key_exists("date", $rec) && $rec['date'] !== NULL) ? $rec['date'] : null;
-        $this->odometer = (array_key_exists("odometer", $rec) && $rec['odometer'] !== NULL) ? intval($rec['odometer']) : null;
-        $this->gallon = (array_key_exists("gallon", $rec) && $rec['gallon'] !== NULL) ? $rec['gallon'] : null;
-        $this->ppg = (array_key_exists("ppg", $rec) && $rec['ppg'] !== NULL) ? $rec['ppg'] : null;
-        $this->station = (array_key_exists("station", $rec) && $rec['station'] !== NULL) ? $rec['station'] : null;
-        $this->partial = (array_key_exists("partial", $rec) && $rec['partial'] !== NULL) ? $rec['partial'] : null;
-        $this->missed = (array_key_exists("missed", $rec) && $rec['missed'] !== NULL) ? $rec['missed'] : null;
-        $this->mpg = (array_key_exists("mpg", $rec) && $rec['mpg'] !== NULL) ? $rec['mpg'] : null;
-        $this->days = (array_key_exists("days", $rec) && $rec['days'] !== NULL) ? $rec['days'] : null;
-        $this->miles = (array_key_exists("miles", $rec) && $rec['miles'] !== NULL) ? $rec['miles'] : null;
+        $this->id = -1;
+        if ($rec !== null) {
+            $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
+            $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
+            $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
+            $this->date = (array_key_exists("date", $rec) && $rec['date'] !== NULL) ? $rec['date'] : null;
+            $this->odometer = (array_key_exists("odometer", $rec) && $rec['odometer'] !== NULL) ? intval($rec['odometer']) : null;
+            $this->gallon = (array_key_exists("gallon", $rec) && $rec['gallon'] !== NULL) ? $rec['gallon'] : null;
+            $this->ppg = (array_key_exists("ppg", $rec) && $rec['ppg'] !== NULL) ? $rec['ppg'] : null;
+            $this->station = (array_key_exists("station", $rec) && $rec['station'] !== NULL) ? $rec['station'] : null;
+            $this->partial = (array_key_exists("partial", $rec) && $rec['partial'] !== NULL) ? $rec['partial'] : null;
+            $this->missed = (array_key_exists("missed", $rec) && $rec['missed'] !== NULL) ? $rec['missed'] : null;
+            $this->mpg = (array_key_exists("mpg", $rec) && $rec['mpg'] !== NULL) ? $rec['mpg'] : null;
+            $this->days = (array_key_exists("days", $rec) && $rec['days'] !== NULL) ? $rec['days'] : null;
+            $this->miles = (array_key_exists("miles", $rec) && $rec['miles'] !== NULL) ? $rec['miles'] : null;
+        }
     }
 
     public static function fromPost($post)

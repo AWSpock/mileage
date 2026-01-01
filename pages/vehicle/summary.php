@@ -325,121 +325,54 @@
             </div>
         </div>
 
-        <div class="bill-types">
-            <?php
-            /*foreach ($recAddress->bill_types() as $recBillType) {
-                $totalUnit = 0;
-                $totalPrice = 0;
-                $lastUnit = null;
-                $lastPrice = null;
-                $maxUnit = null;
-                $maxPrice = null;
-                $minUnit = null;
-                $minPrice = null;
-                foreach ($recBillType->bills() as $bill) {
-                    $totalUnit += $bill->unit();
-                    $totalPrice += $bill->price();
-                    if ($lastUnit === null)
-                        $lastUnit = $bill->unit();
-                    if ($lastPrice === null)
-                        $lastPrice = $bill->price();
-                    if ($maxUnit === null || $maxUnit < $bill->unit())
-                        $maxUnit = $bill->unit();
-                    if ($maxPrice === null || $maxPrice < $bill->price())
-                        $maxPrice = $bill->price();
-                    if ($minUnit === null || $minUnit > $bill->unit())
-                        $minUnit = $bill->unit();
-                    if ($minPrice === null || $minPrice > $bill->price())
-                        $minPrice = $bill->price();
-                }
-                $avgUnit = $totalUnit / count($recBillType->bills());
-                $avgPrice = $totalPrice / count($recBillType->bills());
-            ?>
-                <div class="bill-type">
-                    <h2><?php echo $recBillType->name(); ?></h2>
-                    <div class="options">
-                        <a href="/vehicle/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill">View Bills</a>
-                        <a href="/vehicle/<?php echo $recAddress->id(); ?>/bill-type/<?php echo $recBillType->id(); ?>/bill/create">Add Bill</a>
-                    </div>
-                    <div class="info">
-                        <div>Record Count: <?php echo count($recBillType->bills()); ?></div>
+        <div class="reminder-stats">
+            <h2>Reminders</h2>
+            <div class="reminders">
+                <?php
+                $today = new DateTime();
+                foreach ($reminders as $reminder) {
+                    $due = "";
+                    if ($reminder->due_odometer() !== null && $reminder->due_odometer() <= $max_odometer)
+                        $due = "overdue";
+                    if ($reminder->due_date() !== null) {
+                        $dt = new DateTime($reminder->due_date());
+                        if ($dt <= $today)
+                            $due = "overdue";
+                    }
+                ?>
+                    <div class="reminder <?php echo $due; ?>">
+                        <h3><?php
+                            echo htmlentities($reminder->name());
+                            echo $due == "overdue" ? " is DUE!" : ""; ?></h3>
+                        <p><?php echo str_replace("\n", "<br>", htmlentities($reminder->description())); ?></p>
                         <?php
-                        if (count($recBillType->bills()) > 0) {
+                        if ($reminder->due_odometer() !== null) {
+                            $due_in = $reminder->due_odometer() - $max_odometer;
+                            $due_in_v = "mile";
+                            if ($due_in !== 1) {
+                                $due_in_v .= "s";
+                            }
                         ?>
-                            <h3>Last Bill</h3>
-                            <div class="gauges">
-                                <div class="info__block selected" data-id="last">
-                                    <div class="gauge">
-                                        <div class="gauge__body">
-                                            <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($lastUnit, $minUnit, $maxUnit); ?>turn);"></div>
-                                            <div class="gauge__cover primary">
-                                                <div class="gauge__mid"><?php echo $recBillType->formatPrecision($lastUnit); ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="gauge__title"><?php echo htmlentities($recBillType->unit()); ?></div>
-                                    </div>
-                                    <div class="gaugeLabelBottom">
-                                        <div><?php echo $recBillType->formatPrecision($minUnit); ?></div>
-                                        <div><?php echo $recBillType->formatPrecision($maxUnit); ?></div>
-                                    </div>
-                                </div>
-                                <div class="info__block selected" data-id="last">
-                                    <div class="gauge">
-                                        <div class="gauge__body">
-                                            <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($lastPrice, $minPrice, $maxPrice); ?>turn);"></div>
-                                            <div class="gauge__cover primary">
-                                                <div class="gauge__mid"><?php echo FormatMoney($lastPrice); ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="gauge__title">Price</div>
-                                    </div>
-                                    <div class="gaugeLabelBottom">
-                                        <div><?php echo FormatMoney($minPrice); ?></div>
-                                        <div><?php echo FormatMoney($maxPrice); ?></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3>Average</h3>
-                            <div class="gauges">
-                                <div class="info__block selected" data-id="avg">
-                                    <div class="gauge">
-                                        <div class="gauge__body">
-                                            <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($avgUnit, $minUnit, $maxUnit); ?>turn);"></div>
-                                            <div class="gauge__cover primary">
-                                                <div class="gauge__mid"><?php echo $recBillType->formatPrecision($avgUnit); ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="gauge__title"><?php echo htmlentities($recBillType->unit()); ?></div>
-                                    </div>
-                                    <div class="gaugeLabelBottom">
-                                        <div><?php echo $recBillType->formatPrecision($minUnit); ?></div>
-                                        <div><?php echo $recBillType->formatPrecision($maxUnit); ?></div>
-                                    </div>
-                                </div>
-                                <div class="info__block selected" data-id="avg">
-                                    <div class="gauge">
-                                        <div class="gauge__body">
-                                            <div class="gauge__fill" style="transform: rotate(<?php echo returnPercentage($avgPrice, $minPrice, $maxPrice); ?>turn);"></div>
-                                            <div class="gauge__cover primary">
-                                                <div class="gauge__mid"><?php echo FormatMoney($avgPrice); ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="gauge__title">Price</div>
-                                    </div>
-                                    <div class="gaugeLabelBottom">
-                                        <div><?php echo FormatMoney($minPrice); ?></div>
-                                        <div><?php echo FormatMoney($maxPrice); ?></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p>Due @ <span data-numberformatter><?php echo htmlentities($reminder->due_odometer()); ?></span> (in <span data-numberformatter><?php echo $due_in; ?></span> <?php echo $due_in_v; ?>)</p>
+                        <?php
+                        }
+                        if ($reminder->due_date() !== null) {
+                            $dt = new DateTime($reminder->due_date());
+                            $due_in = $dt->diff($today)->days;
+                            $due_in_v = "day";
+                            if ($due_in !== 1) {
+                                $due_in_v .= "s";
+                            }
+                        ?>
+                            <p>Due on <span data-dateonlyformatter><?php echo htmlentities($reminder->due_date()); ?></span> (in <span data-numberformatter><?php echo $due_in; ?></span> <?php echo $due_in_v; ?>)</p>
                         <?php
                         }
                         ?>
                     </div>
-                </div>
-            <?php
-            }*/
-            ?>
+                <?php
+                }
+                ?>
+            </div>
         </div>
     </div>
 </div>

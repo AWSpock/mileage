@@ -5,12 +5,9 @@ async function loadData() {
   try {
     loader.show(true);
 
-    var response = await fetch(
-      "/api/vehicle/" + vehicle_id + "/maintenance",
-      {
-        method: "GET",
-      }
-    );
+    var response = await fetch("/api/vehicle/" + vehicle_id + "/reminder", {
+      method: "GET",
+    });
     // console.log(response);
 
     if (!response.ok) {
@@ -36,26 +33,37 @@ async function loadData() {
       var edit_link = row.getAttribute("href");
       row.setAttribute(
         "href",
-        edit_link
-          .replace("VEHICLE_ID", vehicle_id)
-          .replace("MAINTENANCE_ID", i.id)
+        edit_link.replace("VEHICLE_ID", vehicle_id).replace("REMINDER_ID", i.id)
       );
 
       clone.querySelector(
-        '[data-id="date"] .data-table-cell-content'
-      ).textContent = i.date;
+        '[data-id="name"] .data-table-cell-content'
+      ).textContent = i.name;
+      // clone.querySelector(
+      //   '[data-id="description"] .data-table-cell-content'
+      // ).innerHTML = i.description.replace("\r\n", "<br>");
       clone.querySelector(
-        '[data-id="odometer"] .data-table-cell-content'
-      ).textContent = i.odometer;
+        '[data-id="due_months"] .data-table-cell-content'
+      ).textContent = i.due_months;
       clone.querySelector(
-        '[data-id="price"] .data-table-cell-content'
-      ).textContent = i.price;
+        '[data-id="due_miles"] .data-table-cell-content'
+      ).textContent = i.due_miles;
       clone.querySelector(
-        '[data-id="description"] .data-table-cell-content'
-      ).innerHTML = i.description.replace("\r\n", "<br>");
+        '[data-id="due_date"] .data-table-cell-content'
+      ).textContent = i.due_date == null ? "NULL" : i.due_date;
+      if (i.due_date == null) {
+        clone
+          .querySelector('[data-id="due_date"] .data-table-cell-content')
+          .removeAttribute("data-dateonlyformatter");
+      }
       clone.querySelector(
-        '[data-id="garage"] .data-table-cell-content'
-      ).textContent = i.garage;
+        '[data-id="due_odometer"] .data-table-cell-content'
+      ).textContent = i.due_odometer == null ? "NULL" : i.due_odometer;
+      if (i.due_odometer == null) {
+        clone
+          .querySelector('[data-id="due_odometer"] .data-table-cell-content')
+          .removeAttribute("data-numberformatter");
+      }
       // clone.querySelector(
       //   '[data-id="created"] .data-table-cell-content'
       // ).textContent = i.created;

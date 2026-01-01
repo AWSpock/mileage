@@ -19,17 +19,20 @@ class Trip
 
     public function __construct($rec = null)
     {
-        $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
-        $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
-        $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
-        $this->name = (array_key_exists("name", $rec) && $rec['name'] !== NULL) ? $rec['name'] : null;
-        $this->description = (array_key_exists("description", $rec) && $rec['description'] !== NULL) ? $rec['description'] : null;
-        $this->start_date = (array_key_exists("start_date", $rec) && $rec['start_date'] !== NULL) ? $rec['start_date'] : null;
-        $this->end_date = (array_key_exists("end_date", $rec) && $rec['end_date'] !== NULL) ? $rec['end_date'] : null;
-        $this->start_odometer = (array_key_exists("start_odometer", $rec) && $rec['start_odometer'] !== NULL) ? $rec['start_odometer'] : null;
-        $this->end_odometer = (array_key_exists("end_odometer", $rec) && $rec['end_odometer'] !== NULL) ? $rec['end_odometer'] : null;
-        $this->miles = (array_key_exists("miles", $rec) && $rec['miles'] !== NULL) ? $rec['miles'] : null;
-        $this->days = (array_key_exists("days", $rec) && $rec['days'] !== NULL) ? $rec['days'] : null;
+        $this->id = -1;
+        if ($rec !== null) {
+            $this->id = (array_key_exists("id", $rec) && $rec['id'] !== NULL) ? $rec['id'] : -1;
+            $this->created = (array_key_exists("created", $rec) && $rec['created'] !== NULL) ? $rec['created'] : null;
+            $this->updated = (array_key_exists("updated", $rec) && $rec['updated'] !== NULL) ? $rec['updated'] : null;
+            $this->name = (array_key_exists("name", $rec) && $rec['name'] !== NULL) ? $rec['name'] : null;
+            $this->description = (array_key_exists("description", $rec) && $rec['description'] !== NULL) ? $rec['description'] : null;
+            $this->start_date = (array_key_exists("start_date", $rec) && $rec['start_date'] !== NULL) ? $rec['start_date'] : null;
+            $this->end_date = (array_key_exists("end_date", $rec) && $rec['end_date'] !== NULL) ? $rec['end_date'] : null;
+            $this->start_odometer = (array_key_exists("start_odometer", $rec) && $rec['start_odometer'] !== NULL) ? $rec['start_odometer'] : null;
+            $this->end_odometer = (array_key_exists("end_odometer", $rec) && $rec['end_odometer'] !== NULL) ? $rec['end_odometer'] : null;
+            $this->miles = (array_key_exists("miles", $rec) && $rec['miles'] !== NULL) ? $rec['miles'] : null;
+            $this->days = (array_key_exists("days", $rec) && $rec['days'] !== NULL) ? $rec['days'] : null;
+        }
     }
 
     public static function fromPost($post)

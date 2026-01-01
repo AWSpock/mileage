@@ -200,6 +200,7 @@ var vehicle_id = -1;
 var record_id = -1;
 var fillup_id = -1;
 var maintenance_id = -1;
+var reminder_id = -1;
 var trip_id = -1;
 var trip_checkpoint_id = -1;
 
@@ -208,6 +209,7 @@ if (currentUrl.split("/")[4]) {
   record_id = currentUrl.split("/")[4];
   fillup_id = currentUrl.split("/")[4];
   maintenance_id = currentUrl.split("/")[4];
+  reminder_id = currentUrl.split("/")[4];
   trip_id = currentUrl.split("/")[4];
 }
 if (currentUrl.split("/")[4]) trip_checkpoint_id = currentUrl.split("/")[6];

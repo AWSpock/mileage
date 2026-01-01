@@ -25,6 +25,7 @@ if ($userAuth->checkToken()) {
                 <!-- <ul> -->
                     <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/fillup"><i class="fa-solid fa-gas-pump"></i>Fillups</a></li>
                     <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/maintenance"><i class="fa-solid fa-screwdriver-wrench"></i>Maintenance</a></li>
+                    <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/reminder"><i class="fa-solid fa-alarm-clock"></i>Reminders</a></li>
                     <li class="menu-sub"><a href="/vehicle/<?php echo $vehicle->id(); ?>/trip"><i class="fa-solid fa-suitcase"></i>Trips</a></li>
                 <!-- </ul> -->
             <?php

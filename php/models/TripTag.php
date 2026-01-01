@@ -8,9 +8,12 @@ class TripTag
 
     public function __construct($rec = null)
     {
-        $this->id = !empty($rec['id']) ? $rec['id'] : -1;
-        $this->created = !empty($rec['created']) ? $rec['created'] : null;
-        $this->tag = !empty($rec['tag']) ? $rec['tag'] : null;
+        $this->id = -1;
+        if ($rec !== null) {
+            $this->id = !empty($rec['id']) ? $rec['id'] : -1;
+            $this->created = !empty($rec['created']) ? $rec['created'] : null;
+            $this->tag = !empty($rec['tag']) ? $rec['tag'] : null;
+        }
     }
 
     public static function fromPost($post)
